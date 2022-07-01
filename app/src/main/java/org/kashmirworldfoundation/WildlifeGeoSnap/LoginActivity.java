@@ -67,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         mEmail      = findViewById(R.id.email);
         // From UI + Password (Will be hashed with sha256 by firebase in order to secure user logins in order to assure that noone has access to passwords backend
         mPassword   = findViewById(R.id.password);
+        // fix bug or whatever
         mLoginBtn   = findViewById(R.id.LoginBtn);
         mRegisterBtn = findViewById(R.id.Register0);
         mRegisterOrgBtn = findViewById(R.id.RegisterOrgBtn);
