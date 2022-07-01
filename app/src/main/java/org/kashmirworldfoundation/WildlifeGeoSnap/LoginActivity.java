@@ -60,8 +60,12 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
             finish();
         } */
+        // This is a list different views used for the login menu
         mForgetBtn = findViewById(R.id.LoginForget);
+
+        // Email is gotten from the UI and respresents the users email
         mEmail      = findViewById(R.id.email);
+        // From UI + Password (Will be hashed with sha256 by firebase in order to secure user logins in order to assure that noone has access to passwords backend
         mPassword   = findViewById(R.id.password);
         mLoginBtn   = findViewById(R.id.LoginBtn);
         mRegisterBtn = findViewById(R.id.Register0);
