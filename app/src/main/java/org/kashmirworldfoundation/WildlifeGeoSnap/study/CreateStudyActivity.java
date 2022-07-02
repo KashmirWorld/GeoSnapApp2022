@@ -1,4 +1,4 @@
-package org.kashmirworldfoundation.WildlifeGeoSnap;
+package org.kashmirworldfoundation.WildlifeGeoSnap.study;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,12 +15,18 @@ import android.widget.Toast;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.R;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
+import org.kashmirworldfoundation.WildlifeGeoSnap.Utils;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class CreateStudy extends AppCompatActivity {
+public class CreateStudyActivity extends AppCompatActivity {
     private EditText TitleInput;
     private EditText LocationInput;
     private EditText MissionInput;
@@ -84,20 +90,20 @@ public class CreateStudy extends AppCompatActivity {
                     study.setStart(ts);
                     study.setEnd(ts2);
                 }
-                if (study.title.equals("")) {
-                    Toast.makeText(CreateStudy.this, "Please enter a title", Toast.LENGTH_LONG).show();
+                if (study.getTitle().equals("")) {
+                    Toast.makeText(CreateStudyActivity.this, "Please enter a title", Toast.LENGTH_LONG).show();
                 }
-                else if (study.location.equals("")) {
-                    Toast.makeText(CreateStudy.this, "Please enter a location", Toast.LENGTH_LONG).show();
+                else if (study.getLocation().equals("")) {
+                    Toast.makeText(CreateStudyActivity.this, "Please enter a location", Toast.LENGTH_LONG).show();
                 }
-                else if (study.mission.equals("")) {
-                    Toast.makeText(CreateStudy.this, "Please enter a mission", Toast.LENGTH_LONG).show();
+                else if (study.getMission().equals("")) {
+                    Toast.makeText(CreateStudyActivity.this, "Please enter a mission", Toast.LENGTH_LONG).show();
                 }
                 else if (ts == null || ts2 == null) {
-                    Toast.makeText(CreateStudy.this, "Please enter the dates of the study", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreateStudyActivity.this, "Please enter the dates of the study", Toast.LENGTH_LONG).show();
                 }
                 else if (ts.compareTo(ts2) > 0) {
-                    Toast.makeText(CreateStudy.this, "Please enter valid dates", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreateStudyActivity.this, "Please enter valid dates", Toast.LENGTH_LONG).show();
                 }
                 else {
                     db.collection("Study").add(study);

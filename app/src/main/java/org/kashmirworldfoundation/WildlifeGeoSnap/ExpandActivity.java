@@ -369,6 +369,8 @@ import java.util.Date;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.CameraStation;
+
 public class ExpandActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageView imageView;

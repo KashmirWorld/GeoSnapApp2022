@@ -29,16 +29,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.CameraStation;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.CameraStation;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.StationListActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Study;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
 
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 
 import android.widget.Toast;

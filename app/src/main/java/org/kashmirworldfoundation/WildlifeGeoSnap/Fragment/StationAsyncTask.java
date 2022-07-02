@@ -1,8 +1,6 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap.Fragment;
 
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.util.Pair;
 
 import androidx.annotation.NonNull;
@@ -16,11 +14,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.DeleteAsyncTask;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Member;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Study;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;

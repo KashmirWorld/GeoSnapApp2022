@@ -26,7 +26,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.gson.Gson;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Utils;
 

@@ -40,7 +40,7 @@ import com.google.gson.GsonBuilder;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.AddWildlifeSightingActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.MyDateTypeAdapter;
-import org.kashmirworldfoundation.WildlifeGeoSnap.WildlifeSighting;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.WildlifeSighting;
 import org.kashmirworldfoundation.WildlifeGeoSnap.WildlifeSightingExpand;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Utils;

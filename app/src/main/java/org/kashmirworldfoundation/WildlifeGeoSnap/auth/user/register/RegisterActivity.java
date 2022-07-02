@@ -31,11 +31,11 @@ import com.google.gson.Gson;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.GMailSender;
 import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Member;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Org;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Org;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.org.RegisterOrgActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Study;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Utils;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
 

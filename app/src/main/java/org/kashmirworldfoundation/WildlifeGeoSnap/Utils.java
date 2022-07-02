@@ -8,6 +8,9 @@ import com.google.firebase.Timestamp;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.WildlifeSighting;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 

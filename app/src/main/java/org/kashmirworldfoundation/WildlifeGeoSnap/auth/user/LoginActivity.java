@@ -32,13 +32,13 @@ import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.MyProjectSharedPreference;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.org.RegisterOrgActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterOrgAdminActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterSelectOrganizationActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Study;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Utils;
 
 import java.util.ArrayList;

@@ -72,6 +72,8 @@ import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
 
 import org.json.JSONObject;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Marker;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -157,9 +159,9 @@ public class OfflineManagerActivity extends AppCompatActivity implements
     private int count;
     private int size;
 
-    private ArrayList<org.kashmirworldfoundation.WildlifeGeoSnap.Marker> downloadMarkerList;
+    private ArrayList<Marker> downloadMarkerList;
 
-    private ArrayList<org.kashmirworldfoundation.WildlifeGeoSnap.Marker> markerList;
+    private ArrayList<Marker> markerList;
 
     private ArrayList<String> recordMarkerLayerNumber;
     private ArrayList<Integer> selectedItems;
@@ -839,7 +841,7 @@ public class OfflineManagerActivity extends AppCompatActivity implements
                                 size = task.getResult().size();
                                 for (DocumentSnapshot objectDocumentSnapshot: task.getResult()){
 
-                                    org.kashmirworldfoundation.WildlifeGeoSnap.Marker marker = objectDocumentSnapshot.toObject(org.kashmirworldfoundation.WildlifeGeoSnap.Marker.class);
+                                    Marker marker = objectDocumentSnapshot.toObject(Marker.class);
 
                                     downloadMarkerList.add(marker);
                                     count++;
@@ -866,7 +868,7 @@ public class OfflineManagerActivity extends AppCompatActivity implements
     }
 
     // after success download marker
-    public void afterDownloadMarker(ArrayList<org.kashmirworldfoundation.WildlifeGeoSnap.Marker> downloadMarkerList){
+    public void afterDownloadMarker(ArrayList<Marker> downloadMarkerList){
         int markerSize=markerList.size();
         for(int i=0;i<markerSize;i++){
             Double dMarkerLongtitude= Double.parseDouble(markerList.get(i).getLongitude());

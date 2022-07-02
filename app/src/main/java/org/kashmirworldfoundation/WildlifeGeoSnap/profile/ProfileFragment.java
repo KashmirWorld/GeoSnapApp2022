@@ -40,7 +40,7 @@ import com.google.gson.Gson;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.GlideApp;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 
 import java.io.ByteArrayOutputStream;

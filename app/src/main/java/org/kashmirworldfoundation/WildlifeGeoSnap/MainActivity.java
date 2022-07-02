@@ -37,6 +37,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.AboutFragment;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.study.AddFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.HomeFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.MapFragment;

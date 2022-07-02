@@ -13,7 +13,7 @@ import com.google.firebase.storage.StorageReference;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.GlideApp;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Study;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
 
 
 import java.util.ArrayList;

@@ -38,7 +38,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.CreateStudy;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.ListFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.WildlifeSightingFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
@@ -69,10 +68,10 @@ import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.CameraStation;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.CameraStation;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.MyDateTypeAdapter;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Study;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
 
 
 import java.lang.reflect.Type;
@@ -150,7 +149,7 @@ public class AddFragment  extends Fragment implements View.OnClickListener{
         StudyAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), CreateStudy.class));
+                startActivity(new Intent(getActivity(), CreateStudyActivity.class));
             }
         });
         StudyRefresh=fragmentView.findViewById(R.id.RefreshStudyBtn);

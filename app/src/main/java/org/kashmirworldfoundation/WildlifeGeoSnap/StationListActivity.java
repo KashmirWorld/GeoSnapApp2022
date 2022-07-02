@@ -22,7 +22,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.ListFragmentAdapter;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.CameraStation;
 
 import java.io.File;
 import java.io.FileNotFoundException;

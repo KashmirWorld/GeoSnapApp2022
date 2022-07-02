@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.CameraStation;
+
 import java.util.ArrayList;
 
 public class Station_ListAdapter extends RecyclerView.Adapter<Station_List_ViewHolder> {

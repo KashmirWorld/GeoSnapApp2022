@@ -30,7 +30,7 @@ public class WildlifeSightingExpand extends AppCompatActivity {
         Back= findViewById(R.id.SightingExpandBack);
         Date=findViewById(R.id.EXSightingDateText);
         Back= findViewById(R.id.SightingExpandBack);
-        WildlifeSighting wildlifeSighting = getIntent().getParcelableExtra("WildlifeSighting");
+        org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.WildlifeSighting wildlifeSighting = getIntent().getParcelableExtra("WildlifeSighting");
         Lattitude.setText(wildlifeSighting.getLatitudeS());
         Longitude.setText(wildlifeSighting.getLongitudeS());
         Notes.setText(wildlifeSighting.getNote());

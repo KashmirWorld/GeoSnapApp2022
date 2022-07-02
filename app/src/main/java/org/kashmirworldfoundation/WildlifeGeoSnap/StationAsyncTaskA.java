@@ -13,6 +13,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.CameraStation;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+
 import java.util.ArrayList;
 
 public class StationAsyncTaskA extends AsyncTask<String, Void, String> {

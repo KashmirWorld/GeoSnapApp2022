@@ -11,6 +11,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.WriteBatch;
 
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+
 public class DeleteAsyncTask extends AsyncTask<String,Void,String> {
     String path,study;
     Member member;

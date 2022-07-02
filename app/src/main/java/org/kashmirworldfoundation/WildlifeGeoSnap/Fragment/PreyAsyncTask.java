@@ -12,8 +12,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.Member;
-import org.kashmirworldfoundation.WildlifeGeoSnap.WildlifeSighting;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.WildlifeSighting;
 
 import java.util.ArrayList;
 

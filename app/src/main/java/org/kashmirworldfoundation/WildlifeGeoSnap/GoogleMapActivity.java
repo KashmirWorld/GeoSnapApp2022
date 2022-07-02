@@ -49,6 +49,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -113,7 +115,7 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
     private Member mem;
     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
 
-    private ArrayList<org.kashmirworldfoundation.WildlifeGeoSnap.Marker> downloadMarkerList;
+    private ArrayList<org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Marker> downloadMarkerList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -560,7 +562,7 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
         ElevationInput.setText(String.valueOf(TempElevationD));
 
 
-        org.kashmirworldfoundation.WildlifeGeoSnap.Marker newMarker= new org.kashmirworldfoundation.WildlifeGeoSnap.Marker();
+        org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Marker newMarker= new org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Marker();
         newMarker.setAuthor(user.getUid());
         newMarker.setLatitude(String.valueOf(marker.getPosition().latitude));
         newMarker.setLongitude(String.valueOf(marker.getPosition().longitude));
@@ -587,7 +589,7 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
                                 size = task.getResult().size();
                                 for (DocumentSnapshot objectDocumentSnapshot: task.getResult()){
 
-                                    org.kashmirworldfoundation.WildlifeGeoSnap.Marker marker = objectDocumentSnapshot.toObject(org.kashmirworldfoundation.WildlifeGeoSnap.Marker.class);
+                                    org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Marker marker = objectDocumentSnapshot.toObject(org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Marker.class);
 
                                     downloadMarkerList.add(marker);
                                     count++;
@@ -607,8 +609,8 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
 
     }
 
-    public void afterDownloadMarker(ArrayList<org.kashmirworldfoundation.WildlifeGeoSnap.Marker> downloadMarkerList){
-        for(org.kashmirworldfoundation.WildlifeGeoSnap.Marker m:downloadMarkerList){
+    public void afterDownloadMarker(ArrayList<org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Marker> downloadMarkerList){
+        for(org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Marker m:downloadMarkerList){
            Double markerLat= Double.parseDouble(m.getLatitude());
            Double markerLon= Double.parseDouble(m.getLongitude());
 
@@ -647,7 +649,7 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
         Log.d(TAG, "saveToFirebase: initial"+user.getUid());
 
 
-        org.kashmirworldfoundation.WildlifeGeoSnap.Marker newMarker= new org.kashmirworldfoundation.WildlifeGeoSnap.Marker();
+        org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Marker newMarker= new org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Marker();
         newMarker.setAuthor(user.getUid());
         newMarker.setLatitude(LatitudeInput.getText().toString());
         newMarker.setLongitude(LongitudeInput.getText().toString());
