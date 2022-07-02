@@ -1,4 +1,4 @@
-package org.kashmirworldfoundation.WildlifeGeoSnap;
+package org.kashmirworldfoundation.WildlifeGeoSnap.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -31,7 +31,16 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.ListFragment;
+import org.kashmirworldfoundation.WildlifeGeoSnap.ForgetPasswordActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.MyProjectSharedPreference;
+import org.kashmirworldfoundation.WildlifeGeoSnap.R;
+import org.kashmirworldfoundation.WildlifeGeoSnap.RegisterOrgActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.RegisterOrgAdminActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.RegisterSpinner0;
+import org.kashmirworldfoundation.WildlifeGeoSnap.Study;
+import org.kashmirworldfoundation.WildlifeGeoSnap.Utils;
 
 import java.util.ArrayList;
 
@@ -161,7 +170,7 @@ public class LoginActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    private void saveMember (Member mem,String uid){
+    private void saveMember (Member mem, String uid){
         SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences("user", Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = sharedPreferences.edit();

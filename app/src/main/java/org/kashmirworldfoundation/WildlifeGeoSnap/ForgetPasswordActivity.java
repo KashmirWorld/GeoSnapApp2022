@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.kashmirworldfoundation.WildlifeGeoSnap.login.LoginActivity;
+
 public class ForgetPasswordActivity extends AppCompatActivity {
     TextView Email, Back;
     Button Submit;

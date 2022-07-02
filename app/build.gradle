@@ -40,6 +40,13 @@ android {
         targetCompatibility = 1.8
         sourceCompatibility = 1.8
     }
+    sourceSets {
+        main {
+            java {
+                srcDirs 'src\\main\\java', 'src\\main\\java\\org.kashmirworldfoundation.WildlifeGeoSnap\\login'
+            }
+        }
+    }
 }
 repositories {
     mavenCentral()

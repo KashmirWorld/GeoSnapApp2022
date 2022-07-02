@@ -49,7 +49,7 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.WildlifeSightingExpand" />
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.AddWildlifeSightingActivity" />
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.LoginActivity"
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
