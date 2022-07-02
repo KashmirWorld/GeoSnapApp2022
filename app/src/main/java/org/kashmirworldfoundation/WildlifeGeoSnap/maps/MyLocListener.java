@@ -1,4 +1,4 @@
-package org.kashmirworldfoundation.WildlifeGeoSnap;
+package org.kashmirworldfoundation.WildlifeGeoSnap.maps;
 
 
 import android.location.Location;
@@ -6,12 +6,14 @@ import android.location.LocationListener;
 import android.os.Bundle;
 import android.util.Log;
 
+import org.kashmirworldfoundation.WildlifeGeoSnap.maps.GoogleMapActivity;
+
 public class MyLocListener implements LocationListener {
 
     private GoogleMapActivity googleMapActivity;
     private static final String TAG = "MyLocListener";
 
-    MyLocListener(GoogleMapActivity googleMapActivity) {
+    public MyLocListener(GoogleMapActivity googleMapActivity) {
         this.googleMapActivity = googleMapActivity;
     }
 

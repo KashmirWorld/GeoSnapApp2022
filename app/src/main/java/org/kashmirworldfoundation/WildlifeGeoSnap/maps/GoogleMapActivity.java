@@ -1,5 +1,5 @@
 
-package org.kashmirworldfoundation.WildlifeGeoSnap;
+package org.kashmirworldfoundation.WildlifeGeoSnap.maps;
 
 
 import android.Manifest;
@@ -49,6 +49,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 
+import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 
 import java.util.ArrayList;

@@ -1,5 +1,5 @@
 
-package org.kashmirworldfoundation.WildlifeGeoSnap;
+package org.kashmirworldfoundation.WildlifeGeoSnap.maps;
 
 
 import android.annotation.SuppressLint;
@@ -72,6 +72,7 @@ import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
 
 import org.json.JSONObject;
+import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Marker;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 

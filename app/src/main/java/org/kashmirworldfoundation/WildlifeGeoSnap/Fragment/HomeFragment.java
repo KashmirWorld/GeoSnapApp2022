@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.navigation.NavigationView;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
+import org.kashmirworldfoundation.WildlifeGeoSnap.maps.MapFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.profile.ProfileFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.study.AddFragment;
 

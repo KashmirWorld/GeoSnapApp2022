@@ -1,4 +1,4 @@
-package org.kashmirworldfoundation.WildlifeGeoSnap.Fragment;
+package org.kashmirworldfoundation.WildlifeGeoSnap.maps;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,6 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.MapCreateList;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 
 public class MapFragment extends Fragment {

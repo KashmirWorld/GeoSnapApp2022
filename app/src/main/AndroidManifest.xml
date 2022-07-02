@@ -26,17 +26,17 @@
             android:theme="@style/AppTheme.NoActionBar"  android:hasCode="true"></activity>
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.StationListActivity" />
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.study.CreateStudyActivity" />
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.GoogleMapActivity" /> <!-- <activity android:name=".Expand2" /> -->
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.maps.GoogleMapActivity" /> <!-- <activity android:name=".Expand2" /> -->
         <activity
             android:name="org.kashmirworldfoundation.WildlifeGeoSnap.ExpandActivity"
             android:parentActivityName="org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity" />
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.MapCreateList" />
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.maps.MapCreateList" />
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.MapCreateActivity" />
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.auth.org.RegisterOrgActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.CreateStationActivity" />
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity" />
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.OfflineManagerActivity" />
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.maps.OfflineManagerActivity" />
         <activity android:name=".auth.user.register.RegisterSelectCountryActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.RegisterSpinner2"

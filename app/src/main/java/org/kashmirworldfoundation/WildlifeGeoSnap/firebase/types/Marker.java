@@ -9,7 +9,7 @@ public class Marker {
     private String uid;
     private String markerName;
 
-    Marker(){
+    public Marker(){
 
     }
 

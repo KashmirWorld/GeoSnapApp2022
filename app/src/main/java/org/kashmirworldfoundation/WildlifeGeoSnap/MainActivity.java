@@ -40,7 +40,7 @@ import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.AboutFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.study.AddFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.HomeFragment;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.MapFragment;
+import org.kashmirworldfoundation.WildlifeGeoSnap.maps.MapFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.profile.ProfileFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
 

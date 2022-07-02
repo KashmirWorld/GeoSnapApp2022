@@ -1,6 +1,6 @@
 
 
-package org.kashmirworldfoundation.WildlifeGeoSnap;
+package org.kashmirworldfoundation.WildlifeGeoSnap.maps;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -17,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 
 import java.util.ArrayList;
 
@@ -61,7 +63,7 @@ public class MapCreateList extends AppCompatActivity implements View.OnClickList
 
 
             String symbol=selectiion.getName();
-            Intent i= new Intent(getApplicationContext(),GoogleMapActivity.class);
+            Intent i= new Intent(getApplicationContext(), GoogleMapActivity.class);
 
             i.putExtra("Name",symbol);
             startActivity(i);
