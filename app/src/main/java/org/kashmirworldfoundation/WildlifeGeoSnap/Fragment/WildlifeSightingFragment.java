@@ -39,11 +39,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.AddWildlifeSightingActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.MyDateTypeAdapter;
+import org.kashmirworldfoundation.WildlifeGeoSnap.utils.DataTypeAdapter;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.WildlifeSighting;
 import org.kashmirworldfoundation.WildlifeGeoSnap.WildlifeSightingExpand;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Utils;
+import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
@@ -59,7 +59,7 @@ public class WildlifeSightingFragment extends Fragment implements View.OnClickLi
     };
     private View WildlifeSightingFragment;
 
-    private static final String TAG = "ListFragment";
+    private static final String TAG = "StudyListFragment";
 
     private static final int PERMISSION_REQUEST_CODE = 100;
     private RecyclerView recyclerView;
@@ -123,7 +123,7 @@ public class WildlifeSightingFragment extends Fragment implements View.OnClickLi
                 SharedPreferences.Editor editor = sharedPreferences.edit();
 
 
-                Gson gson = new GsonBuilder().registerTypeAdapter(Timestamp.class,new MyDateTypeAdapter()).create();
+                Gson gson = new GsonBuilder().registerTypeAdapter(Timestamp.class,new DataTypeAdapter()).create();
                 String json =gson.toJson(new ArrayList<WildlifeSighting>());
                 String counters = String.valueOf(counter);
                 editor.putString("wildlifeSighting",json);

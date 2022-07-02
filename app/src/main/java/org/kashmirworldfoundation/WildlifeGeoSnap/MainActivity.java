@@ -36,10 +36,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.AboutFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
-import org.kashmirworldfoundation.WildlifeGeoSnap.study.AddFragment;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.HomeFragment;
+import org.kashmirworldfoundation.WildlifeGeoSnap.study.StudyFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.maps.MapFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.profile.ProfileFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
@@ -57,7 +55,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private AddFragment addFragment;
+    private StudyFragment studyFragment;
     private FusedLocationProviderClient mFusedLocationClient;
     private static final int LOCATION_REQUEST = 111;
     private static final String TAG = "MainActivity";
@@ -100,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         updateNavHeader();
 
-        addFragment = new AddFragment();
+        studyFragment = new StudyFragment();
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -132,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_study:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new AddFragment()).commit();
+                        new StudyFragment()).commit();
                 break;
             case R.id.nav_map:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -291,8 +289,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bundle.putString("latitude", latitude);
         bundle.putString("longitude", longitude);
         bundle.putString("altitude", altitude);
-        addFragment.setArguments(bundle);
-        addFragment.refresh();
+        studyFragment.setArguments(bundle);
+        studyFragment.refresh();
     }
 
     //ask user to get the location premission and check

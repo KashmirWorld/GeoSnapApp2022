@@ -29,7 +29,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.GMailSender;
+import org.kashmirworldfoundation.WildlifeGeoSnap.utils.email.GMailSender;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Org;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
 
-    tools:context="org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.AboutFragment">
+    tools:context="org.kashmirworldfoundation.WildlifeGeoSnap.AboutFragment">
 
 
     <TextView

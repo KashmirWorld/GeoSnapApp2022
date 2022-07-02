@@ -33,19 +33,19 @@ import com.google.gson.Gson;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
-import org.kashmirworldfoundation.WildlifeGeoSnap.MyProjectSharedPreference;
+import org.kashmirworldfoundation.WildlifeGeoSnap.utils.SharedPreferenceUtil;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.org.RegisterOrgActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterOrgAdminActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterSelectOrganizationActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Utils;
+import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
 
 import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
     EditText mEmail, mPassword;
-    private MyProjectSharedPreference sharedPreference;
+    private SharedPreferenceUtil sharedPreference;
 
     Button mLoginBtn;
     TextView mRegisterBtn,mRegisterOrgBtn, mForgetBtn;
@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         // Background.setVisibility(View.VISIBLE);
         fetchData();
 
-        sharedPreference = new MyProjectSharedPreference(this);
+        sharedPreference = new SharedPreferenceUtil(this);
         userEmail = sharedPreference.getValue("email");
         userPassword = sharedPreference.getValue("password");
         mEmail.setText(userEmail);

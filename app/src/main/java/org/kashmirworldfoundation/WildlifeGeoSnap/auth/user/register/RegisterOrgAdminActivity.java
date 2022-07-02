@@ -28,7 +28,7 @@ import com.google.gson.Gson;
 import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Utils;
+import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;

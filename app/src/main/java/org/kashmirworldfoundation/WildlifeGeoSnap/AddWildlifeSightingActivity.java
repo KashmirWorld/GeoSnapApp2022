@@ -32,6 +32,7 @@ import com.google.firebase.storage.UploadTask;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.WildlifeSighting;
+import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
