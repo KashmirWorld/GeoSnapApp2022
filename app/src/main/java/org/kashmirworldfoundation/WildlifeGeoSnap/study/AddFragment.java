@@ -1,4 +1,4 @@
-package org.kashmirworldfoundation.WildlifeGeoSnap.Fragment;
+package org.kashmirworldfoundation.WildlifeGeoSnap.study;
 
 
 import android.app.Activity;
@@ -39,6 +39,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.CreateStudy;
+import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.ListFragment;
+import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.WildlifeSightingFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 
 
@@ -54,7 +56,6 @@ import android.content.SharedPreferences;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.navigation.NavigationView;
 import com.google.common.reflect.TypeToken;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
@@ -72,7 +73,6 @@ import org.kashmirworldfoundation.WildlifeGeoSnap.CameraStation;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.MyDateTypeAdapter;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Study;
-import org.kashmirworldfoundation.WildlifeGeoSnap.WildlifeSighting;
 
 
 import java.lang.reflect.Type;

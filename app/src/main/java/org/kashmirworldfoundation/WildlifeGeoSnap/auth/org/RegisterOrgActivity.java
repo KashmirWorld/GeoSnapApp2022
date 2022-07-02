@@ -1,4 +1,4 @@
-package org.kashmirworldfoundation.WildlifeGeoSnap;
+package org.kashmirworldfoundation.WildlifeGeoSnap.auth.org;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +29,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 
+import org.kashmirworldfoundation.WildlifeGeoSnap.GMailSender;
+import org.kashmirworldfoundation.WildlifeGeoSnap.Org;
+import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterOrgAdminActivity;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

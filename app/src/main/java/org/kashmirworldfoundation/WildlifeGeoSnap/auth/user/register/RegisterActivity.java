@@ -34,7 +34,7 @@ import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Org;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
-import org.kashmirworldfoundation.WildlifeGeoSnap.RegisterOrgActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.org.RegisterOrgActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Study;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Utils;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;

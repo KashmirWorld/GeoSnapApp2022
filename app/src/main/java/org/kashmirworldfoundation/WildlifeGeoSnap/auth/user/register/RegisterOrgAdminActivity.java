@@ -1,4 +1,4 @@
-package org.kashmirworldfoundation.WildlifeGeoSnap;
+package org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -24,6 +24,11 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.gson.Gson;
+
+import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.R;
+import org.kashmirworldfoundation.WildlifeGeoSnap.Utils;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -184,7 +189,7 @@ public class RegisterOrgAdminActivity extends AppCompatActivity {
 
                                             studies.set(0, "No Studies");
                                             saveStudies(studies);
-                                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                                         }
                                     }

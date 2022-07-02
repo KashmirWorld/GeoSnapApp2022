@@ -37,10 +37,10 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.AboutFragment;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.AddFragment;
+import org.kashmirworldfoundation.WildlifeGeoSnap.study.AddFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.HomeFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.MapFragment;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.ProfileFragment;
+import org.kashmirworldfoundation.WildlifeGeoSnap.profile.ProfileFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
 
 import java.io.IOException;

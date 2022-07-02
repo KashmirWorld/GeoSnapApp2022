@@ -1,4 +1,4 @@
-package org.kashmirworldfoundation.WildlifeGeoSnap;
+package org.kashmirworldfoundation.WildlifeGeoSnap.auth.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 
 public class ForgetPasswordActivity extends AppCompatActivity {
     TextView Email, Back;

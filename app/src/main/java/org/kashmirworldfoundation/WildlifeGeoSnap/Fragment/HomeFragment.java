@@ -1,8 +1,6 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +12,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.MapCreateList;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
+import org.kashmirworldfoundation.WildlifeGeoSnap.profile.ProfileFragment;
+import org.kashmirworldfoundation.WildlifeGeoSnap.study.AddFragment;
 
 public class HomeFragment extends Fragment {
     private View HomeFragment;

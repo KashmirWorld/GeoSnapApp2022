@@ -21,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.RegisterOrgAdminActivity"
+            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterOrgAdminActivity"
             android:label="@string/title_activity_register__org__admin"
             android:theme="@style/AppTheme.NoActionBar"  android:hasCode="true"></activity>
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.StationListActivity" />
@@ -32,7 +32,7 @@
             android:parentActivityName="org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity" />
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.MapCreateList" />
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.MapCreateActivity" />
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.RegisterOrgActivity"
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.auth.org.RegisterOrgActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.CreateStationActivity" />
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity" />
@@ -45,7 +45,7 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.RebaitListActivity"></activity>
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.TakedownListActivity"></activity>
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.ForgetPasswordActivity"
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.ForgetPasswordActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.WildlifeSightingExpand" />
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.AddWildlifeSightingActivity" />

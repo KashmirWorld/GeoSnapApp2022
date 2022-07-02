@@ -1,4 +1,4 @@
-package org.kashmirworldfoundation.WildlifeGeoSnap.Fragment;
+package org.kashmirworldfoundation.WildlifeGeoSnap.profile;
 
 import android.app.Activity;
 
