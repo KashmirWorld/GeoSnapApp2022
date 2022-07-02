@@ -1,4 +1,4 @@
-package org.kashmirworldfoundation.WildlifeGeoSnap.login;
+package org.kashmirworldfoundation.WildlifeGeoSnap.auth.user;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -38,7 +38,7 @@ import org.kashmirworldfoundation.WildlifeGeoSnap.MyProjectSharedPreference;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.RegisterOrgActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.RegisterOrgAdminActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.RegisterSpinner0;
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterSelectOrganizationActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Study;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Utils;
 
@@ -65,10 +65,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         fAuth= FirebaseAuth.getInstance();
         layout = findViewById(R.id.LoginLayout);
-        /*  if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-            finish();
-        } */
         mForgetBtn = findViewById(R.id.LoginForget);
         mEmail      = findViewById(R.id.email);
         mPassword   = findViewById(R.id.password);
@@ -99,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), RegisterSpinner0.class));
+                startActivity(new Intent(getApplicationContext(), RegisterSelectOrganizationActivity.class));
             }
         });
         mRegisterOrgBtn.setOnClickListener(new View.OnClickListener() {
@@ -226,35 +222,12 @@ public class LoginActivity extends AppCompatActivity {
                                                 studies.set(0,"No Studies");
                                             }
                                             saveStudies(studies);
-                                                    /*
-                                                    Intent i= new Intent(getApplicationContext(),MainActivity.class);
-                                                    Bundle b = new Bundle();
-                                                    b.putString("Studies",studies.toString());
-
-                                                    i.putExtras(b);
-                                                    Toast.makeText(Login.this,"Welcome", Toast.LENGTH_LONG).show();
-                                                    startActivity(i);
-
-                                                    */
                                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
-
                                         }
                                         else{
                                             studies.set(0, "No Studies");
                                             saveStudies(studies);
-                                                    /*
-                                                    Intent i= new Intent(getApplicationContext(),MainActivity.class);
-                                                    Bundle b = new Bundle();
-                                                    b.putString("Studies",studies.toString());
-
-                                                    i.putExtras(b);
-                                                    Toast.makeText(Login.this,"Welcome", Toast.LENGTH_LONG).show();
-                                                    startActivity(i);
-
-                                                     */
                                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
                                         }
                                     }
                                 });

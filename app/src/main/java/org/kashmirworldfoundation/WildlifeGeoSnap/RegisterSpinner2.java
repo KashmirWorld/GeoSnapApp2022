@@ -18,6 +18,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterActivity;
+
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -100,7 +102,7 @@ public class RegisterSpinner2 extends AppCompatActivity {
                     return;
                 }
                 //Add data to bundle
-                Intent i= new Intent(getApplicationContext(),Register.class);
+                Intent i= new Intent(getApplicationContext(), RegisterActivity.class);
                 Bundle b = new Bundle();
                 b.putString("OrgName",Sorg);
                 b.putString("Country", Scountry);

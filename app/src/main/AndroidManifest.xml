@@ -37,11 +37,11 @@
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.CreateStationActivity" />
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity" />
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.OfflineManagerActivity" />
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.RegisterSpinner1"
+        <activity android:name=".auth.user.register.RegisterSelectCountryActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.RegisterSpinner2"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.RegisterSpinner0"
+        <activity android:name=".auth.user.register.RegisterSelectOrganizationActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.RebaitListActivity"></activity>
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.TakedownListActivity"></activity>
@@ -49,7 +49,7 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.WildlifeSightingExpand" />
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.AddWildlifeSightingActivity" />
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.login.LoginActivity"
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -57,7 +57,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.Register"
+        <activity android:name=".auth.user.register.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <meta-data

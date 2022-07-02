@@ -1,4 +1,4 @@
-package org.kashmirworldfoundation.WildlifeGeoSnap;
+package org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +21,9 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.login.LoginActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.Org;
+import org.kashmirworldfoundation.WildlifeGeoSnap.R;
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -30,7 +32,7 @@ import java.util.Set;
 
 import javax.annotation.Nullable;
 
-public class RegisterSpinner0 extends AppCompatActivity {
+public class RegisterSelectOrganizationActivity extends AppCompatActivity {
 
     Spinner mOrg;
     Button mSubmit;
@@ -45,7 +47,7 @@ public class RegisterSpinner0 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_spinner0);
+        setContentView(R.layout.activity_register_select_organization);
 
         mOrg = findViewById(R.id.register_orgS3);
 
@@ -86,11 +88,11 @@ public class RegisterSpinner0 extends AppCompatActivity {
             public void onClick(View v) {
                 //Check if the data is selected
                 if (Sorg == null || Sorg.equals("Select Org")){
-                    Toast.makeText(RegisterSpinner0.this, "Need to select an organization", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterSelectOrganizationActivity.this, "Need to select an organization", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 //Add your data to bundle
-                Intent I = new Intent(getApplicationContext(), RegisterSpinner1.class);
+                Intent I = new Intent(getApplicationContext(), RegisterSelectCountryActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("Orgname", Sorg);
                 I.putExtras(bundle);
@@ -101,7 +103,7 @@ public class RegisterSpinner0 extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
                 if (e!=null) {
-                    Toast.makeText(RegisterSpinner0.this, "Error " + e.getMessage(), Toast.LENGTH_LONG);
+                    Toast.makeText(RegisterSelectOrganizationActivity.this, "Error " + e.getMessage(), Toast.LENGTH_LONG);
 
                 }
                 else{

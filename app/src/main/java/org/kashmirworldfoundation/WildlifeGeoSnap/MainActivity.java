@@ -41,7 +41,7 @@ import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.AddFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.HomeFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.MapFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.ProfileFragment;
-import org.kashmirworldfoundation.WildlifeGeoSnap.login.LoginActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -39,7 +39,7 @@ import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.GlideApp;
-import org.kashmirworldfoundation.WildlifeGeoSnap.login.LoginActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 

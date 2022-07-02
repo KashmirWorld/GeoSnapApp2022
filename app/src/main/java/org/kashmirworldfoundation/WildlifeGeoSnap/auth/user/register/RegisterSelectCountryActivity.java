@@ -1,4 +1,4 @@
-package org.kashmirworldfoundation.WildlifeGeoSnap;
+package org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,12 +22,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.kashmirworldfoundation.WildlifeGeoSnap.Org;
+import org.kashmirworldfoundation.WildlifeGeoSnap.R;
+
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class RegisterSpinner1 extends AppCompatActivity {
+public class RegisterSelectCountryActivity extends AppCompatActivity {
 
     Spinner mCountry;
     Button mSubmit;
@@ -41,7 +44,7 @@ public class RegisterSpinner1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_spinner1);
+        setContentView(R.layout.activity_register_select_country);
 
         mCountry=findViewById(R.id.Spinner_Country);
 
@@ -56,14 +59,14 @@ public class RegisterSpinner1 extends AppCompatActivity {
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),RegisterSpinner0.class));
+                startActivity(new Intent(getApplicationContext(), RegisterSelectOrganizationActivity.class));
                 finish();
             }
         });
         mRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Intent(getApplicationContext(),RegisterSpinner1.class);
+                new Intent(getApplicationContext(), RegisterSelectCountryActivity.class);
             }
         });
         final Set<String> set = new LinkedHashSet<>();
@@ -117,11 +120,11 @@ public class RegisterSpinner1 extends AppCompatActivity {
             public void onClick(View v) {
                 //Check if data is selected
                 if (Scountry == null || Scountry.equals("Select Country")){
-                    Toast.makeText(RegisterSpinner1.this, "Need to select a country", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterSelectCountryActivity.this, "Need to select a country", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 //Add data to bundle
-                Intent i = new Intent(getApplicationContext(),Register.class);
+                Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
                 Bundle b = new Bundle();
                 b.putString("OrgName", Sorg);
                 b.putString("Country",Scountry);

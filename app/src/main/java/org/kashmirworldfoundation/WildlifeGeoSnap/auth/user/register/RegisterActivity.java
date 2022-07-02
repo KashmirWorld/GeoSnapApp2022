@@ -1,4 +1,4 @@
-package org.kashmirworldfoundation.WildlifeGeoSnap;
+package org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,13 +29,21 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.login.LoginActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.GMailSender;
+import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.Org;
+import org.kashmirworldfoundation.WildlifeGeoSnap.R;
+import org.kashmirworldfoundation.WildlifeGeoSnap.RegisterOrgActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.Study;
+import org.kashmirworldfoundation.WildlifeGeoSnap.Utils;
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Register extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
 
     Org Forg;
@@ -144,18 +152,18 @@ public class Register extends AppCompatActivity {
                 Utils util = new Utils();
 
 
-                if (util.getAgreement(Register.this)){
-                    LayoutInflater inflater= LayoutInflater.from(Register.this);
+                if (util.getAgreement(RegisterActivity.this)){
+                    LayoutInflater inflater= LayoutInflater.from(RegisterActivity.this);
                     View view=inflater.inflate(R.layout.disclaimer_layout, null);
 
 
-                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(Register.this);
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(RegisterActivity.this);
                     alertDialog.setTitle("Terms of Service");
                     alertDialog.setView(view);
                     alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(Register.this,"Agreement needed to register",Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegisterActivity.this,"Agreement needed to register",Toast.LENGTH_LONG).show();
                         }
 
                     });
@@ -164,7 +172,7 @@ public class Register extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
-                            util.setAgreement(Register.this);
+                            util.setAgreement(RegisterActivity.this);
                             register(organization,country);
                         }
                     });
@@ -183,7 +191,7 @@ public class Register extends AppCompatActivity {
 
     }
     private void sendMessage(final String name, final String phone, final String email, final String job,final String receive) {
-        final ProgressDialog dialog = new ProgressDialog(Register.this);
+        final ProgressDialog dialog = new ProgressDialog(RegisterActivity.this);
         dialog.setTitle("Sending Email");
         dialog.setMessage("Please wait");
         dialog.show();
@@ -205,8 +213,8 @@ public class Register extends AppCompatActivity {
         });
         sender.start();
     }
-    private void saveMember (Member mem,String uid){
-        SharedPreferences sharedPreferences = Register.this.getSharedPreferences("user", Context.MODE_PRIVATE);
+    private void saveMember (Member mem, String uid){
+        SharedPreferences sharedPreferences = RegisterActivity.this.getSharedPreferences("user", Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
@@ -216,13 +224,13 @@ public class Register extends AppCompatActivity {
         editor.apply();
     }
     private void saveCamNum(){
-        SharedPreferences sharedPreferences = Register.this.getSharedPreferences("camstations",Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = RegisterActivity.this.getSharedPreferences("camstations",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("CamNum",0);
         editor.apply();
     }
     private void saveStudies(ArrayList<String> studies){
-        SharedPreferences sharedPreferences = Register.this.getSharedPreferences("user",Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = RegisterActivity.this.getSharedPreferences("user",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor =sharedPreferences.edit();
 
 
