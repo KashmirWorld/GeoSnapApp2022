@@ -1,4 +1,4 @@
-package org.kashmirworldfoundation.WildlifeGeoSnap.Fragment;
+package org.kashmirworldfoundation.WildlifeGeoSnap.study.wildlifesightings.tasks;
 
 import android.os.AsyncTask;
 
@@ -14,6 +14,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.WildlifeSighting;
+import org.kashmirworldfoundation.WildlifeGeoSnap.study.wildlifesightings.WildlifeSightingFragment;
 
 import java.util.ArrayList;
 
@@ -31,7 +32,7 @@ public class PreyAsyncTask extends AsyncTask<String, Void, String> {
 
     private WildlifeSightingFragment wildlifeSightingFragment;
 
-    PreyAsyncTask(WildlifeSightingFragment li){
+    public PreyAsyncTask(WildlifeSightingFragment li){
         wildlifeSightingFragment =li;}
 
     protected void update(){

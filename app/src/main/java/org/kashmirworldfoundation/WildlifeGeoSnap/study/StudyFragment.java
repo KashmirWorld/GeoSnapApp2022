@@ -38,7 +38,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.WildlifeSightingFragment;
+import org.kashmirworldfoundation.WildlifeGeoSnap.study.wildlifesightings.WildlifeSightingFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 
 

@@ -1,4 +1,4 @@
-package org.kashmirworldfoundation.WildlifeGeoSnap.Fragment;
+package org.kashmirworldfoundation.WildlifeGeoSnap.study.wildlifesightings;
 
 import android.Manifest;
 import android.app.Activity;
@@ -38,10 +38,9 @@ import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.AddWildlifeSightingActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.study.wildlifesightings.tasks.PreyAsyncTask;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.DataTypeAdapter;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.WildlifeSighting;
-import org.kashmirworldfoundation.WildlifeGeoSnap.WildlifeSightingExpand;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
 

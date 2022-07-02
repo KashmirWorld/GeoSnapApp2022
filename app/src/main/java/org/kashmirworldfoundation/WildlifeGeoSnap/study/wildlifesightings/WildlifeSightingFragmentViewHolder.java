@@ -1,4 +1,4 @@
-package org.kashmirworldfoundation.WildlifeGeoSnap.Fragment;
+package org.kashmirworldfoundation.WildlifeGeoSnap.study.wildlifesightings;
 
 import android.view.View;
 import android.widget.ImageView;
