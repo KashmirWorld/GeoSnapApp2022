@@ -2,7 +2,6 @@ package org.kashmirworldfoundation.WildlifeGeoSnap.auth.user;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
@@ -15,7 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +31,10 @@ import com.google.gson.Gson;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.GlideApp;
 import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.AuthHandler;
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.TOSAgreementHandler;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.SharedPreferenceUtil;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.org.RegisterOrgActivity;
@@ -43,27 +44,38 @@ import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends Activity {
+
+    public static final String PREFERENCE_NAME = "MY_PREFS_KEY";
+
+    // UI Views
     EditText mEmail, mPassword;
-    private SharedPreferenceUtil sharedPreference;
-
     Button mLoginBtn;
     TextView mRegisterBtn,mRegisterOrgBtn, mForgetBtn;
-    FirebaseAuth fAuth;
-    ProgressBar progressBar;
-    FirebaseFirestore fStore;
     ImageView Background;
     ConstraintLayout layout;
     ArrayList<String> studies;
-    Boolean rememberLogin = false;
 
+    //User Inputted Values
+    Boolean rememberLogin = false;
     String userEmail, userPassword;
+    private SharedPreferenceUtil loginPreferences;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        fAuth= FirebaseAuth.getInstance();
+
+        initViews();
+        initBackground();
+        populateLoginInfo();
+    }
+
+    @Override
+    protected void initViews() {
         layout = findViewById(R.id.LoginLayout);
         mForgetBtn = findViewById(R.id.LoginForget);
         mEmail      = findViewById(R.id.email);
@@ -71,179 +83,73 @@ public class LoginActivity extends AppCompatActivity {
         mLoginBtn   = findViewById(R.id.LoginBtn);
         mRegisterBtn = findViewById(R.id.Register0);
         mRegisterOrgBtn = findViewById(R.id.RegisterOrgBtn);
-        fAuth       = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-        progressBar = findViewById(R.id.progressBar);
-
         Background =findViewById(R.id.BackgroundLogin);
-        // Background.setVisibility(View.VISIBLE);
-        fetchData();
-
-        sharedPreference = new SharedPreferenceUtil(this);
-        userEmail = sharedPreference.getValue("email");
-        userPassword = sharedPreference.getValue("password");
-        mEmail.setText(userEmail);
-        mPassword.setText(userPassword);
-
-
-        mForgetBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ForgetPasswordActivity.class));
-            }
-        });
-        mRegisterBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), RegisterSelectOrganizationActivity.class));
-            }
-        });
-        mRegisterOrgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getAdmin()){
-                    startActivity(new Intent(getApplicationContext(), RegisterOrgAdminActivity.class));
-                }
-                startActivity(new Intent(getApplicationContext(), RegisterOrgActivity.class));
-            }
-        });
-        mLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Utils util = new Utils();
-
-                studies = new ArrayList<>();
-                userEmail = mEmail.getText().toString().trim();
-                userPassword = mPassword.getText().toString().trim();
-
-                if (userEmail != null && !userEmail.trim().isEmpty() && userPassword != null && !userPassword.trim().isEmpty()) {
-                    if (util.getAgreement(LoginActivity.this)) {
-                        LayoutInflater inflater = LayoutInflater.from(LoginActivity.this);
-                        View view = inflater.inflate(R.layout.disclaimer_layout, null);
-
-                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(LoginActivity.this);
-                        alertDialog.setTitle("Terms of Service");
-                        alertDialog.setView(view);
-                        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(LoginActivity.this, "Agreement needed to login", Toast.LENGTH_LONG).show();
-                            }
-                        });
-
-                        alertDialog.setPositiveButton("Agree", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                util.setAgreement(LoginActivity.this);
-                                login(userEmail, userPassword);
-                            }
-                        });
-                        AlertDialog alert = alertDialog.create();
-                        alert.show();
-                    } else {  login(userEmail, userPassword); }
-                }
-                else {
-                    Toast.makeText(LoginActivity.this, "Please enter username and password", Toast.LENGTH_LONG ).show();
-                }
-            }
-        });
-
     }
-    private void fetchData() {
+
+    /**
+     *  This method is supposed to change the background of the Login menu to look like the one within firebases database (does not work)
+     *  TODO: Fix it so the background changes
+     */
+    private void initBackground() {
         StorageReference ref = FirebaseStorage.getInstance().getReference("assets/Start.png");
         GlideApp.with(this)
                 .load(ref)
                 .into(Background);
     }
-    private void saveStudies(ArrayList<String> studies){
-        SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences("user",Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor =sharedPreferences.edit();
 
-        Gson gson = new Gson();
-        String json =gson.toJson(studies);
-        editor.putString("studies",json);
-        editor.apply();
+    // THESE ARE THE ONCLICK LISTENERS FOR THE UI
+
+    public void onClickForget(View v){
+        startActivity(new Intent(getApplicationContext(), ForgetPasswordActivity.class));
     }
 
-    private void saveMember (Member mem, String uid){
-        SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences("user", Context.MODE_PRIVATE);
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear();
-        editor.apply();
-        Gson gson = new Gson();
-        String json =gson.toJson(mem);
-        editor.putString("user",json);
-        editor.putString("uid",uid);
-        editor.apply();
+    public void onClickRegisterOrg(View v){
+        startActivity(new Intent(getApplicationContext(), RegisterSelectOrganizationActivity.class));
     }
 
-    private boolean getAdmin(){
-        SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences("Admin", Context.MODE_PRIVATE);
-        return sharedPreferences.getBoolean("Admin",false);
+    public void onClickRegisterUser(View v){
+        if (getAdmin()){
+            startActivity(new Intent(getApplicationContext(), RegisterOrgAdminActivity.class));
+        }
+        startActivity(new Intent(getApplicationContext(), RegisterOrgActivity.class));
     }
 
-    public void saveUserEmailPassword(View v) {
+    public void onClickLogin(View v){
+        Utils util = Utils.getInstance();
+
+        userEmail = mEmail.getText().toString();
+        userPassword = mPassword.getText().toString();
+
+        if (!AuthHandler.validateLoginInfo(userEmail, userPassword, this)){
+            return;
+        }
+
+        TOSAgreementHandler.sendAgreementThen(userEmail, userPassword, (email, password) -> {
+            LoginHandler.login(email, password, rememberLogin, loginPreferences, this);
+        }, this);
+    }
+
+    public void onClickRememberLogin(View v) {
         rememberLogin = !rememberLogin;
     }
 
-    private void login(String email, String pass){
-        fAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    if (rememberLogin) {
-                        userEmail = mEmail.getText().toString();
-                        userPassword = mPassword.getText().toString();
-                        sharedPreference.save("email", userEmail);
-                        sharedPreference.save("password", userPassword);
-                    }
-                    else{
-                        sharedPreference.clearAll();
-                    }
-                    fStore.document("Member/"+fAuth.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if (task.isSuccessful()){
-                                Member me=task.getResult().toObject(Member.class);
-                                saveMember(me,fAuth.getUid());
-                                studies.add("Pick A Study");
+    /**
+     *  This method reads the saved password from the system and sets it within the UI as well as the saved data
+     */
+    private void populateLoginInfo() {
+        loginPreferences = new SharedPreferenceUtil(PREFERENCE_NAME, this);
+        userEmail = loginPreferences.getValue("email");
+        userPassword = loginPreferences.getValue("password");
+        mEmail.setText(userEmail);
+        mPassword.setText(userPassword);
+    }
 
-                                fStore.collection("Study").whereEqualTo("org",me.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                        if (task.isSuccessful()){
-                                            for (QueryDocumentSnapshot documentSnapshot: task.getResult()){
-                                                Study study = documentSnapshot.toObject(Study.class);
-                                                studies.add(study.getTitle());
-                                            }
-                                            if (studies == null || studies.size()==1){
-                                                studies.set(0,"No Studies");
-                                            }
-                                            saveStudies(studies);
-                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                                        }
-                                        else{
-                                            studies.set(0, "No Studies");
-                                            saveStudies(studies);
-                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                                        }
-                                    }
-                                });
-
-                            }
-                        }
-                    });
-
-                }
-                else{
-
-                    Toast.makeText(LoginActivity.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_LONG ).show();
-
-                }
-
-            }
-        });
+    /**
+     *  This method will probably be removed later when a user's admin status is held within a Member struct and not saved on the device
+     * @return boolean
+     */
+    private boolean getAdmin(){
+        SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences("Admin", Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean("Admin",false);
     }
 }

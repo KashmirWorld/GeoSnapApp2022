@@ -73,7 +73,7 @@ public class CreateStudyActivity extends AppCompatActivity {
                 Date date2;
                 Timestamp ts = null;
                 Timestamp ts2 =null;
-                Utils utils= new Utils();
+                Utils utils= Utils.getInstance();
                 Member me=utils.loaduser(getApplicationContext());
                 study.setOrg(me.getOrg());
 

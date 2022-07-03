@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="New Organization? Register Here"
+        android:onClick="onClickRegisterOrg"
         android:textColor="@color/blackColor"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,6 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:text="New Member? Register Here"
+        android:onClick="onClickRegisterUser"
         android:textColor="@color/blackColor"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,6 +51,7 @@
 
     <Button
         android:id="@+id/LoginBtn"
+        android:onClick="onClickLogin"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginTop="12dp"
@@ -142,25 +145,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegisterOrgBtn" />
-
     <TextView
         android:id="@+id/LoginForget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Forgot Password?"
+        android:onClick="onClickForget"
         android:textColor="@color/blackColor"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -173,7 +163,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:buttonTint="@color/blackColor"
-        android:onClick="saveUserEmailPassword"
+        android:onClick="onClickRememberLogin"
         android:text="Remember my email and password"
         android:textColor="@color/blackColor"
         android:textSize="14sp"

@@ -149,7 +149,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
 
-                Utils util = new Utils();
+                Utils util = Utils.getInstance();
 
 
                 if (util.getAgreement(RegisterActivity.this)){

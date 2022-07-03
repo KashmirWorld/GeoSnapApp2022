@@ -104,7 +104,7 @@ public class WildlifeSightingFragment extends Fragment implements View.OnClickLi
         UploadWildlifeSighting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Utils utils= new Utils();
+                Utils utils= Utils.getInstance();
                 int counter=0;
                 CollectionReference collection = db.collection("CameraStation");
                 ArrayList<WildlifeSighting> wildlifeSightings =utils.getSighting(getContext());

@@ -16,6 +16,16 @@ import java.util.ArrayList;
 
 
 public class Utils {
+
+    private static Utils instance = null;
+
+    public static Utils getInstance() {
+        if(instance == null){
+            instance = new Utils();
+        }
+        return instance;
+    }
+
     public Member loaduser(Context context){
         SharedPreferences sharedPreferences = context.getSharedPreferences("user", Context.MODE_PRIVATE);
         Gson gson= new Gson();
@@ -25,10 +35,7 @@ public class Utils {
     }
     public String loadUid(Context context){
         SharedPreferences sharedPreferences = context.getSharedPreferences("user", Context.MODE_PRIVATE);
-
         return sharedPreferences.getString("uid", null);
-
-
     }
     public boolean getAgreement(Context context){
         SharedPreferences sharedPreferences = context.getSharedPreferences("TOS", Context.MODE_PRIVATE);

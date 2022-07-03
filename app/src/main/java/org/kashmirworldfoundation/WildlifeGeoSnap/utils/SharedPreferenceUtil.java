@@ -3,15 +3,40 @@ package org.kashmirworldfoundation.WildlifeGeoSnap.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SharedPreferenceUtil {
 
-    private static final String TAG = "SharedPreferenceUtil";
     private SharedPreferences prefs;
 
-    public SharedPreferenceUtil(Activity activity) {
+    private HashMap<String, String> queue;
+
+    public SharedPreferenceUtil(String prefName, Activity activity) {
         super();
-        prefs = activity.getSharedPreferences("MY_PREFS_KEY", Context.MODE_PRIVATE);
+        prefs = activity.getSharedPreferences(prefName, Context.MODE_PRIVATE);
+        queue = new HashMap<String, String>();
+    }
+
+    public void add(String key, String value) {
+        queue.put(key, value);
+    }
+
+    public void write(){
+        SharedPreferences.Editor editor = prefs.edit();
+
+        for(Map.Entry<String, String> entry : queue.entrySet()) {
+            String key = entry.getKey();
+            String value = entry.getValue();
+            editor.putString(key, value);
+            // do what you have to do here
+            // In your case, another loop.
+        }
+        editor.apply();
     }
 
     public void save(String key, String text) {

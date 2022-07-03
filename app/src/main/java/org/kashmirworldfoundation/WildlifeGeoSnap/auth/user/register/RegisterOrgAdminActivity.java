@@ -57,7 +57,7 @@ public class RegisterOrgAdminActivity extends AppCompatActivity {
         mbRegisterA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Utils util = new Utils();
+                Utils util = Utils.getInstance();
 
 
                 if (util.getAgreement(RegisterOrgAdminActivity.this)){

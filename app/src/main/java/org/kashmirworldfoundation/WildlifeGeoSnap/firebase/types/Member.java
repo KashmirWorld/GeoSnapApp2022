@@ -1,6 +1,10 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types;
 
+import android.app.Activity;
 
+import com.google.gson.Gson;
+
+import org.kashmirworldfoundation.WildlifeGeoSnap.utils.SharedPreferenceUtil;
 
 public class Member {
     private String Email;
@@ -10,10 +14,8 @@ public class Member {
     private Boolean Admin;
     private String Org;
     private String Profile;
+
     public Member(){
-
-
-
     }
 
     public String getEmail() {
@@ -23,8 +25,6 @@ public class Member {
     public void setEmail(String email) {
         Email = email;
     }
-
-
 
     public String getFullname() {
         return Fullname;
@@ -50,7 +50,6 @@ public class Member {
         this.Phone = phone;
     }
 
-
     public void setAdmin(Boolean admin) {
         Admin = admin;
     }
@@ -73,5 +72,15 @@ public class Member {
 
     public void setProfile(String profile) {
         Profile = profile;
+    }
+
+    public void savePreference(String uid, Activity activity){
+        SharedPreferenceUtil userPreferences = new SharedPreferenceUtil("user", activity);
+        userPreferences.clearAll();
+        Gson gson = new Gson();
+        String json =gson.toJson(this);
+        userPreferences.add("user", json);
+        userPreferences.add("uid", json);
+        userPreferences.write();
     }
 }

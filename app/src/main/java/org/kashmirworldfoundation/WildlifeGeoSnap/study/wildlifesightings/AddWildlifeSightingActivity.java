@@ -93,7 +93,7 @@ public class AddWildlifeSightingActivity extends AppCompatActivity {
                 wildlifeSighting.setPosted(new Timestamp(currentTime));
                 wildlifeSighting.setPic(uri.toString());
 
-                Utils utils= new Utils();
+                Utils utils= Utils.getInstance();
                 Member member=utils.loaduser(getApplicationContext());
                 wildlifeSighting.setMember("Member/"+utils.loadUid(getApplicationContext()));
 

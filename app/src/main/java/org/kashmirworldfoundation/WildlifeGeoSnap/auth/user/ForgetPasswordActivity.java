@@ -12,8 +12,9 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
+import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
 
-public class ForgetPasswordActivity extends AppCompatActivity {
+public class ForgetPasswordActivity extends Activity {
     TextView Email, Back;
     Button Submit;
     FirebaseAuth fAuth;
@@ -21,30 +22,29 @@ public class ForgetPasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
+
+        fAuth=FirebaseAuth.getInstance();
+        initViews();
+    }
+
+    @Override
+    protected void initViews() {
         Email=findViewById(R.id.EmailRecoveryInput);
         Back=findViewById(R.id.ForgetPassBack);
         Submit=findViewById(R.id.RecoverySubmit);
-        fAuth=FirebaseAuth.getInstance();
-        Submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email=Email.getText().toString().trim();
-                if (!email.isEmpty()) {
-                    fAuth.sendPasswordResetEmail(Email.getText().toString().trim());
-                    Toast.makeText(getApplicationContext(), "Email sent to" + email + " reset Password", Toast.LENGTH_LONG).show();
-                }
-                else {
-                    Toast.makeText(ForgetPasswordActivity.this, "Please enter an email", Toast.LENGTH_LONG ).show();
-                }
-            }
-        });
-        Back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-            }
-        });
+    }
 
+    public void onClickSubmit(View v){
+        String email=Email.getText().toString().trim();
+        if (email.isEmpty()){
+            Toast.makeText(ForgetPasswordActivity.this, "Please enter an email", Toast.LENGTH_LONG ).show();
+            return;
+        }
+        fAuth.sendPasswordResetEmail(Email.getText().toString().trim());
+        Toast.makeText(getApplicationContext(), "Email sent to" + email + " reset Password", Toast.LENGTH_LONG).show();
+    }
+
+    public void onClickBack(View v){
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
     }
 }
