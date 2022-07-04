@@ -30,6 +30,10 @@ public class Member {
     private String Org;
     private String Profile;
 
+    public Member(){
+
+    }
+
     public Member(String email, String name, String job, String phone, Boolean admin, String org, String profile) {
         Email = email;
         Fullname = name;
@@ -51,24 +55,7 @@ public class Member {
      */
     public static void setInstance(Member member) {
         instance = member;
-        instance.initSnapshotListener();
-    }
-
-    /**
-     * Keep the current instance updated to the firestore database
-     */
-    private void initSnapshotListener() {
-        FirebaseFirestore Fstore = FirebaseFirestore.getInstance();
-        FirebaseAuth fAuth = FirebaseAuth.getInstance();
-        String uid = fAuth.getCurrentUser().getUid();
-        assert uid != null;
-        Fstore.collection("Member").document(uid).addSnapshotListener((documentSnapshot, e) -> {
-            if (fAuth.getCurrentUser() == null || !fAuth.getCurrentUser().getUid().equals(uid)) {
-                return;
-            }
-            assert documentSnapshot != null;
-            instance = documentSnapshot.toObject(Member.class);
-        });
+      //  instance.initSnapshotListener();
     }
 
     public String getEmail() {
@@ -137,12 +124,9 @@ public class Member {
     public void save(final memberSave onSave) {
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        fStore.collection("Member").document(uid).set(this).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful() && onSave != null){
-                    onSave.onMemberSave();
-                }
+        fStore.collection("Member").document(uid).set(this).addOnCompleteListener(task -> {
+            if(task.isSuccessful() && onSave != null){
+                onSave.onMemberSave();
             }
         });
     }

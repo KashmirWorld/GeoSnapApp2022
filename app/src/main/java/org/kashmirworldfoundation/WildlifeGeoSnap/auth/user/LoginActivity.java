@@ -1,50 +1,32 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap.auth.user;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.gson.Gson;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.GlideApp;
-import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.AuthHandler;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.TOSAgreementHandler;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
-import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.utils.SharedPreferenceUtil;
-import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.org.RegisterOrgActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterOrgAdminActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterSelectOrganizationActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
+import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.utils.SharedPreferenceUtil;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class LoginActivity extends Activity {
 
@@ -103,11 +85,11 @@ public class LoginActivity extends Activity {
         startActivity(new Intent(getApplicationContext(), ForgetPasswordActivity.class));
     }
 
-    public void onClickRegisterOrg(View v){
+    public void onClickRegisterUser(View v){
         startActivity(new Intent(getApplicationContext(), RegisterSelectOrganizationActivity.class));
     }
 
-    public void onClickRegisterUser(View v){
+    public void onClickRegisterOrg(View v){
         if (getAdmin()){
             startActivity(new Intent(getApplicationContext(), RegisterOrgAdminActivity.class));
         }

@@ -1,5 +1,6 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap.firebase;
 
+import android.app.Activity;
 import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
@@ -18,6 +19,19 @@ public class FirebaseHandler {
      * @param fragment
      */
     public static void loadImageIntoView(String location, ImageView image, Fragment fragment){
+        StorageReference ref = FirebaseStorage.getInstance().getReference(location);
+        GlideApp.with(fragment)
+                .load(ref)
+                .into(image);
+    }
+
+    /**
+     * Loads an image from the firebase database into a view
+     * @param location
+     * @param image
+     * @param fragment
+     */
+    public static void loadImageIntoView(String location, ImageView image, Activity fragment){
         StorageReference ref = FirebaseStorage.getInstance().getReference(location);
         GlideApp.with(fragment)
                 .load(ref)

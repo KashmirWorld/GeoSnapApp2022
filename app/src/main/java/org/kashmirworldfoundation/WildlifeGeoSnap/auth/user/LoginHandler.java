@@ -60,7 +60,7 @@ public class LoginHandler {
 
         fStore.document("Member/"+fAuth.getUid()).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()){
-                Member member= Objects.requireNonNull(task.getResult()).toObject(Member.class);
+                Member member= task.getResult().toObject(Member.class);
                 assert member != null;
                 Member.setInstance(member);
                 loadStudies(activity);
