@@ -8,7 +8,6 @@ import com.google.firebase.Timestamp;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.WildlifeSighting;
 
 import java.lang.reflect.Type;
@@ -26,17 +25,6 @@ public class Utils {
         return instance;
     }
 
-    public Member loaduser(Context context){
-        SharedPreferences sharedPreferences = context.getSharedPreferences("user", Context.MODE_PRIVATE);
-        Gson gson= new Gson();
-        String json = sharedPreferences.getString("user", null);
-        Type type =new TypeToken<Member>(){}.getType();
-        return gson.fromJson(json,type);
-    }
-    public String loadUid(Context context){
-        SharedPreferences sharedPreferences = context.getSharedPreferences("user", Context.MODE_PRIVATE);
-        return sharedPreferences.getString("uid", null);
-    }
     public boolean getAgreement(Context context){
         SharedPreferences sharedPreferences = context.getSharedPreferences("TOS", Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean("tos", true);
@@ -48,10 +36,7 @@ public class Utils {
         editor.putBoolean("tos",false);
         editor.apply();
     }
-    private String loaduid(Context context){
-        SharedPreferences sharedPreferences = context.getSharedPreferences("user",Context.MODE_PRIVATE);
-        return sharedPreferences.getString("uid",null);
-    }
+
     public void saveSighting(WildlifeSighting wildlifeSighting, Context context){
         SharedPreferences sharedPreferences = context.getSharedPreferences("user",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -76,8 +61,6 @@ public class Utils {
 
             Type type = new TypeToken<ArrayList<WildlifeSighting>>() {}.getType();
             return gson.fromJson(json,type);
-
-
 
         }
 

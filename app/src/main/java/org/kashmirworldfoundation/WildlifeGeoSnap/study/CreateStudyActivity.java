@@ -74,8 +74,8 @@ public class CreateStudyActivity extends AppCompatActivity {
                 Timestamp ts = null;
                 Timestamp ts2 =null;
                 Utils utils= Utils.getInstance();
-                Member me=utils.loaduser(getApplicationContext());
-                study.setOrg(me.getOrg());
+                Member member=Member.getInstance();
+                study.setOrg(member.getOrg());
 
                 try {
                     date1=new SimpleDateFormat("dd/MM/yyyy").parse(start);

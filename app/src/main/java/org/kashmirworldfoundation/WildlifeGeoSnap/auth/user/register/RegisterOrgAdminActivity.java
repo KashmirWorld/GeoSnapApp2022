@@ -154,7 +154,6 @@ public class RegisterOrgAdminActivity extends AppCompatActivity {
         //Orgname= capitalizeFirstLetter(Orgname);
         //Region = capitalizeFirstLetter(Region);
         //Country = capitalizeFirstLetter(Country);
-        final Member memA =new Member();
 
         fAuth2.createUserWithEmailAndPassword(Aemail,Apassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -167,35 +166,21 @@ public class RegisterOrgAdminActivity extends AppCompatActivity {
                             if (task.isSuccessful()){
                                 studies=new ArrayList<>();
                                 studies.add("Pick a Study");
+                                String orgN = "";
                                 for (QueryDocumentSnapshot documentSnapshot: task.getResult()){
                                     Toast.makeText(RegisterOrgAdminActivity.this,"Org Found", Toast.LENGTH_SHORT).show();
-                                    memA.setOrg(documentSnapshot.getReference().getPath());
+                                    orgN = documentSnapshot.getReference().getPath();
 
                                 }
-                                memA.setJob(Ajob);
-                                memA.setFullname(Aname);
-                                memA.setPhone(Aphone);
-                                memA.setAdmin(Boolean.TRUE);
-                                memA.setEmail(Aemail);
-                                memA.setProfile("profile/kwflogo.jpg");
-                                FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-                                db2.collection("Member").document(user.getUid()).set(memA).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if(task.isSuccessful()){
-                                            saveMember(memA,user.getUid());
-                                            Toast.makeText(RegisterOrgAdminActivity.this,"User Created", Toast.LENGTH_SHORT).show();
-                                            saveAdmin();
-
-                                            studies.set(0, "No Studies");
-                                            saveStudies(studies);
-                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
-                                        }
-                                    }
+                                final Member member =new Member(Aemail, Aname, Ajob, Aphone, Boolean.TRUE, orgN, "profile/kwflogo.jpg");
+                                Member.setInstance(member);
+                                member.save(() -> {
+                                    Toast.makeText(RegisterOrgAdminActivity.this,"User Created", Toast.LENGTH_SHORT).show();
+                                    studies.set(0, "No Studies");
+                                    saveStudies(studies);
+                                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                 });
                             }
-
                         }
                     });
                 }
@@ -208,16 +193,7 @@ public class RegisterOrgAdminActivity extends AppCompatActivity {
     private void emptytoast(Context cont){
         Toast.makeText(cont,"Fields are empty",Toast.LENGTH_LONG).show();
     }
-    private void saveMember (Member mem,String uid){
-        SharedPreferences sharedPreferences = RegisterOrgAdminActivity.this.getSharedPreferences("user", Context.MODE_PRIVATE);
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        String json =gson.toJson(mem);
-        editor.putString("user",json);
-        editor.putString("uid",uid);
-        editor.apply();
-    }
     private void saveCamNum(){
         SharedPreferences sharedPreferences = RegisterOrgAdminActivity.this.getSharedPreferences("camstations",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -232,16 +208,6 @@ public class RegisterOrgAdminActivity extends AppCompatActivity {
         Gson gson = new Gson();
         String json =gson.toJson(studies);
         editor.putString("studies",json);
-        editor.apply();
-    }
-    private void saveAdmin(){
-        SharedPreferences sharedPreferences = RegisterOrgAdminActivity.this.getSharedPreferences("Admin", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor =sharedPreferences.edit();
-
-
-        Gson gson = new Gson();
-
-        editor.putBoolean("Admin",false);
         editor.apply();
     }
 }

@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -94,8 +95,9 @@ public class AddWildlifeSightingActivity extends AppCompatActivity {
                 wildlifeSighting.setPic(uri.toString());
 
                 Utils utils= Utils.getInstance();
-                Member member=utils.loaduser(getApplicationContext());
-                wildlifeSighting.setMember("Member/"+utils.loadUid(getApplicationContext()));
+                Member member= Member.getInstance();
+                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                wildlifeSighting.setMember("Member/"+uid);
 
                 wildlifeSighting.setOrg(member.getOrg());
                 wildlifeSighting.setAuthor(member.getFullname());

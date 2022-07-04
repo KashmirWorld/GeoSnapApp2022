@@ -180,7 +180,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener{
             }
         });
 
-        me =loaduser();
+        Member member =Member.getInstance();
         /*
         String StudiesS = getActivity().getIntent().getStringExtra("Studies");
         StudyArray=new ArrayList<>(Arrays.asList(StudiesS.split(",")));
@@ -733,13 +733,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener{
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("user",Context.MODE_PRIVATE);
         return sharedPreferences.getString("uid",null);
     }
-    private Member loaduser(){
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user",Context.MODE_PRIVATE);
-        Gson gson= new Gson();
-        String json = sharedPreferences.getString("user", null);
-        Type type =new TypeToken<Member>(){}.getType();
-        return gson.fromJson(json,type);
-    }
+
     private ArrayList<String> loadStudies(){
         // TODO: studies are null or have no titles
         SharedPreferences sharedPreferences =getContext().getSharedPreferences("user",Context.MODE_PRIVATE);

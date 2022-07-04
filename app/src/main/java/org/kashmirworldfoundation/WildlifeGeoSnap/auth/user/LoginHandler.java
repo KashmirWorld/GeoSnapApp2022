@@ -6,16 +6,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
@@ -69,14 +62,14 @@ public class LoginHandler {
             if (task.isSuccessful()){
                 Member member= Objects.requireNonNull(task.getResult()).toObject(Member.class);
                 assert member != null;
-                member.savePreference(fAuth.getUid(), activity);
-
-                loadStudies(member, activity);
+                Member.setInstance(member);
+                loadStudies(activity);
             }
         });
     }
 
-    private static void loadStudies(Member member, Activity activity){
+    private static void loadStudies(Activity activity){
+        Member member = Member.getInstance();
         // for some reason studies are held on by the user in store (will need to be fixed)
         ArrayList<String> studies = new ArrayList<String>();
 

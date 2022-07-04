@@ -28,7 +28,7 @@ public class StationAsyncTask extends AsyncTask<String, Void, String> {
     private FirebaseAuth FireAuth;
 
     private ArrayList<Study> CStations= new ArrayList<>();
-    private Member mem;
+    private Member member;
     private String Org;
     private static final String TAG = "StationAsyncTask";
     private int count;
@@ -96,69 +96,65 @@ public class StationAsyncTask extends AsyncTask<String, Void, String> {
         final ArrayList<String> twoMonthsStations=new ArrayList<>();
         final ArrayList<String> threeMonthsStations=new ArrayList<>();
 
-        firebaseFirestore.collection("Member").document(FireAuth.getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        member = Member.getInstance();
+        collectionReference.whereEqualTo("org", this.member.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()){
-                    mem=task.getResult().toObject(Member.class);
-                    collectionReference.whereEqualTo("org",mem.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()){
-                                size = task.getResult().size();
-                                for (DocumentSnapshot objectDocumentSnapshot: task.getResult()) {
-                                    Study stat = objectDocumentSnapshot.toObject(Study.class);
-                                    if (stat != null && stat.getEnd() != null) {
-                                        end1[0] = setTimeToMidnight(stat.getEnd().toDate());
-                                        if (end1[0].compareTo(currentTime) == 0){
-                                            threeMonthsStations.add(stat.getTitle());
-                                        }
-                                        else if (end1[0].compareTo(oneDay) == 0){
-                                            oneDayStations.add(stat.getTitle());
+                    size = task.getResult().size();
+                    for (DocumentSnapshot objectDocumentSnapshot: task.getResult()) {
+                        Study stat = objectDocumentSnapshot.toObject(Study.class);
+                        if (stat != null && stat.getEnd() != null) {
+                            end1[0] = setTimeToMidnight(stat.getEnd().toDate());
+                            if (end1[0].compareTo(currentTime) == 0){
+                                threeMonthsStations.add(stat.getTitle());
+                            }
+                            else if (end1[0].compareTo(oneDay) == 0){
+                                oneDayStations.add(stat.getTitle());
 
-                                        }
-                                        else if (end1[0].compareTo(twoDays) == 0){
-                                            twoDaysStations.add(stat.getTitle());
-                                        }
-                                        else if (end1[0].compareTo(oneMonth) == 0){
-                                            oneMonthStations.add(stat.getTitle());
-                                        }
-                                        else if (end1[0].compareTo(twoMonths) == 0){
-                                            twoMonthsStations.add(stat.getTitle());
-                                        }
+                            }
+                            else if (end1[0].compareTo(twoDays) == 0){
+                                twoDaysStations.add(stat.getTitle());
+                            }
+                            else if (end1[0].compareTo(oneMonth) == 0){
+                                oneMonthStations.add(stat.getTitle());
+                            }
+                            else if (end1[0].compareTo(twoMonths) == 0){
+                                twoMonthsStations.add(stat.getTitle());
+                            }
 
 
-                                        if (end1[0].compareTo(today) < 0) {
+                            if (end1[0].compareTo(today) < 0) {
 //                                            Log.e(TAG, stat.getTitle() + "/n" + end1[0].toString() + "/n" + currentTime.toString());
-                                            paths.add(new Pair<>(objectDocumentSnapshot.getReference().getPath(), stat.getTitle()));
-                                        }
+                                paths.add(new Pair<>(objectDocumentSnapshot.getReference().getPath(), stat.getTitle()));
+                            }
 
-                                        CStations.add(stat);
-                                        count++;
-                                    }
+                            CStations.add(stat);
+                            count++;
+                        }
 
 
 
-                                    if(count==size){
-                                        update();
+                        if(count==size){
+                            update();
 //                                        if(!stations.isEmpty()){
 //                                            studyListFragment.studyMiss(stations,studyListFragment);
 //                                        }
-                                        if (!oneDayStations.isEmpty()){
-                                            studyListFragment.studyMissOneDay(oneDayStations, studyListFragment);
-                                        }
-                                        if (!twoDaysStations.isEmpty()){
-                                            studyListFragment.studyMissTwoDays(twoDaysStations, studyListFragment);
-                                        }
-                                        if (!oneMonthStations.isEmpty()){
-                                            studyListFragment.studyMissOneMonth(oneMonthStations, studyListFragment);
-                                        }
-                                        if (!twoMonthsStations.isEmpty()){
-                                            studyListFragment.studyMissTwoMonths(twoMonthsStations, studyListFragment);
-                                        }
-                                        if (!threeMonthsStations.isEmpty()){
-                                            studyListFragment.studyMissThreeMonths(threeMonthsStations, studyListFragment);
-                                        }
+                            if (!oneDayStations.isEmpty()){
+                                studyListFragment.studyMissOneDay(oneDayStations, studyListFragment);
+                            }
+                            if (!twoDaysStations.isEmpty()){
+                                studyListFragment.studyMissTwoDays(twoDaysStations, studyListFragment);
+                            }
+                            if (!oneMonthStations.isEmpty()){
+                                studyListFragment.studyMissOneMonth(oneMonthStations, studyListFragment);
+                            }
+                            if (!twoMonthsStations.isEmpty()){
+                                studyListFragment.studyMissTwoMonths(twoMonthsStations, studyListFragment);
+                            }
+                            if (!threeMonthsStations.isEmpty()){
+                                studyListFragment.studyMissThreeMonths(threeMonthsStations, studyListFragment);
+                            }
 //                                        if (!oneDayStations.isEmpty() && ifShowDialogOneDay){
 //                                            studyListFragment.studyMissOneDay(oneDayStations, studyListFragment);
 //                                        }
@@ -176,24 +172,17 @@ public class StationAsyncTask extends AsyncTask<String, Void, String> {
 //                                        }
 
 
-                                        if (!paths.isEmpty()){
-                                            for(Pair<String,String> stuff: paths){
-                                                new StationDeleteAsyncTask(stuff.first,stuff.second,mem).execute();
-                                            }
-
-                                        }
-                                    }
+                            if (!paths.isEmpty()){
+                                for(Pair<String,String> stuff: paths){
+                                    new StationDeleteAsyncTask(stuff.first,stuff.second, StationAsyncTask.this.member).execute();
                                 }
+
                             }
                         }
-                    });
+                    }
                 }
             }
         });
-
-
-
-
         return null;
     }
 }

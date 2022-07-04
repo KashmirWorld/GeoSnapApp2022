@@ -213,16 +213,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
         sender.start();
     }
-    private void saveMember (Member mem, String uid){
-        SharedPreferences sharedPreferences = RegisterActivity.this.getSharedPreferences("user", Context.MODE_PRIVATE);
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        String json =gson.toJson(mem);
-        editor.putString("user",json);
-        editor.putString("uid",uid);
-        editor.apply();
-    }
     private void saveCamNum(){
         SharedPreferences sharedPreferences = RegisterActivity.this.getSharedPreferences("camstations",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -241,7 +232,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void register(String organization, String country){
-        final Member mem =new Member();
         final String email = mEmail.getText().toString().trim();
         final String password = mPassword.getText().toString().trim();
         final String reEnter = mReEnter.getText().toString().trim();
@@ -260,84 +250,43 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                 if (task.isSuccessful()) {
+                                    String orgPath = "";
                                     for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-                                        mem.setOrg(documentSnapshot.getReference().getPath());
-                                        Org org = documentSnapshot.toObject(Org.class);
-                                        Forg = org;
-
+                                        orgPath = documentSnapshot.getReference().getPath();
+                                         Forg = documentSnapshot.toObject(Org.class);
                                     }
-                                    mem.setAdmin(Boolean.FALSE);
-                                    mem.setEmail(email);
-                                    mem.setFullname(fullName);
-                                    mem.setJob(job);
-                                    mem.setPhone(phoneNumber);
-                                    mem.setProfile("profile/kwflogo.jpg");
-                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                    db.collection("Member").document(user.getUid()).set(mem).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            saveMember(mem, user.getUid());
-                                            saveCamNum();
-                                            sendMessage(fullName, phoneNumber, email, job, Forg.getOrgEmail());
-                                            db.collection("Study").whereEqualTo("org", mem.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                    if (task.isSuccessful()) {
-                                                        for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-                                                            Study study = documentSnapshot.toObject(Study.class);
-                                                            studies.add(study.getTitle());
-                                                        }
-                                                        if (studies == null || studies.size() == 1) {
-                                                            studies.set(0, "No Studies");
-                                                        }
-                                                        saveStudies(studies);
-                                                    /*
-                                                    Intent i= new Intent(getApplicationContext(),MainActivity.class);
-                                                    Bundle b = new Bundle();
-                                                    b.putString("Studies",studies.toString());
-
-                                                    i.putExtras(b);
-                                                    Toast.makeText(Login.this,"Welcome", Toast.LENGTH_LONG).show();
-                                                    startActivity(i);
-
-                                                    */
-                                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
-
-                                                    } else {
-                                                        studies.set(0, "No Studies");
-                                                        saveStudies(studies);
-                                                    /*
-                                                    Intent i= new Intent(getApplicationContext(),MainActivity.class);
-                                                    Bundle b = new Bundle();
-                                                    b.putString("Studies",studies.toString());
-
-                                                    i.putExtras(b);
-                                                    Toast.makeText(Login.this,"Welcome", Toast.LENGTH_LONG).show();
-                                                    startActivity(i);
-
-                                                     */
-                                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
+                                    final Member member =new Member(email, fullName, job, phoneNumber, Boolean.FALSE, orgPath, "profile/kwflogo.jpg");
+                                    Member.setInstance(member);
+                                    member.save(() -> {
+                                        saveCamNum();
+                                        sendMessage(fullName, phoneNumber, email, job, Forg.getOrgEmail());
+                                        db.collection("Study").whereEqualTo("org", member.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                if (task.isSuccessful()) {
+                                                    for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                                                        Study study = documentSnapshot.toObject(Study.class);
+                                                        studies.add(study.getTitle());
                                                     }
+                                                    if (studies == null || studies.size() == 1) {
+                                                        studies.set(0, "No Studies");
+                                                    }
+                                                    saveStudies(studies);
+                                                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                                } else {
+                                                    studies.set(0, "No Studies");
+                                                    saveStudies(studies);
+                                                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
                                                 }
-                                            });
-
-
-                                        }
-
-
+                                            }
+                                        });
                                     });
-
                                 }
-
-
                             }
                         });
                     }
-
                 }
-
             });
         }
     }
