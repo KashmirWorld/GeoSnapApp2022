@@ -16,6 +16,8 @@ import java.util.ArrayList;
 
 public class Utils {
 
+    public interface LambdaInterface{ public void run();}
+
     private static Utils instance = null;
 
     public static Utils getInstance() {

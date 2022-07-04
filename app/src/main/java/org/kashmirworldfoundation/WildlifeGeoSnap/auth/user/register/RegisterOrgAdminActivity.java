@@ -18,7 +18,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -28,6 +27,7 @@ import com.google.gson.Gson;
 import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
 
 import java.util.ArrayList;
@@ -164,8 +164,6 @@ public class RegisterOrgAdminActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()){
-                                studies=new ArrayList<>();
-                                studies.add("Pick a Study");
                                 String orgN = "";
                                 for (QueryDocumentSnapshot documentSnapshot: task.getResult()){
                                     Toast.makeText(RegisterOrgAdminActivity.this,"Org Found", Toast.LENGTH_SHORT).show();
@@ -176,9 +174,9 @@ public class RegisterOrgAdminActivity extends AppCompatActivity {
                                 Member.setInstance(member);
                                 member.save(() -> {
                                     Toast.makeText(RegisterOrgAdminActivity.this,"User Created", Toast.LENGTH_SHORT).show();
-                                    studies.set(0, "No Studies");
-                                    saveStudies(studies);
-                                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                    Study.loadStudies(() -> {
+                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                    });
                                 });
                             }
                         }
@@ -192,22 +190,5 @@ public class RegisterOrgAdminActivity extends AppCompatActivity {
     }
     private void emptytoast(Context cont){
         Toast.makeText(cont,"Fields are empty",Toast.LENGTH_LONG).show();
-    }
-
-    private void saveCamNum(){
-        SharedPreferences sharedPreferences = RegisterOrgAdminActivity.this.getSharedPreferences("camstations",Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("CamNum",0);
-        editor.apply();
-    }
-    private void saveStudies(ArrayList<String> studies){
-        SharedPreferences sharedPreferences = RegisterOrgAdminActivity.this.getSharedPreferences("user",Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor =sharedPreferences.edit();
-
-
-        Gson gson = new Gson();
-        String json =gson.toJson(studies);
-        editor.putString("studies",json);
-        editor.apply();
     }
 }

@@ -91,7 +91,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
             public void onClick(View v)
             {
                 FirebaseAuth.getInstance().signOut();
-                clear();
+                FirebaseHandler.resetSession();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             }
@@ -165,12 +165,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
         toast.show();
     }
 
-    private void clear(){
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user",Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor =  sharedPreferences.edit();
-        editor.clear();
-
-    }
     public static ProfileFragment newInstance() {
         return new ProfileFragment();
     }

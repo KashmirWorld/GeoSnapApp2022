@@ -21,7 +21,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -214,23 +213,6 @@ public class RegisterActivity extends AppCompatActivity {
         sender.start();
     }
 
-    private void saveCamNum(){
-        SharedPreferences sharedPreferences = RegisterActivity.this.getSharedPreferences("camstations",Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("CamNum",0);
-        editor.apply();
-    }
-    private void saveStudies(ArrayList<String> studies){
-        SharedPreferences sharedPreferences = RegisterActivity.this.getSharedPreferences("user",Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor =sharedPreferences.edit();
-
-
-        Gson gson = new Gson();
-        String json =gson.toJson(studies);
-        editor.putString("studies",json);
-        editor.apply();
-    }
-
     private void register(String organization, String country){
         final String email = mEmail.getText().toString().trim();
         final String password = mPassword.getText().toString().trim();
@@ -257,31 +239,10 @@ public class RegisterActivity extends AppCompatActivity {
                                     }
                                     final Member member =new Member(email, fullName, job, phoneNumber, Boolean.FALSE, orgPath, "profile/kwflogo.jpg");
                                     Member.setInstance(member);
-                                    member.save(() -> {
-                                        saveCamNum();
-                                        sendMessage(fullName, phoneNumber, email, job, Forg.getOrgEmail());
-                                        db.collection("Study").whereEqualTo("org", member.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                if (task.isSuccessful()) {
-                                                    for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-                                                        Study study = documentSnapshot.toObject(Study.class);
-                                                        studies.add(study.getTitle());
-                                                    }
-                                                    if (studies == null || studies.size() == 1) {
-                                                        studies.set(0, "No Studies");
-                                                    }
-                                                    saveStudies(studies);
-                                                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                                                } else {
-                                                    studies.set(0, "No Studies");
-                                                    saveStudies(studies);
-                                                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
-                                                }
-                                            }
-                                        });
+                                    Study.loadStudies(() -> {
+                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                     });
+                                    member.save(null);
                                 }
                             }
                         });

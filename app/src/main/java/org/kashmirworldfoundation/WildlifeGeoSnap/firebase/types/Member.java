@@ -1,24 +1,11 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.gson.Gson;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterOrgAdminActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.utils.SharedPreferenceUtil;
+import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
 
 public class Member {
-
-    public interface memberSave { public void onMemberSave();}
 
     private static Member instance;
 
@@ -121,12 +108,12 @@ public class Member {
         save(null);
     }
 
-    public void save(final memberSave onSave) {
+    public void save(Utils.LambdaInterface onSave) {
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         fStore.collection("Member").document(uid).set(this).addOnCompleteListener(task -> {
             if(task.isSuccessful() && onSave != null){
-                onSave.onMemberSave();
+                onSave.run();
             }
         });
     }

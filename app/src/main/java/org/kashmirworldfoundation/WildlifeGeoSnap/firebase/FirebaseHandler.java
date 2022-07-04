@@ -9,8 +9,15 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.GlideApp;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
 
 public class FirebaseHandler {
+
+    public static void resetSession(){
+        Member.setInstance(null);
+        Study.resetStudies();
+    }
 
     /**
      * Loads an image from the firebase database into a view
