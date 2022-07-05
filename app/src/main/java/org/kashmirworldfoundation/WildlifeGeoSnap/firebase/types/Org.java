@@ -13,7 +13,7 @@ public class Org {
     private String OrgName;
     private String OrgPhone;
     private String OrgCountry;
-    public Org(String orgEmail, String orgWebsite, String orgName, String orgPhone, String orgCountry) {
+    public Org(String orgName, String orgEmail, String orgWebsite, String orgPhone, String orgCountry) {
         OrgEmail = orgEmail;
         OrgWebsite = orgWebsite;
         OrgName = orgName;

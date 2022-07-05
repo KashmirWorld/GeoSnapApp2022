@@ -108,6 +108,7 @@
 
     <TextView
         android:id="@+id/logindr"
+        android:onClick="onClickLogin"
         android:layout_width="0dp"
         android:layout_height="42dp"
         android:layout_marginStart="60dp"
@@ -125,6 +126,7 @@
 
     <Button
         android:id="@+id/RegisterB"
+        android:onClick="onCLickRegister"
         android:layout_width="156dp"
         android:layout_height="46dp"
         android:layout_marginStart="80dp"
