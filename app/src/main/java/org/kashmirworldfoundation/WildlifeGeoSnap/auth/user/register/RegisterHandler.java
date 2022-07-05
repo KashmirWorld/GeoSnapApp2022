@@ -8,12 +8,10 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.AuthHandler;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Org;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class RegisterHandler {
 
@@ -29,7 +27,7 @@ public class RegisterHandler {
     private static void onSuccessRegister(String name, String job, String email, String number, String organization, String country, Boolean admin, Activity activity) {
         Org.loadOrgIntoInstance(organization, country, (path) -> {
             final Member member = new Member(email, name, job, number, admin, path, "profile/kwflogo.jpg");
-            Toast.makeText(activity,"User Created", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "User Created", Toast.LENGTH_SHORT).show();
             Member.setInstance(member);
             member.save(null);
             Study.loadStudies(() -> {
@@ -71,7 +69,7 @@ public class RegisterHandler {
             password2View.setError("Re-enter your password");
             return false;
         }
-        if (!validateEmail(email)) {
+        if (!AuthHandler.validateEmail(email)) {
             emailView.setError("Invalid email.");
             return false;
         }
@@ -84,12 +82,6 @@ public class RegisterHandler {
         }
 
         return true;
-    }
-
-    private static boolean validateEmail(String email) {
-        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
     }
 
     private static boolean validatePassword(String password, EditText passwordView) {

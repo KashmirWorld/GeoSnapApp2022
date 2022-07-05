@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -17,7 +18,6 @@ import com.google.firebase.storage.StorageReference;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.GlideApp;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
-import org.kashmirworldfoundation.WildlifeGeoSnap.auth.AuthHandler;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.TOSAgreementHandler;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.org.RegisterOrgActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterOrgAdminActivity;
@@ -102,7 +102,7 @@ public class LoginActivity extends Activity {
         userEmail = mEmail.getText().toString();
         userPassword = mPassword.getText().toString();
 
-        if (!AuthHandler.validateLoginInfo(userEmail, userPassword, this)) {
+        if (!validateLoginInfo(userEmail, userPassword, this)) {
             return;
         }
 
@@ -125,6 +125,27 @@ public class LoginActivity extends Activity {
         userPassword = loginPreferences.getValue("password");
         mEmail.setText(userEmail);
         mPassword.setText(userPassword);
+    }
+
+    /**
+     * This method validates the user's login information
+     *
+     * @param email
+     * @param password
+     * @param activity
+     * @return
+     */
+    private boolean validateLoginInfo(String email, String password, android.app.Activity activity) {
+        email = email.trim();
+        password = password.trim();
+
+        // if the email or password is empty, send a message and return
+        if (email == null || email.isEmpty() || password == null || password.isEmpty()) {
+            Toast.makeText(activity, "Please enter username and password", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        return true;
     }
 
     /**
