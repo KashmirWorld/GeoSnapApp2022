@@ -156,7 +156,7 @@ public class OfflineManagerActivity extends AppCompatActivity implements
     private FirebaseFirestore db;
     private CollectionReference collectionReference;
     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-    private Member mem;
+    private Member member;
     private int count;
     private int size;
 
@@ -834,8 +834,8 @@ public class OfflineManagerActivity extends AppCompatActivity implements
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()){
-                    mem=task.getResult().toObject(Member.class);
-                    collectionReference.whereEqualTo("org",mem.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    member = Member.getInstance();
+                    collectionReference.whereEqualTo("org", member.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()){

@@ -113,7 +113,7 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
     private CollectionReference collectionReference;
     private int count;
     private int size;
-    private Member mem;
+    private Member member;
     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
 
     private ArrayList<org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Marker> downloadMarkerList;
@@ -582,8 +582,8 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()){
-                    mem=task.getResult().toObject(Member.class);
-                    collectionReference.whereEqualTo("org",mem.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    member = Member.getInstance();
+                    collectionReference.whereEqualTo("org", member.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()){
@@ -642,8 +642,6 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
     }
 
     private void saveToFirebase(String markerId){
-
-        final Member mem =new Member();
 
         db.collection("Member").whereEqualTo("email",user.getEmail());
 

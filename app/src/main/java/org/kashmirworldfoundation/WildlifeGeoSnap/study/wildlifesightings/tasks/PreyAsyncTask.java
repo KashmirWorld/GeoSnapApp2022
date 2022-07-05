@@ -55,34 +55,23 @@ public class PreyAsyncTask extends AsyncTask<String, Void, String> {
         }
 
 
-        firebaseFirestore.collection("Member").document(FireAuth.getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        mem= Member.getInstance();
+        collectionReference.whereEqualTo("org",mem.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()){
-                    mem=task.getResult().toObject(Member.class);
-                    collectionReference.whereEqualTo("org",mem.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()){
-                                size = task.getResult().size();
-                                for (DocumentSnapshot objectDocumentSnapshot: task.getResult()){
-                                    WildlifeSighting stat = objectDocumentSnapshot.toObject(WildlifeSighting.class);
-                                    aprey.add(stat);
-                                    count++;
-                                    if(count==size){
-                                        update();
-                                    }
-                                }
-                            }
+                    size = task.getResult().size();
+                    for (DocumentSnapshot objectDocumentSnapshot: task.getResult()){
+                        WildlifeSighting stat = objectDocumentSnapshot.toObject(WildlifeSighting.class);
+                        aprey.add(stat);
+                        count++;
+                        if(count==size){
+                            update();
                         }
-                    });
+                    }
                 }
             }
         });
-
-
-
-
         return null;
     }
 }

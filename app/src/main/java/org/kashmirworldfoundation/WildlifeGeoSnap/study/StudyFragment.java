@@ -180,13 +180,13 @@ public class StudyFragment extends Fragment implements View.OnClickListener{
             }
         });
 
-        me =loaduser();
+        Member member =Member.getInstance();
         /*
         String StudiesS = getActivity().getIntent().getStringExtra("Studies");
         StudyArray=new ArrayList<>(Arrays.asList(StudiesS.split(",")));
         */
         StudyArray = new ArrayList<>();
-        StudyArray=loadStudies();
+        StudyArray= org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study.getStudiesAsStringWithNull();
 
         change();
 
@@ -197,7 +197,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String cur = StudyArray.get(position);
-                if (cur.equals( "Pick A Study")==Boolean.FALSE && cur.equals("No Studies")==Boolean.FALSE) {
+                if (cur.equals("Pick A Study")==Boolean.FALSE && cur.equals("No Studies")==Boolean.FALSE) {
                     SStudy = cur;
                     SpinStudies.setVisibility(View.GONE);
                     Title.setText("Add Camera Station");
@@ -274,29 +274,11 @@ public class StudyFragment extends Fragment implements View.OnClickListener{
         });
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         SpinStudies.setAdapter(dataAdapter);
-        StudyRefresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                db.collection("Study").whereEqualTo("org",me.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            ArrayList<String> studies= new ArrayList<>();
-                            studies.add("Pick A Study");
-                            for (QueryDocumentSnapshot documentSnapshot: task.getResult()){
-                                Study study = documentSnapshot.toObject(Study.class);
-                                studies.add(study.getTitle());
-                            }
-                            if (studies == null || studies.size()==1){
-                                studies.set(0,"No Studies");
-                            }
-                            dataAdapter.clear();
-                            dataAdapter.addAll(studies);
-                        }
-                    }
-                });
-            }
-        });
+        StudyRefresh.setOnClickListener(v -> org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study.loadStudies(() -> {
+            dataAdapter.clear();
+            ArrayList<String> studies = org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study.getStudiesAsStringWithNull();
+            dataAdapter.addAll(studies);
+        }));
         imgbtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -733,23 +715,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener{
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("user",Context.MODE_PRIVATE);
         return sharedPreferences.getString("uid",null);
     }
-    private Member loaduser(){
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user",Context.MODE_PRIVATE);
-        Gson gson= new Gson();
-        String json = sharedPreferences.getString("user", null);
-        Type type =new TypeToken<Member>(){}.getType();
-        return gson.fromJson(json,type);
-    }
-    private ArrayList<String> loadStudies(){
-        // TODO: studies are null or have no titles
-        SharedPreferences sharedPreferences =getContext().getSharedPreferences("user",Context.MODE_PRIVATE);
 
-        Gson gson= new Gson();
-        String json = sharedPreferences.getString("studies",null);
-        Type type= new TypeToken<ArrayList<String>>(){}.getType();
-        return gson.fromJson(json,type);
-
-    }
     private void Fireload(final ArrayList<CameraStation> list) {
         final Iterator<CameraStation> iter = list.iterator();
         CollectionReference collection = db.collection("CameraStation");

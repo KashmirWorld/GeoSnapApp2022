@@ -36,6 +36,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.FirebaseHandler;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.study.StudyFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.maps.MapFragment;
@@ -158,16 +159,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         TextView navUserName = headerView.findViewById(R.id.NameHeader);
         ImageView navSerPhoto = headerView.findViewById(R.id.ProfilePicHeader);
 
-        Fstore.collection("Member").document(Uid).addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                Member user=documentSnapshot.toObject(Member.class);
-                navUserName.setText(user.getFullname());
-
-                fetchData(user.getProfile(),navSerPhoto);
-
-            }
-        });
+        Member member = Member.getInstance();
+        navUserName.setText(member.getFullname());
+        FirebaseHandler.loadImageIntoView(member.getProfile(), navSerPhoto, this);
 
         navSerPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -204,13 +198,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-    }
-    private void fetchData(String location, ImageView image) {
-        StorageReference ref = FirebaseStorage.getInstance().getReference(location);
-
-        GlideApp.with(this)
-                .load(ref)
-                .into(image);
     }
 
     @Override

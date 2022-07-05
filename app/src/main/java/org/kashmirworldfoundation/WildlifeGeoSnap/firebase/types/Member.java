@@ -1,12 +1,14 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types;
 
-import android.app.Activity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-import com.google.gson.Gson;
-
-import org.kashmirworldfoundation.WildlifeGeoSnap.utils.SharedPreferenceUtil;
+import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
 
 public class Member {
+
+    private static Member instance;
+
     private String Email;
     private String Fullname;
     private String Job;
@@ -16,6 +18,31 @@ public class Member {
     private String Profile;
 
     public Member(){
+
+    }
+
+    public Member(String email, String name, String job, String phone, Boolean admin, String org, String profile) {
+        Email = email;
+        Fullname = name;
+        Job = job;
+        Phone = phone;
+        Admin = admin;
+        Org = org;
+        Profile = profile;
+    }
+
+    public static Member getInstance() {
+        return instance;
+    }
+
+    /**
+     * This method should only called within the LoginHandler when the variable is initally assigned
+     *
+     * @param member
+     */
+    public static void setInstance(Member member) {
+        instance = member;
+      //  instance.initSnapshotListener();
     }
 
     public String getEmail() {
@@ -24,14 +51,16 @@ public class Member {
 
     public void setEmail(String email) {
         Email = email;
+        save(null);
     }
 
     public String getFullname() {
         return Fullname;
     }
 
-    public void setFullname(String fullname) {
-        Fullname = fullname;
+    public void setFullname(String name) {
+        Fullname = name;
+        save(null);
     }
 
     public String getJob() {
@@ -40,6 +69,7 @@ public class Member {
 
     public void setJob(String job) {
         Job = job;
+        save(null);
     }
 
     public String getPhone() {
@@ -48,13 +78,15 @@ public class Member {
 
     public void setPhone(String phone) {
         this.Phone = phone;
+        save(null);
     }
 
     public void setAdmin(Boolean admin) {
         Admin = admin;
+        save(null);
     }
 
-    public Boolean getAdmin() {
+    public Boolean isAdmin() {
         return Admin;
     }
 
@@ -64,6 +96,7 @@ public class Member {
 
     public void setOrg(String org) {
         Org = org;
+        save(null);
     }
 
     public String getProfile() {
@@ -72,15 +105,16 @@ public class Member {
 
     public void setProfile(String profile) {
         Profile = profile;
+        save(null);
     }
 
-    public void savePreference(String uid, Activity activity){
-        SharedPreferenceUtil userPreferences = new SharedPreferenceUtil("user", activity);
-        userPreferences.clearAll();
-        Gson gson = new Gson();
-        String json =gson.toJson(this);
-        userPreferences.add("user", json);
-        userPreferences.add("uid", json);
-        userPreferences.write();
+    public void save(Utils.LambdaInterface onSave) {
+        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        fStore.collection("Member").document(uid).set(this).addOnCompleteListener(task -> {
+            if(task.isSuccessful() && onSave != null){
+                onSave.run();
+            }
+        });
     }
 }

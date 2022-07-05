@@ -6,16 +6,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
@@ -67,41 +60,15 @@ public class LoginHandler {
 
         fStore.document("Member/"+fAuth.getUid()).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()){
-                Member member= Objects.requireNonNull(task.getResult()).toObject(Member.class);
+                Member member= task.getResult().toObject(Member.class);
                 assert member != null;
-                member.savePreference(fAuth.getUid(), activity);
-
-                loadStudies(member, activity);
+                Member.setInstance(member);
+                Study.loadStudies(() -> {
+                    activity.startActivity(new Intent(activity.getApplicationContext(), MainActivity.class));
+                });
             }
         });
     }
-
-    private static void loadStudies(Member member, Activity activity){
-        // for some reason studies are held on by the user in store (will need to be fixed)
-        ArrayList<String> studies = new ArrayList<String>();
-
-        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
-
-        studies.add("Pick A Study");
-
-        fStore.collection("Study").whereEqualTo("org",member.getOrg()).get().addOnCompleteListener(task -> {
-            if(task.isSuccessful()){
-                for (QueryDocumentSnapshot documentSnapshot: task.getResult()){
-                    Study study = documentSnapshot.toObject(Study.class);
-                    studies.add(study.getTitle());
-                }
-                if (studies.size()==1){
-                    studies.set(0,"No Studies");
-                }
-            }else{
-                studies.set(0, "No Studies");
-            }
-            saveStudies(studies, activity);
-            activity.startActivity(new Intent(activity.getApplicationContext(), MainActivity.class));
-        });
-
-    }
-
     /**
      * try saving the login data by the user
      * @param rememberLogin
@@ -116,20 +83,4 @@ public class LoginHandler {
             loginPreferences.clearAll();
         }
     }
-
-
-    /**
-     *  Why are studies saved on the device?
-     * @param studies
-     */
-    private static void saveStudies(ArrayList<String> studies, Activity activity){
-        SharedPreferences sharedPreferences = activity.getSharedPreferences("user", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor =sharedPreferences.edit();
-
-        Gson gson = new Gson();
-        String json =gson.toJson(studies);
-        editor.putString("studies",json);
-        editor.apply();
-    }
-
 }

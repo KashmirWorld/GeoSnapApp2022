@@ -40,6 +40,7 @@ import com.google.gson.Gson;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.GlideApp;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.FirebaseHandler;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 
@@ -72,34 +73,25 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
         Ppic = (ImageView) fragmentView.findViewById(R.id.ProfilePic);
         Mupload= (ImageButton) fragmentView.findViewById(R.id.Pupload);
         Uid=Fauth.getCurrentUser().getUid();
-        Member me = loaduser();
+        Member member = Member.getInstance();
+        Pname.setText("Name: " + member.getFullname());
+        Pphone.setText("Phone: " + member.getPhone());
+        Pemail.setText("Email: " + member.getEmail());
+        if (member.isAdmin()){
+            Padmin.setText("Admin: True");
+        }
+        else{
+            Padmin.setVisibility(View.INVISIBLE);
+        }
+        FirebaseHandler.loadImageIntoView(member.getProfile(), Ppic, ProfileFragment.this);
 
-        Fstore.collection("Member").document(Uid).addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                Member user=documentSnapshot.toObject(Member.class);
-                Pname.setText("Name: " + user.getFullname());
-                Pphone.setText("Phone: " + user.getPhone());
-                Pemail.setText("Email: " + user.getEmail());
-                if (user.getAdmin()){
-                    Padmin.setText("Admin: True");
-                }
-                else{
-                    Padmin.setVisibility(View.INVISIBLE);
-                    //Padmin.setText("Admin: False");
-                }
-                fetchData(user.getProfile(),Ppic);
-
-            }
-        });
-        //fragmentView = inflater.inflate(R.layout.fragment_Fprofile, container, false);
         logout = (Button) fragmentView.findViewById(R.id.logoutP);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
                 FirebaseAuth.getInstance().signOut();
-                clear();
+                FirebaseHandler.resetSession();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             }
@@ -132,13 +124,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
             }
         });
     }
-    private void fetchData(String location, ImageView image) {
-        StorageReference ref = FirebaseStorage.getInstance().getReference(location);
 
-        GlideApp.with(this)
-                .load(ref)
-                .into(image);
-    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
@@ -178,19 +164,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
         tv.setTextColor(0xFFFFFFFF);
         toast.show();
     }
-    private Member loaduser(){
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user",Context.MODE_PRIVATE);
-        Gson gson= new Gson();
-        String json = sharedPreferences.getString("user", null);
-        Type type =new TypeToken<Member>(){}.getType();
-        return gson.fromJson(json,type);
-    }
-    private void clear(){
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user",Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor =  sharedPreferences.edit();
-        editor.clear();
 
-    }
     public static ProfileFragment newInstance() {
         return new ProfileFragment();
     }

@@ -73,18 +73,6 @@ public class StudyListFragment extends Fragment implements View.OnClickListener 
 
     private int option=0;
 
-//    SharedPreferences sharedPreferencesOneDay = getContext().getSharedPreferences("PREFS", 0);
-//    SharedPreferences sharedPreferencesTwoDays = getContext().getSharedPreferences("PREFS", 0);
-//    SharedPreferences sharedPreferencesOneMonth = getContext().getSharedPreferences("PREFS", 0);
-//    SharedPreferences sharedPreferencesTwoMonths = getContext().getSharedPreferences("PREFS", 0);
-//    SharedPreferences sharedPreferencesThreeMonths = getContext().getSharedPreferences("PREFS", 0);
-//
-//    Boolean ifShowDialogOneDay = sharedPreferencesOneDay.getBoolean("studyMissOneDay", true);
-//    Boolean ifShowDialogTwoDays = sharedPreferencesTwoDays.getBoolean("studyMissTwoDays", true);
-//    Boolean ifShowDialogOneMonth = sharedPreferencesOneMonth.getBoolean("studyMissOneMonth", true);
-//    Boolean ifShowDialogTwoMonths = sharedPreferencesTwoMonths.getBoolean("studyMissTwoMonths", true);
-//    Boolean ifShowDialogThreeMonths = sharedPreferencesThreeMonths.getBoolean("studyMissThreeMonths", true);
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {;
@@ -116,25 +104,11 @@ public class StudyListFragment extends Fragment implements View.OnClickListener 
     @Override
 
     public void onClick(View v) {
-
-
         pos =recyclerView.getChildLayoutPosition(v);
         Study selectiion=CStationArrayList.get(pos);
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
-
-
-
-
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putString("Study",selectiion.getTitle());
-
-        editor.apply();
-        startActivity(new Intent(getContext(), StationListActivity.class));
-
-
-
+        Intent intent = new Intent(getContext(), StationListActivity.class);
+        intent.putExtra("CurrentStudy", selectiion.getTitle());
+        startActivity(intent);
     }
 
 

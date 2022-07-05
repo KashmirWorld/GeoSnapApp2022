@@ -79,7 +79,7 @@ public class StationListActivity extends AppCompatActivity implements View.OnCli
 
 
         // Add data from Firebase on the the Arrays
-        new StationAsyncTaskA(this,loadstudy()).execute();
+        new StationAsyncTaskA(this, getCurrentStudy()).execute();
 
     }
 
@@ -243,9 +243,8 @@ public class StationListActivity extends AppCompatActivity implements View.OnCli
             e.printStackTrace();
         }
     }
-    private String loadstudy(){
-        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("user",Context.MODE_PRIVATE);
-        return sharedPreferences.getString("Study",null);
+    private String getCurrentStudy(){
+        return this.getIntent().getStringExtra("CurrentStudy");
     }
 }
 

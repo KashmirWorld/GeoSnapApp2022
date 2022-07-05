@@ -26,7 +26,7 @@ public class StationAsyncTaskA extends AsyncTask<String, Void, String> {
 
     private ArrayList<CameraStation> CStations= new ArrayList<>();
     private ArrayList<String> paths= new ArrayList<>();
-    private Member mem;
+    private Member member;
     private String Org;
     private static final String TAG = "StationAsyncTask";
     private int count;
@@ -57,37 +57,25 @@ public class StationAsyncTaskA extends AsyncTask<String, Void, String> {
         }
 
         String string= "";
-
-        firebaseFirestore.collection("Member").document(FireAuth.getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        member = Member.getInstance();
+        collectionReference.whereEqualTo("org", member.getOrg()).whereEqualTo("study",study).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()){
-                    mem=task.getResult().toObject(Member.class);
-                    collectionReference.whereEqualTo("org",mem.getOrg()).whereEqualTo("study",study).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()){
-                                size = task.getResult().size();
-                                Log.e("size", ""+size);
-                                for (DocumentSnapshot objectDocumentSnapshot: task.getResult()){
-                                    paths.add(objectDocumentSnapshot.getReference().getPath());
-                                    CameraStation stat = objectDocumentSnapshot.toObject(CameraStation.class);
-                                    CStations.add(stat);
-                                    count++;
-                                    if(count==size){
-                                        update();
-                                    }
-                                }
-                            }
+                    size = task.getResult().size();
+                    Log.e("size", ""+size);
+                    for (DocumentSnapshot objectDocumentSnapshot: task.getResult()){
+                        paths.add(objectDocumentSnapshot.getReference().getPath());
+                        CameraStation stat = objectDocumentSnapshot.toObject(CameraStation.class);
+                        CStations.add(stat);
+                        count++;
+                        if(count==size){
+                            update();
                         }
-                    });
+                    }
                 }
             }
         });
-
-
-
-
         return null;
     }
 }

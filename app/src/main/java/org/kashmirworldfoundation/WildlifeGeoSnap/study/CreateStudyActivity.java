@@ -64,18 +64,17 @@ public class CreateStudyActivity extends AppCompatActivity {
         Post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Study study= new Study();
-                study.setTitle(TitleInput.getText().toString());
-                study.setLocation(LocationInput.getText().toString());
-                study.setMission(MissionInput.getText().toString());
+                String title = TitleInput.getText().toString();
+                String location = LocationInput.getText().toString();
+                String mission = MissionInput.getText().toString();
 
                 Date date1;
                 Date date2;
                 Timestamp ts = null;
                 Timestamp ts2 =null;
                 Utils utils= Utils.getInstance();
-                Member me=utils.loaduser(getApplicationContext());
-                study.setOrg(me.getOrg());
+                Member member=Member.getInstance();
+                String org = member.getOrg();
 
                 try {
                     date1=new SimpleDateFormat("dd/MM/yyyy").parse(start);
@@ -86,33 +85,32 @@ public class CreateStudyActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                if (ts != null && ts2 != null){
-                    study.setStart(ts);
-                    study.setEnd(ts2);
-                }
+                Study study = new Study(title, org, mission, location, ts, ts2);
                 if (study.getTitle().equals("")) {
                     Toast.makeText(CreateStudyActivity.this, "Please enter a title", Toast.LENGTH_LONG).show();
+                    return;
                 }
-                else if (study.getLocation().equals("")) {
+                if (study.getLocation().equals("")) {
                     Toast.makeText(CreateStudyActivity.this, "Please enter a location", Toast.LENGTH_LONG).show();
+                    return;
                 }
-                else if (study.getMission().equals("")) {
+                if (study.getMission().equals("")) {
                     Toast.makeText(CreateStudyActivity.this, "Please enter a mission", Toast.LENGTH_LONG).show();
+                    return;
                 }
-                else if (ts == null || ts2 == null) {
+                if (ts == null || ts2 == null) {
                     Toast.makeText(CreateStudyActivity.this, "Please enter the dates of the study", Toast.LENGTH_LONG).show();
+                    return;
                 }
-                else if (ts.compareTo(ts2) > 0) {
+                if (ts.compareTo(ts2) > 0) {
                     Toast.makeText(CreateStudyActivity.this, "Please enter valid dates", Toast.LENGTH_LONG).show();
+                    return;
                 }
-                else {
-                    db.collection("Study").add(study);
-                    Intent i= new Intent(getApplicationContext(), MainActivity.class);
+                db.collection("Study").add(study);
+                Intent i= new Intent(getApplicationContext(), MainActivity.class);
 
-                    i.putExtra("Study",study);
-                    startActivity(i);
-                }
-
+                i.putExtra("Study",study);
+                startActivity(i);
             }
         });
 
