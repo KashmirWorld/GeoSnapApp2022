@@ -1,14 +1,18 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
 public class Org {
-    private  String OrgEmail;
+
+    public interface onOrgLoad { void loadSuccess(String path);}
+
+    private static Org instance;
+    private String OrgEmail;
     private String OrgWebsite;
     private String OrgName;
     private String OrgPhone;
     private String OrgCountry;
-    //private String OrgRegion;
-
-
     public Org(String orgEmail, String orgWebsite, String orgName, String orgPhone, String orgCountry) {
         OrgEmail = orgEmail;
         OrgWebsite = orgWebsite;
@@ -18,8 +22,16 @@ public class Org {
         //OrgRegion = orgRegion;
     }
 
-    public Org(){
+    public Org() {
 
+    }
+
+    public static Org getInstance() {
+        return instance;
+    }
+
+    public static void setInstance(Org org) {
+        instance = org;
     }
 
     public String getOrgEmail() {
@@ -61,6 +73,22 @@ public class Org {
     public void setOrgCountry(String orgCountry) {
         OrgCountry = orgCountry;
     }
+
+    public static void loadOrgIntoInstance(String org, String country, final onOrgLoad onSuccess) {
+        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+        fStore.collection("Organization").whereEqualTo("orgName", org).
+                whereEqualTo("orgCountry", country).get().addOnCompleteListener(task1 -> {
+                    if (task1.isSuccessful()) {
+                        String orgPath = "";
+                        for (QueryDocumentSnapshot documentSnapshot : task1.getResult()) {
+                            orgPath = documentSnapshot.getReference().getPath();
+                            instance = documentSnapshot.toObject(Org.class);
+                        }
+                        onSuccess.loadSuccess(orgPath);
+                    }
+                });
+    }
+
 
     /*
     public String getOrgRegion() {

@@ -24,6 +24,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Org;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -32,108 +33,22 @@ import java.util.Set;
 
 import javax.annotation.Nullable;
 
-public class RegisterSelectOrganizationActivity extends AppCompatActivity {
+public class RegisterSelectOrganizationActivity extends Activity {
+
+    private ArrayAdapter<String> dataAdapter;
 
     Spinner mOrg;
     Button mSubmit;
-    FirebaseFirestore db;
     TextView mRefresh,mBack;
-    CollectionReference ref;
-
-    List<Org> Aorg=new ArrayList<>();
-    List<String> orgs =new ArrayList<>();
 
     String Sorg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_select_organization);
+        initViews();
 
-        mOrg = findViewById(R.id.register_orgS3);
-
-        mRefresh = findViewById(R.id.RefreshSpin0);
-        mBack =findViewById(R.id.GoBackLogin);
-
-        mSubmit = findViewById(R.id.submit0);
-
-        db= FirebaseFirestore.getInstance();
-
-        ref=db.collection("Organization");
-
-
-
-        final Set<String> set = new LinkedHashSet<>();
-
-        final ArrayAdapter<String> dataAdapter= new ArrayAdapter(this,android.R.layout.simple_spinner_item, orgs);
-        mBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                finish();
-            }
-        });
-        mRefresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                recreate();
-            }
-        });
-        //Dropdown layout style
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        //attaching data adapter to spinner
-        mOrg.setAdapter(dataAdapter);
-        mSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Check if the data is selected
-                if (Sorg == null || Sorg.equals("Select Org")){
-                    Toast.makeText(RegisterSelectOrganizationActivity.this, "Need to select an organization", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                //Add your data to bundle
-                Intent I = new Intent(getApplicationContext(), RegisterSelectCountryActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("Orgname", Sorg);
-                I.putExtras(bundle);
-                startActivity(I);
-            }
-        });
-        ref.addSnapshotListener(this, new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                if (e!=null) {
-                    Toast.makeText(RegisterSelectOrganizationActivity.this, "Error " + e.getMessage(), Toast.LENGTH_LONG);
-
-                }
-                else{
-                    for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                        Org org = documentSnapshot.toObject(Org.class);
-
-                        Aorg.add(org);
-                    }
-
-                    for (Org org : Aorg){
-
-                        set.add(org.getOrgName());
-                    }
-                    orgs=new ArrayList<>(set);
-
-                    orgs.add(0,"Select Org");
-                    for(int i = 0; i < orgs.size();i++){
-                        if(orgs.get(i) == null){
-                        }
-                        else{
-                            dataAdapter.add(orgs.get(i));
-                        }
-                    }
-
-
-                }
-            }
-
-        });
-
+        loadOrganizations();
 
         mOrg.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -142,10 +57,56 @@ public class RegisterSelectOrganizationActivity extends AppCompatActivity {
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // TODO Auto-generated method stub
             }
         });
-
     }
 
+    @Override
+    protected void initViews() {
+        mOrg = findViewById(R.id.register_orgS3);
+        mRefresh = findViewById(R.id.RefreshSpin0);
+        mBack =findViewById(R.id.GoBackLogin);
+        mSubmit = findViewById(R.id.submit0);
+    }
+
+    public void onClickBack(View v){
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        finish();
+    }
+
+    public void loadOrganizations(){
+        dataAdapter= new ArrayAdapter(this,android.R.layout.simple_spinner_item, new ArrayList<String>());
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mOrg.setAdapter(dataAdapter);
+        dataAdapter.addAll("Select Org");
+        FirebaseFirestore.getInstance().collection("Organization").get().addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                    Org org = documentSnapshot.toObject(Org.class);
+                    if(org.getOrgName() != null){
+                        dataAdapter.add(org.getOrgName());
+                    }
+                }
+            }
+        });
+    }
+
+    public void onClickSubmit(View v){
+        //Check if the data is selected
+        if (Sorg == null || Sorg.equals("Select Org")){
+            Toast.makeText(RegisterSelectOrganizationActivity.this, "Need to select an organization", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        //Add your data to bundle
+        Intent I = new Intent(getApplicationContext(), RegisterSelectCountryActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("Orgname", Sorg);
+        I.putExtras(bundle);
+        startActivity(I);
+    }
+
+    public void onClickRefresh(View v){
+        dataAdapter.clear();
+        loadOrganizations();
+    }
 }

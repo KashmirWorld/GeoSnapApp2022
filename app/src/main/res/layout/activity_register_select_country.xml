@@ -10,6 +10,7 @@
 
     <TextView
         android:id="@+id/RefreshSpin1"
+        android:onClick="onClickRefresh"
         android:layout_width="301dp"
         android:layout_height="36dp"
         android:layout_marginTop="32dp"
@@ -25,6 +26,7 @@
 
     <TextView
         android:id="@+id/BackOrg"
+        android:onClick="onClickChooseOrg"
         android:layout_width="301dp"
         android:layout_height="36dp"
         android:layout_marginTop="32dp"
@@ -54,6 +56,7 @@
 
     <Button
         android:id="@+id/Submit1"
+        android:onClick="onClickSubmit"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
         android:layout_marginTop="32dp"

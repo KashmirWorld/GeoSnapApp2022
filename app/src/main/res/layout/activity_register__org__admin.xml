@@ -148,6 +148,7 @@
 
     <Button
         android:id="@+id/AdminRegisterB"
+        android:onClick="onClickRegister"
         android:layout_width="175dp"
         android:layout_height="41dp"
         android:layout_marginStart="80dp"

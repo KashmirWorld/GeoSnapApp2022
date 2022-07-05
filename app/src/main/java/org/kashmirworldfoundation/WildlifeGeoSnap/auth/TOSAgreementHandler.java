@@ -11,48 +11,42 @@ import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
 
 public class TOSAgreementHandler {
-    public interface AgreementSuccess { void onAgree(String email, String password); }
 
     /**
-     *  This method sends the user the Terms of Service and executes a lambda function once its positive
-     * @param email
-     * @param password
+     * This method sends the user the Terms of Service and executes a lambda function once its positive
+     *
      * @param listener
      * @param activity
      */
-    public static void sendAgreementThen(String email, String password, final AgreementSuccess listener, Activity activity){
-
-        String userEmail = email.trim();
-        String userPassword = password.trim();
+    public static void sendAgreementThen(String hasNotAgreedMessage, final Utils.LambdaInterface listener, Activity activity) {
 
         Utils util = Utils.getInstance();
 
-        if (util.getAgreement(activity)){
-            hasNotAgreed(userEmail, userPassword, listener, activity);
-        }else {
-            listener.onAgree(userEmail, userPassword);
+        if (util.getAgreement(activity)) {
+            hasNotAgreed(hasNotAgreedMessage, listener, activity);
+        } else {
+            listener.run();
         }
     }
 
     /**
-     *  If they haven't agreed, send them the ui and wait for the to agree
-     * @param email
-     * @param password
+     * If they haven't agreed, send them the ui and wait for the to agree
+     *
      * @param listener
      * @param activity
      */
-    private static void hasNotAgreed(String email, String password, final AgreementSuccess listener, Activity activity){
+    private static void hasNotAgreed(String hasNotAgreedMessage, final Utils.LambdaInterface listener, Activity activity) {
 
         Utils util = Utils.getInstance();
 
-        AlertDialog.Builder alertDialog = createUI(email, password, listener, activity);
+        AlertDialog.Builder alertDialog = createUI(activity);
         // if they disagree inform that they won't be able to login
-        alertDialog.setNegativeButton("Cancel", (dialog, which) -> Toast.makeText(activity, "Agreement needed to login", Toast.LENGTH_LONG).show());
+        alertDialog.setNegativeButton("Cancel", (dialog, which) -> Toast.makeText(activity, hasNotAgreedMessage, Toast.LENGTH_LONG).show());
 
         // if they agree, save the fact that they agreed and try logging them in
         alertDialog.setPositiveButton("Agree", (dialog, which) -> {
             util.setAgreement(activity);
-            listener.onAgree(email, password);
+            listener.run();
         });
 
         // show the alert dialog to the user
@@ -61,14 +55,12 @@ public class TOSAgreementHandler {
     }
 
     /**
-     *  Create the basic TOS agreement UI and send it to the user
-     * @param email
-     * @param password
-     * @param listener
+     * Create the basic TOS agreement UI and send it to the user
+     *
      * @param activity
      * @return
      */
-    private static AlertDialog.Builder createUI(String email, String password, final AgreementSuccess listener, Activity activity){
+    private static AlertDialog.Builder createUI(Activity activity) {
         LayoutInflater inflater = LayoutInflater.from(activity);
         View view = inflater.inflate(R.layout.disclaimer_layout, null);
 
@@ -77,7 +69,6 @@ public class TOSAgreementHandler {
         alertDialog.setView(view);
         return alertDialog;
     }
-
 
 
 }

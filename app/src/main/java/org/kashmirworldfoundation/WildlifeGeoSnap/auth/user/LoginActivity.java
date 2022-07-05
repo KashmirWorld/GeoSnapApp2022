@@ -35,7 +35,7 @@ public class LoginActivity extends Activity {
     // UI Views
     EditText mEmail, mPassword;
     Button mLoginBtn;
-    TextView mRegisterBtn,mRegisterOrgBtn, mForgetBtn;
+    TextView mRegisterBtn, mRegisterOrgBtn, mForgetBtn;
     ImageView Background;
     ConstraintLayout layout;
     ArrayList<String> studies;
@@ -60,16 +60,16 @@ public class LoginActivity extends Activity {
     protected void initViews() {
         layout = findViewById(R.id.LoginLayout);
         mForgetBtn = findViewById(R.id.LoginForget);
-        mEmail      = findViewById(R.id.email);
-        mPassword   = findViewById(R.id.password);
-        mLoginBtn   = findViewById(R.id.LoginBtn);
+        mEmail = findViewById(R.id.email);
+        mPassword = findViewById(R.id.password);
+        mLoginBtn = findViewById(R.id.LoginBtn);
         mRegisterBtn = findViewById(R.id.Register0);
         mRegisterOrgBtn = findViewById(R.id.RegisterOrgBtn);
-        Background =findViewById(R.id.BackgroundLogin);
+        Background = findViewById(R.id.BackgroundLogin);
     }
 
     /**
-     *  This method is supposed to change the background of the Login menu to look like the one within firebases database (does not work)
+     * This method is supposed to change the background of the Login menu to look like the one within firebases database (does not work)
      *  TODO: Fix it so the background changes
      */
     private void initBackground() {
@@ -81,34 +81,35 @@ public class LoginActivity extends Activity {
 
     // THESE ARE THE ONCLICK LISTENERS FOR THE UI
 
-    public void onClickForget(View v){
+    public void onClickForget(View v) {
         startActivity(new Intent(getApplicationContext(), ForgetPasswordActivity.class));
     }
 
-    public void onClickRegisterUser(View v){
+    public void onClickRegisterUser(View v) {
         startActivity(new Intent(getApplicationContext(), RegisterSelectOrganizationActivity.class));
     }
 
-    public void onClickRegisterOrg(View v){
-        if (getAdmin()){
+    public void onClickRegisterOrg(View v) {
+        if (getAdmin()) {
             startActivity(new Intent(getApplicationContext(), RegisterOrgAdminActivity.class));
         }
         startActivity(new Intent(getApplicationContext(), RegisterOrgActivity.class));
     }
 
-    public void onClickLogin(View v){
+    public void onClickLogin(View v) {
         Utils util = Utils.getInstance();
 
         userEmail = mEmail.getText().toString();
         userPassword = mPassword.getText().toString();
 
-        if (!AuthHandler.validateLoginInfo(userEmail, userPassword, this)){
+        if (!AuthHandler.validateLoginInfo(userEmail, userPassword, this)) {
             return;
         }
 
-        TOSAgreementHandler.sendAgreementThen(userEmail, userPassword, (email, password) -> {
-            LoginHandler.login(email, password, rememberLogin, loginPreferences, this);
-        }, this);
+        TOSAgreementHandler.sendAgreementThen("Agreement needed to login!",
+                () -> {
+                    LoginHandler.login(userEmail, userPassword, rememberLogin, loginPreferences, this);
+                }, this);
     }
 
     public void onClickRememberLogin(View v) {
@@ -116,7 +117,7 @@ public class LoginActivity extends Activity {
     }
 
     /**
-     *  This method reads the saved password from the system and sets it within the UI as well as the saved data
+     * This method reads the saved password from the system and sets it within the UI as well as the saved data
      */
     private void populateLoginInfo() {
         loginPreferences = new SharedPreferenceUtil(PREFERENCE_NAME, this);
@@ -127,11 +128,12 @@ public class LoginActivity extends Activity {
     }
 
     /**
-     *  This method will probably be removed later when a user's admin status is held within a Member struct and not saved on the device
+     * This method will probably be removed later when a user's admin status is held within a Member struct and not saved on the device
+     *
      * @return boolean
      */
-    private boolean getAdmin(){
+    private boolean getAdmin() {
         SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences("Admin", Context.MODE_PRIVATE);
-        return sharedPreferences.getBoolean("Admin",false);
+        return sharedPreferences.getBoolean("Admin", false);
     }
 }

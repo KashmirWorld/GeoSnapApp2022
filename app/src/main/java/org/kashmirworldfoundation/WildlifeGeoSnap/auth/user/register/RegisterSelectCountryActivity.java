@@ -24,85 +24,33 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Org;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
+import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class RegisterSelectCountryActivity extends AppCompatActivity {
+public class RegisterSelectCountryActivity extends Activity {
+
+    private ArrayAdapter<String> dataAdapter;
 
     Spinner mCountry;
     Button mSubmit;
-    FirebaseFirestore db;
     TextView mBack,mRefresh;
-    CollectionReference ref;
-    List<Org> Aorg=new ArrayList<>();
-    List<String> Countries =new ArrayList<>();
+
     String Sorg;
     String Scountry;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_select_country);
+        initViews();
 
-        mCountry=findViewById(R.id.Spinner_Country);
-
-        mBack = findViewById(R.id.BackOrg);
-        mRefresh = findViewById(R.id.RefreshSpin1);
-
-        mSubmit = findViewById(R.id.Submit1);
-
-        db= FirebaseFirestore.getInstance();
-
-        ref=db.collection("Organization");
-        mBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), RegisterSelectOrganizationActivity.class));
-                finish();
-            }
-        });
-        mRefresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new Intent(getApplicationContext(), RegisterSelectCountryActivity.class);
-            }
-        });
-        final Set<String> set = new LinkedHashSet<>();
-
-        final ArrayAdapter<String> dataAdapter= new ArrayAdapter(this,android.R.layout.simple_spinner_item, Countries);
-
-
-        //Dropdown layout style
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Intent intent = getIntent();
         Sorg =intent.getStringExtra("Orgname");
-        //attaching data adapter to spinner
-        mCountry.setAdapter(dataAdapter);
 
-        ref.whereEqualTo("orgName",Sorg).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()){
-                    for (QueryDocumentSnapshot documentSnapshot: task.getResult()){
-                        Org org = documentSnapshot.toObject(Org.class);
-                        Aorg.add(org);
-                    }
-                    for (Org org : Aorg){
-
-                        set.add(org.getOrgCountry());
-                    }
-                    Countries=new ArrayList<>(set);
-
-                    Countries.add(0,"Select Country");
-                    dataAdapter.addAll(Countries);
-                }
-            }
-
-        });
-
-
+        loadCountries();
 
         mCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -115,24 +63,60 @@ public class RegisterSelectCountryActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
-        mSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Check if data is selected
-                if (Scountry == null || Scountry.equals("Select Country")){
-                    Toast.makeText(RegisterSelectCountryActivity.this, "Need to select a country", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                //Add data to bundle
-                Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
-                Bundle b = new Bundle();
-                b.putString("OrgName", Sorg);
-                b.putString("Country",Scountry);
-                i.putExtras(b);
-                startActivity(i);
-            }
-        });
-
-
     }
+
+    @Override
+    protected void initViews() {
+        mCountry=findViewById(R.id.Spinner_Country);
+        mBack = findViewById(R.id.BackOrg);
+        mRefresh = findViewById(R.id.RefreshSpin1);
+        mSubmit = findViewById(R.id.Submit1);
+    }
+
+    public void onClickSubmit(View v){
+        //Check if data is selected
+        if (Scountry == null || Scountry.equals("Select Country")){
+            Toast.makeText(RegisterSelectCountryActivity.this, "Need to select a country", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        //Add data to bundle
+        Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
+        Bundle b = new Bundle();
+        b.putString("OrgName", Sorg);
+        b.putString("Country",Scountry);
+        i.putExtras(b);
+        startActivity(i);
+    }
+
+    public void onClickChooseOrg(View v){
+        startActivity(new Intent(getApplicationContext(), RegisterSelectOrganizationActivity.class));
+        finish();
+    }
+
+    public void onClickRefresh(View v){
+        dataAdapter.clear();
+        loadCountries();
+    }
+
+    public void loadCountries(){
+        dataAdapter= new ArrayAdapter(this,android.R.layout.simple_spinner_item, new ArrayList<String>());
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mCountry.setAdapter(dataAdapter);
+        FirebaseFirestore.getInstance().collection("Organization").whereEqualTo("orgName",Sorg).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()){
+                    dataAdapter.add("Select Country");
+                    for (QueryDocumentSnapshot documentSnapshot: task.getResult()){
+                        Org org = documentSnapshot.toObject(Org.class);
+                        if(org != null){
+                            dataAdapter.add(org.getOrgCountry());
+                        }
+                    }
+                }
+            }
+
+        });
+    }
+
 }
