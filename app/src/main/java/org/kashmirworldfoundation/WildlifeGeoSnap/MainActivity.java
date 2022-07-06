@@ -13,12 +13,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.MenuItem;
@@ -27,10 +24,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.material.navigation.NavigationView;
-import com.google.common.reflect.TypeToken;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.apache.http.HttpEntity;
@@ -41,37 +36,27 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
-import org.jetbrains.annotations.NotNull;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.AboutFragment;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.AddFragment;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.HomeFragment;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.MapFragment;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.WildlifeSightingFragment;
-import org.kashmirworldfoundation.WildlifeGeoSnap.Fragment.ProfileFragment;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.FirebaseHandler;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.study.StudyFragment;
+import org.kashmirworldfoundation.WildlifeGeoSnap.maps.MapFragment;
+import org.kashmirworldfoundation.WildlifeGeoSnap.profile.ProfileFragment;
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Type;
 
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserInfo;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private AddFragment addFragment;
+    private StudyFragment studyFragment;
     private FusedLocationProviderClient mFusedLocationClient;
     private static final int LOCATION_REQUEST = 111;
     private static final String TAG = "MainActivity";
@@ -114,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         updateNavHeader();
 
-        addFragment = new AddFragment();
+        studyFragment = new StudyFragment();
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -146,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_study:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new AddFragment()).commit();
+                        new StudyFragment()).commit();
                 break;
             case R.id.nav_map:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -174,16 +159,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         TextView navUserName = headerView.findViewById(R.id.NameHeader);
         ImageView navSerPhoto = headerView.findViewById(R.id.ProfilePicHeader);
 
-        Fstore.collection("Member").document(Uid).addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                Member user=documentSnapshot.toObject(Member.class);
-                navUserName.setText(user.getFullname());
-
-                fetchData(user.getProfile(),navSerPhoto);
-
-            }
-        });
+        Member member = Member.getInstance();
+        navUserName.setText(member.getFullname());
+        FirebaseHandler.loadImageIntoView(member.getProfile(), navSerPhoto, this);
 
         navSerPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -220,13 +198,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-    }
-    private void fetchData(String location, ImageView image) {
-        StorageReference ref = FirebaseStorage.getInstance().getReference(location);
-
-        GlideApp.with(this)
-                .load(ref)
-                .into(image);
     }
 
     @Override
@@ -305,8 +276,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bundle.putString("latitude", latitude);
         bundle.putString("longitude", longitude);
         bundle.putString("altitude", altitude);
-        addFragment.setArguments(bundle);
-        addFragment.refresh();
+        studyFragment.setArguments(bundle);
+        studyFragment.refresh();
     }
 
     //ask user to get the location premission and check
