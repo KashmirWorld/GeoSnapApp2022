@@ -59,8 +59,6 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -71,7 +69,6 @@ import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.CameraStation;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.study.study.StudyListFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.DataTypeAdapter;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
 
 
 import java.lang.reflect.Type;
@@ -253,8 +250,6 @@ public class StudyFragment extends Fragment implements View.OnClickListener{
                     fragmentView.findViewById(R.id.CamPic2).setVisibility(View.VISIBLE);
                     fragmentView.findViewById(R.id.NoteInput).setVisibility(View.VISIBLE);
                     Studyback.setVisibility(View.VISIBLE);
-
-
                 }
             }
             @Override
