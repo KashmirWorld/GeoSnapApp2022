@@ -49,8 +49,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 
+import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.utils.LocationUtil;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -65,7 +67,6 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
     private static final String TAG = "MapsActivity";
 
     private GoogleMap mMap;
-    private static final int LOCATION_REQUEST = 111;
     private LocationManager locationManager;
     private LocationListener locationListener;
     private Polyline llHistoryPolyline;
@@ -236,26 +237,11 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
         mMap.setOnInfoWindowClickListener(this);
         mMap.setOnMarkerDragListener(this);
 
-        if (checkPermission()) {
+        if (LocationUtil.checkPermission(this)) {
             setupLocationListener();
             setupZoomListener();
         }
     }
-
-    private boolean checkPermission() {
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION) !=
-                PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(this,
-                    new String[]{
-                            Manifest.permission.ACCESS_FINE_LOCATION
-                    }, LOCATION_REQUEST);
-            return false;
-        }
-        return true;
-    }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -264,7 +250,7 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == LOCATION_REQUEST) {
+        if (requestCode == MainActivity.LOCATION_REQUEST) {
             for (int i = 0; i < permissions.length; i++) {
                 if (permissions[i].equals(Manifest.permission.ACCESS_FINE_LOCATION)) {
                     if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
@@ -385,7 +371,7 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
 
         //minTime	    long: minimum time interval between location updates, in milliseconds
         //minDistance	float: minimum distance between location updates, in meters
-        if (checkPermission() && locationManager != null) {
+        if (LocationUtil.checkPermission(this) && locationManager != null) {
             locationManager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER, 1000, 1, locationListener);
 
@@ -404,7 +390,7 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
     @Override
     protected void onResume() {
         super.onResume();
-        if (checkPermission() && locationManager != null && locationListener != null)
+        if (LocationUtil.checkPermission(this) && locationManager != null && locationListener != null)
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 10, locationListener);
     }
 
