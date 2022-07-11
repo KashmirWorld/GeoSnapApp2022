@@ -5,7 +5,6 @@ apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "29.0.2"
     ndkVersion '22.1.7171670'
     defaultConfig {
         applicationId "org.kashmirworldfoundation.WildlifeGeoSnap"

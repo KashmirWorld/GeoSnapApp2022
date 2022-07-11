@@ -5,11 +5,14 @@ buildscript {
         google()
         jcenter()
         mavenCentral()
-        maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
+        maven {
+            url "http://oss.sonatype.org/content/repositories/snapshots/"
+            allowInsecureProtocol = true
+        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
-        classpath 'com.google.gms:google-services:4.3.3'
+        classpath 'com.android.tools.build:gradle:7.2.1'
+        classpath 'com.google.gms:google-services:4.3.10'
         /*Firebase Crashlytics */
         // Add the Crashlytics Gradle plugin
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.7.1'
@@ -23,7 +26,10 @@ allprojects {
         google()
         jcenter()
         mavenCentral()
-        maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
+        maven {
+            url "http://oss.sonatype.org/content/repositories/snapshots/"
+            allowInsecureProtocol = true
+        }
         maven {
             url 'https://api.mapbox.com/downloads/v2/releases/maven'
             authentication {
