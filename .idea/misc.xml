@@ -4,6 +4,40 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.24114583333333334" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_create_station.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_expand.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_forget_password.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_listfragment_recycler.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_login.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_main.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_offline_manager.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_post.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_rebait__list.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_register.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_register__org__admin.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_register_org.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_register_select_country.xml" value="0.3697916666666667" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_register_select_organization.xml" value="0.3697916666666667" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_register_spinner0.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_register_spinner1.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_register_spinner2.xml" value="0.18385416666666668" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_station.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_station__list.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/disclaimer_layout.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_add.xml" value="0.33125" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_first.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_home.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_list.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_map.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_profile.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_study_list.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_wildlifesighting.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/rebait_sheet.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/rebait_sheet1.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/rebait_sheet2.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/takedown_sheet.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/takedown_sheet2.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/abiiy/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_spinner_dropdown_item.xml" value="0.3697916666666667" />
         <entry key="..\:/Users/diann/StudioProjects/GeoSnapApp/app/src/main/res/layout/activity_create_station.xml" value="0.1" />
         <entry key="..\:/Users/diann/StudioProjects/GeoSnapApp/app/src/main/res/layout/activity_expand.xml" value="0.1" />
         <entry key="..\:/Users/diann/StudioProjects/GeoSnapApp/app/src/main/res/layout/activity_listfragment_recycler.xml" value="0.1" />

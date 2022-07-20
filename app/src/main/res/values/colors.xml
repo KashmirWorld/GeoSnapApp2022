@@ -8,12 +8,6 @@
     <color name="lightGray">#fafafa</color>
     <color name="whiteColor">#fff</color>
 
-    <!-- v2022 colors -->
-    <color name = "black">#000000</color>
-    <color name = "white">#FFFFFF</color>
-    <color name = "kwf_gold">#F1B434</color>
-    <color name = "eco_green">#4A7A62</color>
-
     <!-- Re-Bait menu colors-->
     <color name="rPrimary">#2196F3</color>
     <color name="rPrimaryDark">#1976D2</color>
@@ -24,6 +18,7 @@
     <color name="rDivider">#ECECEC</color>
 
     <!-- Mapbox colors -->
+
 
     <color name="materialGrey">#F5F5F5</color>
     <color name="materialDarkGrey">#DFDFDF</color>

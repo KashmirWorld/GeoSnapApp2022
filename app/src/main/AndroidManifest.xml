@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.kashmirworldfoundation.WildlifeGeoSnap">
 
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.Read_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -21,43 +20,41 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.RegisterOrgAdminActivity"
+            android:name=".Activity"
+            android:exported="false" />
+        <activity
+            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterOrgAdminActivity"
             android:hasCode="true"
             android:label="@string/title_activity_register__org__admin"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.StationListActivity" />
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.CreateStudy" />
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.GoogleMapActivity" /> <!-- <activity android:name=".Expand2" /> -->
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.study.station.StationListActivity" />
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.study.CreateStudyActivity" />
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.maps.GoogleMapActivity" /> <!-- <activity android:name=".Expand2" /> -->
         <activity
-            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.ExpandActivity"
+            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.study.station.StationActivity"
             android:parentActivityName="org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity" />
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.MapCreateList" />
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.MapCreateActivity" />
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.maps.MapCreateList" />
         <activity
-            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.RegisterOrgActivity"
+            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.auth.org.RegisterOrgActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.CreateStationActivity" />
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.study.CreateStationActivity" />
         <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity" />
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.OfflineManagerActivity" />
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.maps.OfflineManagerActivity" />
         <activity
-            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.RegisterSpinner1"
+            android:name=".auth.user.register.RegisterSelectCountryActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.RegisterSpinner2"
+            android:name=".auth.user.register.RegisterSelectOrganizationActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.study.station.rebait.RebaitListActivity" />
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.study.station.takedown.TakedownListActivity" />
         <activity
-            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.RegisterSpinner0"
+            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.ForgetPasswordActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.RebaitListActivity"></activity>
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.TakedownListActivity"></activity>
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.study.wildlifesightings.WildlifeSightingExpand" />
+        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.study.wildlifesightings.AddWildlifeSightingActivity" />
         <activity
-            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.ForgetPasswordActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.WildlifeSightingExpand" />
-        <activity android:name="org.kashmirworldfoundation.WildlifeGeoSnap.AddWildlifeSightingActivity" />
-        <activity
-            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.LoginActivity"
-            android:screenOrientation="portrait"
+            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -66,14 +63,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.WelcomeActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.SignUpActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="org.kashmirworldfoundation.WildlifeGeoSnap.Register"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".auth.user.register.RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="preloaded_fonts"

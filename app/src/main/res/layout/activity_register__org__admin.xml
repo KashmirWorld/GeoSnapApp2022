@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/snow_leopard_wallpaper1"
-    tools:context="org.kashmirworldfoundation.WildlifeGeoSnap.RegisterOrgAdminActivity">
+    tools:context="org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterOrgAdminActivity">
 
 
     <EditText
@@ -148,6 +148,7 @@
 
     <Button
         android:id="@+id/AdminRegisterB"
+        android:onClick="onClickRegister"
         android:layout_width="175dp"
         android:layout_height="41dp"
         android:layout_marginStart="80dp"
