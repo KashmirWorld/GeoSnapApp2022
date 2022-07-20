@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/ic_purpose"
+        android:layout_width="350dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_purpose" />
+
+    <TextView
+        android:id="@+id/hello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/lato_bold"
+        android:gravity="center"
+        android:text="@string/purpose_title"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="@+id/ic_purpose"
+        app:layout_constraintStart_toStartOf="@+id/ic_purpose"
+        app:layout_constraintTop_toBottomOf="@+id/ic_purpose" />
+
+    <TextView
+        android:id="@+id/purpose_desc"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/lato"
+        android:gravity="center"
+        android:text="@string/purpose_desc"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/hello"
+        app:layout_constraintStart_toStartOf="@+id/hello"
+        app:layout_constraintTop_toBottomOf="@+id/hello" />
+
+    <Button
+        android:id="@+id/sign_up_intent"
+        android:layout_width="100dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/eco_green"
+        android:text="@string/sign_up_intent"
+        android:textColor="@color/white"
+        app:cornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="onClickSignUp"/>
+
+    <Button
+        android:id="@+id/login_intent"
+        android:layout_width="100dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="75dp"
+        android:backgroundTint="@color/eco_green"
+        android:text="@string/login_intent"
+        app:cornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sign_up_intent"
+        android:onClick="onClickLogin"/>
+
+    <ImageView
+        android:id="@+id/kwf_logo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/ic_purpose"
+        app:layout_constraintStart_toStartOf="@+id/ic_purpose"
+        app:layout_constraintTop_toTopOf="@+id/ic_purpose"
+        app:srcCompat="@drawable/kwf_logo_white" />
+</androidx.constraintlayout.widget.ConstraintLayout>

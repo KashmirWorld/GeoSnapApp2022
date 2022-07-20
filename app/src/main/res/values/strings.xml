@@ -2,6 +2,34 @@
 
     <string name="app_name">Wildlife GeoSnap</string>
 
+    <!--Strings used in the Login Activity-->
+    <string name="login_title">Login</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="no_account">Don\'t have an account yet?</string>
+    <string name="sign_up">Sign up.</string>
+    <string name="hello_again">Hello Again!</string>
+    <string name="welcome_back">Welcome back to GeoSnap. We missed you!</string>
+    
+    <!-- Strings used in the footer-->
+    <string name="footer">2022, the Kashmir Wildlife Foundation</string>
+
+    <!-- Strings used in the Sign Up Activity-->
+    <string name="sign_up_title">Sign Up</string>
+    <string name="name">Full Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="yes_account">Have an account already?</string>
+    <string name="login">Login.</string>
+    <string name="hello">Hello!</string>
+    <string name="welcome">Welcome to GeoSnap!</string>
+
+    <!-- Strings used in the Welcome Activity-->
+    <string name="purpose_title">Simplifying Wildlife Research</string>
+    <string name="purpose_desc">Create and track studies in the field. Make a difference.</string>
+    <string name="sign_up_intent">Sign Up</string>
+    <string name="login_intent">Login</string>
+
 
     <string-array name="Countries">
 
