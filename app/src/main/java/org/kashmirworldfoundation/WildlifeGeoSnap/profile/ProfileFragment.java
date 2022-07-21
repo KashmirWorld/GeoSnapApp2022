@@ -27,7 +27,7 @@ import com.google.firebase.storage.UploadTask;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.FirebaseHandler;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
 import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Fragment;
 
 import java.io.ByteArrayOutputStream;
@@ -48,7 +48,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         fragmentView = inflater.inflate(R.layout.fragment_profile, container, false);
-        Member member = Member.getInstance();
+        UserData userData = UserData.getInstance();
         initViews();
         initUI();
         return fragmentView;
@@ -67,13 +67,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private void initUI() {
         fragmentView.setOnClickListener(this);
-        Member member = Member.getInstance();
-        nameView.setText("Name: " + member.getFullname());
-        phoneView.setText("Phone: " + member.getPhone());
-        emailView.setText("Email: " + member.getEmail());
+        UserData userData = UserData.getInstance();
+        nameView.setText("Name: " + userData.getFullname());
+        phoneView.setText("Phone: " + userData.getPhone());
+        emailView.setText("Email: " + userData.getEmail());
         loadProfilePicture();
         isAdminView.setVisibility(View.INVISIBLE);
-        if (member.isAdmin()) {
+        if (userData.isAdmin()) {
             isAdminView.setVisibility(View.VISIBLE);
             isAdminView.setText("Admin: True");
         }
@@ -96,8 +96,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     }
 
     private void loadProfilePicture() {
-        Member member = Member.getInstance();
-        FirebaseHandler.loadImageIntoView(member.getProfile(), profilePicView, ProfileFragment.this);
+        UserData userData = UserData.getInstance();
+        FirebaseHandler.loadImageIntoView(userData.getProfile(), profilePicView, ProfileFragment.this);
     }
 
     @Override

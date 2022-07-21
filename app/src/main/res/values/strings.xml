@@ -27,8 +27,8 @@
     <!-- Strings used in the Welcome Activity-->
     <string name="purpose_title">Simplifying Wildlife Research</string>
     <string name="purpose_desc">Create and track studies in the field. Make a difference.</string>
-    <string name="sign_up_intent">Sign Up</string>
-    <string name="login_intent">Login</string>
+    <string name="sign_up_intent">Register</string>
+    <string name="login_intent">Sign In</string>
 
 
     <string-array name="Countries">

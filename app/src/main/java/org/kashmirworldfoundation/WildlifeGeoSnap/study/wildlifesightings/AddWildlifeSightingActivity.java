@@ -33,7 +33,7 @@ import com.google.firebase.storage.UploadTask;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.WildlifeSighting;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
 
@@ -95,12 +95,12 @@ public class AddWildlifeSightingActivity extends AppCompatActivity {
                 wildlifeSighting.setPic(uri.toString());
 
                 Utils utils= Utils.getInstance();
-                Member member= Member.getInstance();
+                UserData userData = UserData.getInstance();
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 wildlifeSighting.setMember("Member/"+uid);
 
-                wildlifeSighting.setOrg(member.getOrg());
-                wildlifeSighting.setAuthor(member.getFullname());
+                wildlifeSighting.setOrg(userData.getOrg());
+                wildlifeSighting.setAuthor(userData.getFullname());
                 utils.saveSighting(wildlifeSighting,getApplicationContext());
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
 

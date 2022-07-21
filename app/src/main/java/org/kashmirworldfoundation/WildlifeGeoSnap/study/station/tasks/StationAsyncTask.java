@@ -13,7 +13,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
 import org.kashmirworldfoundation.WildlifeGeoSnap.study.study.StudyListFragment;
 
@@ -28,7 +28,7 @@ public class StationAsyncTask extends AsyncTask<String, Void, String> {
     private FirebaseAuth FireAuth;
 
     private ArrayList<Study> CStations= new ArrayList<>();
-    private Member member;
+    private UserData userData;
     private String Org;
     private static final String TAG = "StationAsyncTask";
     private int count;
@@ -96,8 +96,8 @@ public class StationAsyncTask extends AsyncTask<String, Void, String> {
         final ArrayList<String> twoMonthsStations=new ArrayList<>();
         final ArrayList<String> threeMonthsStations=new ArrayList<>();
 
-        member = Member.getInstance();
-        collectionReference.whereEqualTo("org", this.member.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        userData = UserData.getInstance();
+        collectionReference.whereEqualTo("org", this.userData.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()){
@@ -174,7 +174,7 @@ public class StationAsyncTask extends AsyncTask<String, Void, String> {
 
                             if (!paths.isEmpty()){
                                 for(Pair<String,String> stuff: paths){
-                                    new StationDeleteAsyncTask(stuff.first,stuff.second, StationAsyncTask.this.member).execute();
+                                    new StationDeleteAsyncTask(stuff.first,stuff.second, StationAsyncTask.this.userData).execute();
                                 }
 
                             }

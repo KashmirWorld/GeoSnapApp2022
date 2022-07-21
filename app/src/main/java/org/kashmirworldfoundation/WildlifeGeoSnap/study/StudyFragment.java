@@ -66,7 +66,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.CameraStation;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
 import org.kashmirworldfoundation.WildlifeGeoSnap.study.study.StudyListFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.DataTypeAdapter;
 
@@ -110,7 +110,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener{
     private Date currentTime;
     private ImageButton imgbtn1, imgbtn2;
     private Spinner SpinStudies;
-    private Member me;
+    private UserData me;
     private TextView  netStatus;
     private FirebaseFirestore db;
     private FirebaseStorage fStorage;
@@ -177,7 +177,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener{
             }
         });
 
-        Member member =Member.getInstance();
+        UserData userData = UserData.getInstance();
         /*
         String StudiesS = getActivity().getIntent().getStringExtra("Studies");
         StudyArray=new ArrayList<>(Arrays.asList(StudiesS.split(",")));

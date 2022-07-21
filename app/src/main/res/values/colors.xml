@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--- Colors for all screens -->
+    <color name="backgroundPrimary">#F1F0F5</color>
+
     <color name="colorPrimary">#3D4751</color>
     <color name="colorPrimaryDark">#797979</color>
     <color name="colorAccent">#D81B60</color>

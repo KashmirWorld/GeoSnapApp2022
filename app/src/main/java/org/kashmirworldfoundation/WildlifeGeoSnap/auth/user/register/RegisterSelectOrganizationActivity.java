@@ -1,8 +1,6 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,12 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Org;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
@@ -27,11 +21,6 @@ import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-
-import javax.annotation.Nullable;
 
 public class RegisterSelectOrganizationActivity extends Activity {
 
