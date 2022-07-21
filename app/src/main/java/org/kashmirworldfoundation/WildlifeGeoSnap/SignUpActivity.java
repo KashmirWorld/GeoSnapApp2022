@@ -61,6 +61,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         if (!myPassword.getText().equals(myConfPassword.getText())) {
+            myConfPassword.setError("The passwords in the text fields do not match.");
             noIssues = false;
         }
 
@@ -71,6 +72,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
+    // checks if the password is strong
     private boolean isStrong(String input) {
         // Checking lower alphabet in string
         int n = input.length();
