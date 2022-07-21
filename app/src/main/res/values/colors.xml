@@ -17,6 +17,12 @@
     <color name="rWhite">#FFFFFF</color>
     <color name="rDivider">#ECECEC</color>
 
+    <!-- v2022 colors -->
+    <color name = "black">#000000</color>
+    <color name = "white">#FFFFFF</color>
+    <color name = "kwf_gold">#F1B434</color>
+    <color name = "eco_green">#4A7A62</color>
+
     <!-- Mapbox colors -->
 
 
