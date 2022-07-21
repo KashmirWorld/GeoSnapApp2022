@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.User;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.SharedPreferenceUtil;
@@ -55,7 +56,7 @@ public class LoginHandler {
             if (task.isSuccessful()) {
                 UserData userData = task.getResult().toObject(UserData.class);
                 assert userData != null;
-                UserData.setInstance(userData);
+                User.loadInstance(fAuth.getUid(), userData);
                 Study.loadStudies(() -> {
                     activity.startActivity(new Intent(activity.getApplicationContext(), MainActivity.class));
                 });

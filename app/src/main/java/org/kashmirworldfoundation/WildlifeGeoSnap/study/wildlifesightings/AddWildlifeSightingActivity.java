@@ -78,7 +78,7 @@ public class AddWildlifeSightingActivity extends AppCompatActivity {
             }
         });
         //remember to check empty
-        Post.setOnClickListener(new View.OnClickListener() {
+      /**  Post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 WildlifeSighting wildlifeSighting = new WildlifeSighting();
@@ -112,7 +112,7 @@ public class AddWildlifeSightingActivity extends AppCompatActivity {
                 openGallery(0);
             }
         });
-
+       **/
 
     }
     private void openGallery(int PICK_IMAGE){

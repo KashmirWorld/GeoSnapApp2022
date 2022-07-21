@@ -61,7 +61,7 @@ public class CreateStudyActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
-        Post.setOnClickListener(new View.OnClickListener() {
+/**        Post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String title = TitleInput.getText().toString();
@@ -112,7 +112,7 @@ public class CreateStudyActivity extends AppCompatActivity {
                 i.putExtra("Study",study);
                 startActivity(i);
             }
-        });
+        });**/
 
         pickStartSateID.setOnClickListener(new View.OnClickListener() {
             @Override

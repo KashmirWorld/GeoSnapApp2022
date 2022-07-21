@@ -57,7 +57,7 @@ public class StationAsyncTaskA extends AsyncTask<String, Void, String> {
         }
 
         String string= "";
-        userData = UserData.getInstance();
+        /**userData = UserData.getInstance();
         collectionReference.whereEqualTo("org", userData.getOrg()).whereEqualTo("study",study).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -76,6 +76,7 @@ public class StationAsyncTaskA extends AsyncTask<String, Void, String> {
                 }
             }
         });
+         **/
         return null;
     }
 }

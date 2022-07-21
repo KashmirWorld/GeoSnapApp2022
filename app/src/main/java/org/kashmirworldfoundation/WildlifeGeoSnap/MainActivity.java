@@ -24,6 +24,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.FirebaseHandler;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.User;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
 import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.misc.permissions.PermissionManager;
@@ -142,8 +143,8 @@ public class MainActivity extends Activity implements NavigationView.OnNavigatio
         TextView navUserName = headerView.findViewById(R.id.NameHeader);
         ImageView navSerPhoto = headerView.findViewById(R.id.ProfilePicHeader);
 
-        UserData userData = UserData.getInstance();
-        navUserName.setText(userData.getFullname());
+        User userData = User.getInstance();
+        navUserName.setText(userData.getName());
         FirebaseHandler.loadImageIntoView(userData.getProfile(), navSerPhoto, this);
 
         navSerPhoto.setOnClickListener(view -> {

@@ -29,7 +29,7 @@ public class RegisterHandler {
     }
 
     private static void onSuccessRegister(String name, String email, Activity activity) {
-        Org.loadOrgIntoInstance(organization, country, (path) -> {
+        /**Org.loadOrgIntoInstance(organization, country, (path) -> {
             final UserData userData = new UserData(email, name, job, number, admin, path, "profile/kwflogo.jpg");
             Toast.makeText(activity, "User Created", Toast.LENGTH_SHORT).show();
             UserData.setInstance(userData);
@@ -37,7 +37,7 @@ public class RegisterHandler {
             Study.loadStudies(() -> {
                 activity.startActivity(new Intent(activity.getApplicationContext(), MainActivity.class));
             });
-        });
+        });**/
     }
 
     public static boolean validateRegisterData(EditText nameView, EditText emailView, EditText password1View, EditText password2View) {

@@ -96,7 +96,7 @@ public class StationAsyncTask extends AsyncTask<String, Void, String> {
         final ArrayList<String> twoMonthsStations=new ArrayList<>();
         final ArrayList<String> threeMonthsStations=new ArrayList<>();
 
-        userData = UserData.getInstance();
+   /**     userData = UserData.getInstance();
         collectionReference.whereEqualTo("org", this.userData.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -183,6 +183,7 @@ public class StationAsyncTask extends AsyncTask<String, Void, String> {
                 }
             }
         });
+    **/
         return null;
     }
 }

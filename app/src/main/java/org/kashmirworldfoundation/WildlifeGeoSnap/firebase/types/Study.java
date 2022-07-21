@@ -7,6 +7,7 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.User;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
 
 import java.util.ArrayList;
@@ -70,10 +71,10 @@ public class Study implements Parcelable {
 
     public static void loadStudies(final Utils.LambdaInterface onLoad){
         studies = new ArrayList<Study>();
-        UserData userData = UserData.getInstance();
+        User userData = User.getInstance();
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
 
-        fStore.collection("Study").whereEqualTo("org", userData.getOrg()).get().addOnCompleteListener(task -> {
+     /**   fStore.collection("Study").whereEqualTo("org", userData.getOrg()).get().addOnCompleteListener(task -> {
             if(task.isSuccessful()){
                 for (QueryDocumentSnapshot documentSnapshot: task.getResult()){
                     Study study = documentSnapshot.toObject(Study.class);
@@ -81,7 +82,7 @@ public class Study implements Parcelable {
                 }
             }
             onLoad.run();
-        });
+        });**/
     }
 
     public String getTitle() {

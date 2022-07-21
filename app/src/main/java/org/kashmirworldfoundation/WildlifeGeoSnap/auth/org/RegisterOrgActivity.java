@@ -19,7 +19,6 @@ import com.google.gson.Gson;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterOrgAdminActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
 
 
@@ -72,7 +71,7 @@ public class RegisterOrgActivity extends Activity implements AdapterView.OnItemS
         String phone = mPhone.getText().toString().trim();
         String country = spinner.getSelectedItem().toString().trim();
 
-        final Intent i = new Intent(getApplicationContext(), RegisterOrgAdminActivity.class);
+    /**    final Intent i = new Intent(getApplicationContext(), RegisterOrgAdminActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("Orgname", orgName);
         bundle.putString("Country", country);
@@ -85,7 +84,7 @@ public class RegisterOrgActivity extends Activity implements AdapterView.OnItemS
         }, () -> {
             Toast.makeText(RegisterOrgActivity.this, "This organization has already been registered.", Toast.LENGTH_LONG).show();
             recreate();
-        }, this);
+        }, this);**/
     }
 
     @Override

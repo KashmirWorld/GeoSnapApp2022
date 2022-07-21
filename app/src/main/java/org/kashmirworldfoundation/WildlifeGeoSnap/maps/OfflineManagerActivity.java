@@ -830,7 +830,7 @@ public class OfflineManagerActivity extends AppCompatActivity implements
 
     //download the marker from the same organization manager add, from firebase
     public void downloadMarker(){
-        db.collection("Member").document(fAuth.getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+      /**  db.collection("Member").document(fAuth.getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()){
@@ -863,7 +863,7 @@ public class OfflineManagerActivity extends AppCompatActivity implements
                     });
                 }
             }
-        });
+        });**/
 
 
     }

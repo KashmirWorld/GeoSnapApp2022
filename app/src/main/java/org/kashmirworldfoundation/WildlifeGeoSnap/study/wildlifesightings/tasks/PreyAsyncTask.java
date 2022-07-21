@@ -54,7 +54,7 @@ public class PreyAsyncTask extends AsyncTask<String, Void, String> {
             //Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
-
+/**
         mem= UserData.getInstance();
         collectionReference.whereEqualTo("org",mem.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -72,6 +72,7 @@ public class PreyAsyncTask extends AsyncTask<String, Void, String> {
                 }
             }
         });
+ **/
         return null;
     }
 }

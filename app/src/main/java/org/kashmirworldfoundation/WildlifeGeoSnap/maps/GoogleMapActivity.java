@@ -562,7 +562,7 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
     }
 
     public void downloadMarker(){
-        db.collection("Member").document(fAuth.getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+       /** db.collection("Member").document(fAuth.getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()){
@@ -590,7 +590,7 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
                     });
                 }
             }
-        });
+        });**/
 
     }
 

@@ -23,7 +23,7 @@ public class StationDeleteAsyncTask extends AsyncTask<String,Void,String> {
     }
     @Override
     protected String doInBackground(String... strings) {
-        try{
+     /**   try{
             FirebaseFirestore firestore=FirebaseFirestore.getInstance();
             firestore.document(path).delete();
             firestore.collection("CameraStation").whereEqualTo("org", userData.getOrg()).whereEqualTo("study",study).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -41,6 +41,7 @@ public class StationDeleteAsyncTask extends AsyncTask<String,Void,String> {
         catch (Error e){
 
         }
+      **/
         return null;
     }
 }
