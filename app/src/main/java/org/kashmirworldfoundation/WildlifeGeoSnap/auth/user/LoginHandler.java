@@ -11,6 +11,7 @@ import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.User;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
+import org.kashmirworldfoundation.WildlifeGeoSnap.projects.ProjectsActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.SharedPreferenceUtil;
 
 public class LoginHandler {
@@ -22,7 +23,6 @@ public class LoginHandler {
         // Trim the email and password
         String email = uemail.trim();
         String password = upassword.trim();
-
         /**
          * Try siging in with firebase
          */
@@ -48,19 +48,12 @@ public class LoginHandler {
 
         // Try to save the login data between sessions
         trySaveLoginData(email, password, loginPreferences);
-
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
-
-        fStore.document("Member/" + fAuth.getUid()).get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                UserData userData = task.getResult().toObject(UserData.class);
-                assert userData != null;
-                User.loadInstance(fAuth.getUid(), userData);
-                Study.loadStudies(() -> {
-                    activity.startActivity(new Intent(activity.getApplicationContext(), MainActivity.class));
-                });
-            }
+        User.loadUser(fAuth.getUid(), (user) -> {
+            User.loadInstance(user);
+            activity.startActivity(new Intent(activity.getApplicationContext(), ProjectsActivity.class));
+        }, () -> {
         });
     }
 

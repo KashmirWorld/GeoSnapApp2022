@@ -1,21 +1,12 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
-import org.kashmirworldfoundation.WildlifeGeoSnap.auth.TOSAgreementHandler;
-import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterHandler;
 import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
-
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 // this activity creates an account for the user
 public class RegisterActivity extends Activity {
@@ -31,27 +22,29 @@ public class RegisterActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initViews();
         setContentView(R.layout.activity_sign_up);
+        initViews();
     }
 
     @Override
     protected void initViews() {
         myName = findViewById(R.id.enter_name);
         myEmail = findViewById(R.id.enter_email);
-        myPassword = findViewById(R.id.enter_password);
+        myPassword = findViewById(R.id.projects_create_enter_name);
         myConfPassword = findViewById(R.id.enter_confirm_password);
     }
 
-    public void onClickSignUp(View v) {
-        Intent i = getIntent();
+    public void onClickRegister(View v) {
+        //Intent i = getIntent();
         if (!RegisterHandler.validateRegisterData(myName, myEmail, myPassword, myConfPassword)) {
             return;
         }
         Utils util = Utils.getInstance();
+        register();
+        /**
         TOSAgreementHandler.sendAgreementThen("Agreement needed to register", () -> {
             register();
-        }, this);
+        }, this);**/
     }
 
     private void register() {

@@ -124,7 +124,7 @@
             app:srcCompat="@drawable/ic_bxs_lock" />
 
         <EditText
-            android:id="@+id/enter_password"
+            android:id="@+id/projects_create_enter_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"

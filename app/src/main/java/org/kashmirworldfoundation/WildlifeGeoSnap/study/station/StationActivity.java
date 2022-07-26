@@ -493,7 +493,7 @@ public class StationActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onClick(View v) {
                 final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
-                        StationActivity.this, R.style.BottomSheetDialogTheme
+                        StationActivity.this, R.style.BottomSheetStyle
                 );
                 View bottomSheetView = LayoutInflater.from(getApplicationContext())
                         .inflate(
@@ -578,7 +578,7 @@ public class StationActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onClick(View v) {
                 final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
-                        StationActivity.this, R.style.BottomSheetDialogTheme
+                        StationActivity.this, R.style.BottomSheetStyle
                 );
                 View bottomSheetView = LayoutInflater.from(getApplicationContext())
                         .inflate(

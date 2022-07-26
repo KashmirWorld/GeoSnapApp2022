@@ -10,14 +10,14 @@ import com.google.firebase.storage.StorageReference;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.GlideApp;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.User;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Org;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.ProjectData;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
 
 public class FirebaseHandler {
 
     public static void resetSession(){
         User.resetInstance();
-        Org.setInstance(null);
+        //ProjectData.setInstance(null);
         Study.resetStudies();
     }
 

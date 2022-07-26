@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".projects.ProjectsActivity">
+
+    <ImageView
+        android:id="@+id/ic_purpose"
+        android:layout_width="350dp"
+        android:layout_height="473dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hello3"
+        app:srcCompat="@drawable/ic_inner_rectangle" />
+
+    <Button
+        android:id="@+id/projects_join"
+        android:layout_width="160dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/eco_green"
+        android:fontFamily="@font/poppins_semibold"
+        android:onClick="onClickJoin"
+        android:text="@string/projectsJoin"
+        app:cornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.436"
+        app:layout_constraintStart_toEndOf="@+id/projects_create"
+        app:layout_constraintTop_toBottomOf="@+id/ic_purpose" />
+
+    <Button
+        android:id="@+id/projects_create"
+        android:layout_width="160dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="@color/rWhite"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/projectsCreate"
+        android:onClick="onClickCreate"
+        android:textColor="@color/blackColor"
+        app:cornerRadius="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ic_purpose" />
+
+    <TextView
+        android:id="@+id/hello3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:text="Projects"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/projects_name" />
+
+    <ImageView
+        android:id="@+id/projects_profile_picture"
+        android:layout_width="46dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="44dp"
+        android:src="@drawable/ic_profile"
+        app:layout_constraintBottom_toTopOf="@+id/ic_purpose"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/welcome2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/projects_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="184dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="left"
+        android:text="Abimalek Mekuriya"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ic_purpose"
+        app:layout_constraintTop_toBottomOf="@+id/welcome2" />
+
+    <TextView
+        android:id="@+id/welcome2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:text="@string/projectsWelcome"
+        android:textColor="@color/eco_green"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SearchView
+        android:id="@+id/projects_search"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/projects_search_background"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ic_purpose" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/project_list_recycler_view"
+        android:layout_width="320dp"
+        android:layout_height="376dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ic_purpose"
+        app:layout_constraintEnd_toEndOf="@+id/ic_purpose"
+        app:layout_constraintStart_toStartOf="@+id/ic_purpose"
+        app:layout_constraintTop_toBottomOf="@+id/searchView2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

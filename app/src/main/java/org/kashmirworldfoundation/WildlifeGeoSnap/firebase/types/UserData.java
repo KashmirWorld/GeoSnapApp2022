@@ -28,4 +28,8 @@ public class UserData {
         this.projects = projects;
         this.pendingTransferRequests = pendingTransferRequests;
     }
+
+    public static UserData getDefaultUserData(String name, String email){
+        return new UserData(name, email, false, "kwflogo.jpg", new ArrayList<String>(), new ArrayList<UserPendingTransferRequest>());
+    }
 }

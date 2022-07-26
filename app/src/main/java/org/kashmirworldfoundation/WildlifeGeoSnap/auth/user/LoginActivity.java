@@ -1,8 +1,6 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap.auth.user;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -36,7 +34,7 @@ public class LoginActivity extends Activity {
     @Override
     protected void initViews() {
         myEmail = findViewById(R.id.enter_email);
-        myPassword = findViewById(R.id.enter_password);
+        myPassword = findViewById(R.id.projects_create_enter_name);
     }
 
     // sends the user to the forgot password activity

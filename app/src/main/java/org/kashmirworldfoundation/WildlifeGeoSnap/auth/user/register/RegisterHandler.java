@@ -2,16 +2,17 @@ package org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.AuthHandler;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Org;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.User;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
+import org.kashmirworldfoundation.WildlifeGeoSnap.projects.ProjectsActivity;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -29,15 +30,13 @@ public class RegisterHandler {
     }
 
     private static void onSuccessRegister(String name, String email, Activity activity) {
-        /**Org.loadOrgIntoInstance(organization, country, (path) -> {
-            final UserData userData = new UserData(email, name, job, number, admin, path, "profile/kwflogo.jpg");
-            Toast.makeText(activity, "User Created", Toast.LENGTH_SHORT).show();
-            UserData.setInstance(userData);
-            userData.save(null);
-            Study.loadStudies(() -> {
-                activity.startActivity(new Intent(activity.getApplicationContext(), MainActivity.class));
-            });
-        });**/
+        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        User user = new User(fAuth.getUid(), UserData.getDefaultUserData(name, email));
+        user.save(() -> {
+            User.loadInstance(user);
+            activity.startActivity(new Intent(activity.getApplicationContext(), ProjectsActivity.class));
+        });
     }
 
     public static boolean validateRegisterData(EditText nameView, EditText emailView, EditText password1View, EditText password2View) {

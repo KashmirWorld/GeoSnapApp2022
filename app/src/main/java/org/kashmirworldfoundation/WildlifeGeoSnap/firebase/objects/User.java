@@ -1,17 +1,24 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects;
 
+import android.content.Intent;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserPendingTransferRequest;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class User {
 
     private static final String COLLECTION_USER = "User";
+    public interface onUserLoadSuccess { void loadSuccess(User user);}
 
     private static User instance;
 
@@ -29,6 +36,10 @@ public class User {
 
     public static void loadInstance(String uuid, UserData data){
         instance = new User(uuid, data);
+    }
+
+    public static void loadInstance(User user){
+        instance = user;
     }
 
     public static void resetInstance(){
@@ -72,7 +83,7 @@ public class User {
     }
 
     public String getProfile() {
-        return "profiles/" + data.profile;
+        return data.profile;
     }
 
     public void setProfile(String profile) {
@@ -113,7 +124,20 @@ public class User {
                 return;
             }
         }
+    }
 
+    public static void loadUser(String uuid, final onUserLoadSuccess onSuccess, final Utils.LambdaInterface onFail){
+        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+        fStore.collection(COLLECTION_USER).document(uuid).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                UserData userData = task.getResult().toObject(UserData.class);
+                assert userData != null;
+                User user = new User(uuid, userData);
+                onSuccess.loadSuccess(user);
+            }else{
+                onFail.run();
+            }
+        });
     }
 
     public void save(Utils.LambdaInterface onSave) {

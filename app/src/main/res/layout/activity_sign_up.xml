@@ -12,6 +12,7 @@
         android:layout_height="66dp"
         android:layout_marginTop="30dp"
         android:backgroundTint="@color/eco_green"
+        android:onClick="onClickRegister"
         android:text="@string/sign_up_intent"
         app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="@+id/confirm_password_outline"
@@ -161,7 +162,7 @@
             app:srcCompat="@drawable/ic_bxs_lock" />
 
         <EditText
-            android:id="@+id/enter_password"
+            android:id="@+id/projects_create_enter_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -226,7 +227,7 @@
         android:id="@+id/geo_snap_logo"
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="@+id/sign_up"
         app:layout_constraintStart_toStartOf="@+id/sign_up"
         app:layout_constraintTop_toBottomOf="@+id/sign_up"

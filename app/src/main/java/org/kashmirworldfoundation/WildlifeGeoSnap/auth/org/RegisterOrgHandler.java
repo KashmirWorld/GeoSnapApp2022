@@ -8,35 +8,25 @@ import android.widget.Toast;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.AuthHandler;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Org;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.ProjectData;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
 
 public class RegisterOrgHandler {
 
     public static void register(String name, String email, String website, String number, String country, final Utils.LambdaInterface success, final Utils.LambdaInterface fail, Activity activity) {
-
-        Org org = new Org(name, email, website, number, country);
+/**
+        ProjectData projectData = new ProjectData(name, email, website, number, country);
 
         FirebaseFirestore.getInstance().collection("Organization").whereEqualTo("orgName", name).whereEqualTo("orgCountry", country).get().addOnCompleteListener(task -> {
             if (task.isSuccessful() && task.getResult().isEmpty()) {
                 if (task.getResult().isEmpty()) {
-                    createOrganization(org, success, fail);
+                    createOrganization(projectData, success, fail);
                 } else {
                     Toast.makeText(activity, "This organization has already been registered.", Toast.LENGTH_LONG).show();
                     activity.recreate();
                 }
             }
-        });
-    }
-
-    private static void createOrganization(Org org, final Utils.LambdaInterface success, final Utils.LambdaInterface fail) {
-        FirebaseFirestore.getInstance().collection("Organization").add(org).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                success.run();
-            } else {
-                fail.run();
-            }
-        });
+        });**/
     }
 
     public static boolean validateRegisterData(EditText nameView, EditText emailView, EditText websiteView, EditText numberView, Spinner countryView, Activity activity) {
