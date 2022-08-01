@@ -1,13 +1,20 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap.auth.user;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.AuthHandler;
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.SharedPreferenceUtil;
 
@@ -18,6 +25,15 @@ public class LoginActivity extends Activity {
     // maps the EditTexts to variables
     private EditText myEmail;
     private EditText myPassword;
+
+    // variables for forgot password pop up window
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
+    private EditText email_address;
+    private ImageButton back;
+    private Button submit;
+
+    FirebaseAuth fAuth;
 
     // this activity logs the user into the app, so they can access the dashboard
     @Override
@@ -31,6 +47,8 @@ public class LoginActivity extends Activity {
         sharedPreference = new SharedPreferenceUtil(this);
         myEmail.setText(sharedPreference.getValue(  "email"));
         myPassword.setText(sharedPreference.getValue("password"));
+
+        fAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -41,8 +59,7 @@ public class LoginActivity extends Activity {
 
     // sends the user to the forgot password activity
     public void onClickForgotPassword(View view) {
-        Intent forgotPassword = new Intent(getApplicationContext(), ForgetPasswordActivity.class);
-        startActivity(forgotPassword);
+        forgotPasswordDialog();
     }
 
     // sends the user to the dashboard (if successful)
@@ -52,8 +69,42 @@ public class LoginActivity extends Activity {
     }
 
     private void login(String email, String password) {
-        // Does all the required steps for loggin in and interacts with the database
+        // Does all the required steps for logging in and interacts with the database
         LoginHandler.login(email, password, sharedPreference, this);
     }
 
+    public void onClickSignUp(View view) {
+        Intent signUp = new Intent(getApplicationContext(), RegisterActivity.class);
+        startActivity(signUp);
+    }
+
+    // forget password
+
+    public void forgotPasswordDialog(){
+        // creates the forgot password dialog
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View forgotPasswordView =
+                getLayoutInflater().inflate(R.layout.activity_forget_password, null);
+        email_address = (EditText) forgotPasswordView.findViewById(R.id.EmailRecoveryInput);
+
+        back = (ImageButton) forgotPasswordView.findViewById(R.id.ForgetPassBack);
+        submit = (Button) forgotPasswordView.findViewById(R.id.RecoverySubmit);
+
+        dialogBuilder.setView(forgotPasswordView);
+        dialog = dialogBuilder.create();
+        dialog.show();
+    }
+
+    public void onClickSubmit(View view) {
+        final String email = email_address.getText().toString().trim();
+        if (!AuthHandler.validateEmail(email)) {
+            email_address.setError("Invalid email.");
+        } else {
+            fAuth.sendPasswordResetEmail(email_address.getText().toString().trim());
+        }
+    }
+
+    public void onClickBack(View view) {
+        dialog.dismiss();
+    }
 }

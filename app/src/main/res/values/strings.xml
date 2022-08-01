@@ -30,6 +30,9 @@
     <string name="sign_up_intent">Register</string>
     <string name="login_intent">Sign In</string>
 
+    <!-- Strings used in the Forgot Password Activity-->
+    <string name="recover_password">Enter the email address associated with your account. An email will be sent with instructions to recover your password.</string>
+    <string name="submit">SUBMIT</string>
 
     <string-array name="Countries">
 

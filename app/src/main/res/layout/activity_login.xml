@@ -10,9 +10,9 @@
         android:id="@+id/login"
         android:layout_width="0dp"
         android:layout_height="66dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="@color/eco_green"
-        android:fontFamily="@font/poppins_bold"
+        android:fontFamily="@font/lato_bold"
         android:onClick="onClickLoginUser"
         android:text="@string/login_intent"
         app:cornerRadius="12dp"
@@ -27,7 +27,7 @@
         android:id="@+id/hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_semibold"
+        android:fontFamily="@font/lato_bold"
         android:gravity="center"
         android:text="@string/hello_again"
         android:textColor="@color/black"
@@ -41,10 +41,11 @@
 
     <TextView
         android:id="@+id/welcome"
-        android:layout_width="371dp"
-        android:layout_height="114dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/poppins"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/lato"
         android:gravity="center"
         android:text="@string/welcome_back"
         android:textColor="@color/eco_green"
@@ -105,7 +106,7 @@
         android:layout_height="48dp"
         android:layout_centerInParent="true"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/border_textbox"
         app:layout_constraintEnd_toEndOf="parent"
@@ -155,40 +156,22 @@
         android:textColorLink="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/password_outline"
-        app:layout_constraintTop_toBottomOf="@+id/password_outline" />
-
-    <ImageView
-        android:id="@+id/geo_snap_logo"
-        android:layout_width="168dp"
-        android:layout_height="161dp"
-        android:layout_marginTop="40dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_group_23" />
+        app:layout_constraintTop_toBottomOf="@+id/password_outline"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/no_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/lato"
         android:text="@string/no_account"
         android:textColor="@color/black"
         android:textColorHighlight="@color/black"
         android:textColorLink="@color/black"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.193"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/geo_snap_logo"
-        app:layout_constraintVertical_bias="0.135" />
+        app:layout_constraintStart_toStartOf="@+id/login"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <TextView
         android:id="@+id/sign_up"
@@ -204,5 +187,15 @@
         app:layout_constraintStart_toEndOf="@+id/no_account"
         app:layout_constraintTop_toTopOf="@+id/no_account"
         android:onClick="onClickSignUp"/>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/login"
+        app:layout_constraintStart_toStartOf="@+id/login"
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

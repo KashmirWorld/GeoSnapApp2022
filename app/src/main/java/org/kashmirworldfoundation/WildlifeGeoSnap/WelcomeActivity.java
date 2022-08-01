@@ -1,13 +1,13 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterActivity;
-
 
 // this activity directs the user to either the sign up or login activities
 // it's the first thing the user sees when opening the app

@@ -1,14 +1,17 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.TOSAgreementHandler;
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterHandler;
 import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
@@ -67,7 +70,10 @@ public class RegisterActivity extends Activity {
          startActivity(verifyEmail);
          }**/
     }
-
+    public void onClickLogin(View view) {
+        Intent login = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(login);
+    }
 }
 
 
