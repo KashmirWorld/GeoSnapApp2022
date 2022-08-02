@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/project_create_ov"
+    android:id="@+id/project_join_overlay"
     android:layout_width="match_parent"
     android:layout_height="820dp"
     android:layout_gravity="bottom"
@@ -14,15 +14,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="132dp"
+        android:layout_marginEnd="140dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
-        android:text="Create A Project"
+        android:text="Join a Project"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.29"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -32,7 +31,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
-        android:text="@string/projectsCreateDescription"
+        android:text="@string/projectsJoinDescription"
         android:textColor="@color/half_black"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,14 +64,14 @@
             app:srcCompat="@drawable/ic_baseline_text_rotation_none_24" />
 
         <EditText
-            android:id="@+id/projects_create_enter_name"
+            android:id="@+id/projects_join_enter_code"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="20dp"
             android:background="@null"
             android:fontFamily="@font/lato"
-            android:hint="Project Name"
+            android:hint="Join Code"
             android:minHeight="48dp"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -97,7 +96,7 @@
         app:layout_constraintTop_toBottomOf="@+id/hello2" />
 
     <TextView
-        android:id="@+id/project_create_cancel"
+        android:id="@+id/project_join_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -111,7 +110,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/project_create_submit_top"
+        android:id="@+id/project_join_submit_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
@@ -123,14 +122,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/project_create_button"
+        android:id="@+id/project_join_button"
         android:layout_width="333dp"
         android:layout_height="60dp"
         android:layout_marginTop="48dp"
         android:backgroundTint="@color/eco_green"
         android:onClick="onClickRegister"
         android:textAllCaps="false"
-        android:text="Create"
+        android:text="Join"
         app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

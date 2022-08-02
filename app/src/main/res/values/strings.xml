@@ -29,6 +29,7 @@
     <string name="projectsCreate">Create</string>
     <string name="projectsJoin">Join</string>
     <string name="projectsCreateDescription">Manage multiple studies and your research team</string>
+    <string name="projectsJoinDescription">Already a part of a team? Join a project!</string>
 
     <!-- Strings used in the Welcome Activity-->
     <string name="purpose_title">Simplifying Wildlife Research</string>

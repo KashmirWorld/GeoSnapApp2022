@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -23,6 +22,8 @@ import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.FirebaseHandler;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.Project;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.User;
 import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.projects.overlays.ProjectCreateOverlay;
+import org.kashmirworldfoundation.WildlifeGeoSnap.projects.overlays.ProjectJoinOverlay;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +56,8 @@ public class ProjectsActivity extends Activity {
         searchView = findViewById(R.id.projects_search);
     }
 
+
+    // initSearchViews initializes the search view for searching the listed Projects.
     private void initSearchView(){
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -70,50 +73,16 @@ public class ProjectsActivity extends Activity {
         });
     }
 
+    // onClickCreate handles the clicking of the Create button, creating a BottomSheet and displaying it
     public void onClickCreate(View v){
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this, R.style.BottomSheetStyle);
-        bottomSheetDialog.setContentView(R.layout.project_create_overlay);
-        bottomSheetDialog.setCanceledOnTouchOutside(true);
-        bottomSheetDialog.getBehavior().setState(BottomSheetBehavior.STATE_EXPANDED);
-        EditText projectName = bottomSheetDialog.findViewById(R.id.projects_create_enter_name);
-        TextView cancel = bottomSheetDialog.findViewById(R.id.project_create_cancel);
-        TextView submit = bottomSheetDialog.findViewById(R.id.project_create_submit_top);
-        Button create = bottomSheetDialog.findViewById(R.id.project_create_button);
-
-        assert submit != null;
-        submit.setOnClickListener(text -> {
-            onSubmit(bottomSheetDialog, projectName);
-        });
-        create.setOnClickListener(text ->{
-            onSubmit(bottomSheetDialog, projectName);
-        });
-        cancel.setOnClickListener(text -> {
-            bottomSheetDialog.cancel();
-        });
-        bottomSheetDialog.setOnShowListener(dialog -> {
-
-        });
-        bottomSheetDialog.show();
+        ProjectCreateOverlay overlay = new ProjectCreateOverlay(this);
+        overlay.show();
     }
 
-    public void onSubmit(BottomSheetDialog dialog, EditText view){
-        String projectName = view.getText().toString().trim();
-        if (projectName.isEmpty()){
-            view.setError("Project name is required.");
-            return;
-        }
-        Project.createProject(projectName, User.getInstance().getUuid(), project -> {
-            addProject(project);
-            User.getInstance().addProject(project.getUuid());
-            dialog.dismiss();
-        }, () -> {
-            Toast.makeText(this, "Error creating project", Toast.LENGTH_SHORT).show();
-            dialog.dismiss();
-        });
-    }
 
     public void onClickJoin(View v){
-
+        ProjectJoinOverlay overlay = new ProjectJoinOverlay(this);
+        overlay.show();
     }
 
     private void loadViewData(){
@@ -130,6 +99,7 @@ public class ProjectsActivity extends Activity {
         loadProjects();
     }
 
+    // loadProjects loads every project onto the Recycle View Adapater to be displayed to the user
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void loadProjects(){
         for (String projectUuid : User.getInstance().getProjects()){
@@ -146,11 +116,13 @@ public class ProjectsActivity extends Activity {
         }
     }
 
-    private void addProject(Project project){
+    // addProject adds a project to the adapter and updates the recycle view
+    public void addProject(Project project){
         projectModels.add(0,ProjectModel.fromProject(project));
         adapter.notifyItemInserted(0);
     }
 
+    // filterList filters the adapter from the SearchView text
     private void filterList(String text){
         ArrayList<ProjectModel> filterdList = new ArrayList<>();
         for(ProjectModel model: projectModels){
