@@ -1,0 +1,630 @@
+Index: app/src/main/res/layout/project_create_overlay.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/project_create_ov\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"850dp\"\r\n    android:layout_gravity=\"bottom\"\r\n    android:background=\"@drawable/overlaybackground\"\r\n    >\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageView3\"\r\n        android:layout_width=\"64dp\"\r\n        android:layout_height=\"34dp\"\r\n        android:layout_marginStart=\"108dp\"\r\n        android:layout_marginEnd=\"172dp\"\r\n        android:rotation=\"-90\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.892\"\r\n        app:layout_constraintStart_toEndOf=\"@+id/project_list_row_name\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.007\"\r\n        app:srcCompat=\"@drawable/ic_arrow\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/hello2\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"80dp\"\r\n        android:layout_marginEnd=\"120dp\"\r\n        android:fontFamily=\"@font/poppins_semibold\"\r\n        android:gravity=\"center\"\r\n        android:text=\"Create A Project\"\r\n        android:textColor=\"@color/black\"\r\n        android:textSize=\"18sp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.29\"\r\n        app:layout_constraintStart_toEndOf=\"@+id/textView6\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/studies_desc\"\r\n        android:layout_width=\"282dp\"\r\n        android:layout_height=\"44dp\"\r\n        android:layout_marginTop=\"20dp\"\r\n        android:fontFamily=\"@font/poppins_semibold\"\r\n        android:gravity=\"center\"\r\n        android:text=\"@string/projectsCreateDescription\"\r\n        android:textColor=\"@color/half_black\"\r\n        android:textSize=\"16dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.496\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/studies_title\" />\r\n\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:id=\"@+id/projects_create_outline\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"48dp\"\r\n        android:layout_centerInParent=\"true\"\r\n        android:layout_marginStart=\"40dp\"\r\n        android:layout_marginTop=\"136dp\"\r\n        android:layout_marginEnd=\"40dp\"\r\n        android:background=\"@drawable/border_textbox\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/studies_desc\">\r\n\r\n        <ImageView\r\n            android:id=\"@+id/ic_password\"\r\n            android:layout_width=\"30dp\"\r\n            android:layout_height=\"30dp\"\r\n            android:layout_marginStart=\"20dp\"\r\n            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\"\r\n            app:srcCompat=\"@drawable/ic_baseline_text_rotation_none_24\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/projects_create_enter_name\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginStart=\"10dp\"\r\n            android:layout_marginEnd=\"20dp\"\r\n            android:background=\"@null\"\r\n            android:fontFamily=\"@font/lato\"\r\n            android:hint=\"Project Name\"\r\n            android:minHeight=\"48dp\"\r\n            android:textSize=\"14sp\"\r\n            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintStart_toEndOf=\"@+id/ic_password\"\r\n            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n    <TextView\r\n        android:id=\"@+id/studies_title\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"84dp\"\r\n        android:fontFamily=\"@font/poppins_semibold\"\r\n        android:gravity=\"center\"\r\n        android:text=\"Projects\"\r\n        android:textColor=\"@color/black\"\r\n        android:textSize=\"28dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/hello2\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/project_create_cancel\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"28dp\"\r\n        android:layout_marginTop=\"80dp\"\r\n        android:fontFamily=\"@font/poppins\"\r\n        android:text=\"Cancel\"\r\n        android:textColor=\"@color/eco_green\"\r\n        app:layout_constraintEnd_toStartOf=\"@+id/hello2\"\r\n        app:layout_constraintHorizontal_bias=\"0.166\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/project_create_submit_top\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"48dp\"\r\n        android:layout_marginTop=\"84dp\"\r\n        android:fontFamily=\"@font/poppins_bold\"\r\n        android:text=\"Submit\"\r\n        android:textColor=\"@color/eco_green\"\r\n        app:layout_constraintStart_toEndOf=\"@+id/hello2\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/studies_create_button\"\r\n        android:layout_width=\"333dp\"\r\n        android:layout_height=\"60dp\"\r\n        android:layout_marginTop=\"48dp\"\r\n        android:backgroundTint=\"@color/eco_green\"\r\n        android:onClick=\"onClickRegister\"\r\n        android:textAllCaps=\"false\"\r\n        android:text=\"Create\"\r\n        app:cornerRadius=\"12dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/projects_create_outline\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/project_create_overlay.xml b/app/src/main/res/layout/project_create_overlay.xml
+--- a/app/src/main/res/layout/project_create_overlay.xml	(revision 3258339bf2d593c5c692dbc2c760acb83e895c03)
++++ b/app/src/main/res/layout/project_create_overlay.xml	(date 1659456074602)
+@@ -4,32 +4,17 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:id="@+id/project_create_ov"
+     android:layout_width="match_parent"
+-    android:layout_height="850dp"
++    android:layout_height="820dp"
+     android:layout_gravity="bottom"
+     android:background="@drawable/overlaybackground"
+     >
+ 
+-    <ImageView
+-        android:id="@+id/imageView3"
+-        android:layout_width="64dp"
+-        android:layout_height="34dp"
+-        android:layout_marginStart="108dp"
+-        android:layout_marginEnd="172dp"
+-        android:rotation="-90"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.892"
+-        app:layout_constraintStart_toEndOf="@+id/project_list_row_name"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.007"
+-        app:srcCompat="@drawable/ic_arrow" />
+-
+     <TextView
+         android:id="@+id/hello2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginTop="80dp"
+-        android:layout_marginEnd="120dp"
++        android:layout_marginTop="32dp"
++        android:layout_marginEnd="132dp"
+         android:fontFamily="@font/poppins_semibold"
+         android:gravity="center"
+         android:text="Create A Project"
+@@ -61,11 +46,11 @@
+         android:layout_height="48dp"
+         android:layout_centerInParent="true"
+         android:layout_marginStart="40dp"
+-        android:layout_marginTop="136dp"
++        android:layout_marginTop="84dp"
+         android:layout_marginEnd="40dp"
+         android:background="@drawable/border_textbox"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintHorizontal_bias="1.0"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/studies_desc">
+ 
+@@ -101,7 +86,7 @@
+         android:id="@+id/studies_title"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginTop="84dp"
++        android:layout_marginTop="36dp"
+         android:fontFamily="@font/poppins_semibold"
+         android:gravity="center"
+         android:text="Projects"
+@@ -116,7 +101,7 @@
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="28dp"
+-        android:layout_marginTop="80dp"
++        android:layout_marginTop="32dp"
+         android:fontFamily="@font/poppins"
+         android:text="Cancel"
+         android:textColor="@color/eco_green"
+@@ -129,8 +114,8 @@
+         android:id="@+id/project_create_submit_top"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginStart="48dp"
+-        android:layout_marginTop="84dp"
++        android:layout_marginStart="44dp"
++        android:layout_marginTop="36dp"
+         android:fontFamily="@font/poppins_bold"
+         android:text="Submit"
+         android:textColor="@color/eco_green"
+Index: app/src/main/res/layout/create_study_overlay.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/project_create_ov\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"850dp\"\r\n    android:layout_gravity=\"bottom\"\r\n    android:background=\"@drawable/overlaybackground\"\r\n    >\r\n\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:id=\"@+id/studies_desc_outline\"\r\n        android:layout_width=\"350dp\"\r\n        android:layout_height=\"187dp\"\r\n        android:layout_centerInParent=\"true\"\r\n        android:layout_marginStart=\"40dp\"\r\n        android:layout_marginEnd=\"40dp\"\r\n        android:background=\"@drawable/border_textbox\"\r\n        android:backgroundTint=\"#F0FFF9\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.473\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/hello2\"\r\n        app:layout_constraintVertical_bias=\"0.592\">\r\n\r\n        <EditText\r\n            android:id=\"@+id/studies_create_desc\"\r\n            android:layout_width=\"313dp\"\r\n            android:layout_height=\"163dp\"\r\n            android:background=\"@null\"\r\n            android:fontFamily=\"@font/lato\"\r\n            android:gravity=\"top\"\r\n            android:hint=\"Description\"\r\n            android:inputType=\"textMultiLine\"\r\n            android:minHeight=\"48dp\"\r\n            android:textSize=\"17sp\"\r\n            tools:layout_editor_absoluteX=\"16dp\"\r\n            tools:layout_editor_absoluteY=\"12dp\" />\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageView3\"\r\n        android:layout_width=\"64dp\"\r\n        android:layout_height=\"34dp\"\r\n        android:layout_marginStart=\"108dp\"\r\n        android:layout_marginEnd=\"172dp\"\r\n        android:rotation=\"-90\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.892\"\r\n        app:layout_constraintStart_toEndOf=\"@+id/project_list_row_name\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.007\"\r\n        app:srcCompat=\"@drawable/ic_arrow\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/hello2\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"80dp\"\r\n        android:layout_marginEnd=\"120dp\"\r\n        android:fontFamily=\"@font/poppins_semibold\"\r\n        android:gravity=\"center\"\r\n        android:text=\"Create A Study\"\r\n        android:textColor=\"@color/black\"\r\n        android:textSize=\"18sp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.29\"\r\n        app:layout_constraintStart_toEndOf=\"@+id/textView6\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/studies_desc\"\r\n        android:layout_width=\"335dp\"\r\n        android:layout_height=\"61dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:fontFamily=\"@font/poppins_semibold\"\r\n        android:gravity=\"center\"\r\n        android:text=\"Create and track multiple camera stations and wildlife sightings\"\r\n        android:textColor=\"@color/half_black\"\r\n        android:textSize=\"16dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.605\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/studies_title\" />\r\n\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:id=\"@+id/studies_name_outline\"\r\n        android:layout_width=\"356dp\"\r\n        android:layout_height=\"58dp\"\r\n        android:layout_centerInParent=\"true\"\r\n        android:layout_marginStart=\"40dp\"\r\n        android:layout_marginEnd=\"40dp\"\r\n        android:background=\"@drawable/border_textbox\"\r\n        android:backgroundTint=\"#F0FFF9\"\r\n        android:outlineProvider=\"none\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.526\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/hello2\"\r\n        app:layout_constraintVertical_bias=\"0.352\">\r\n\r\n        <EditText\r\n            android:id=\"@+id/studies_create_name\"\r\n            android:layout_width=\"319dp\"\r\n            android:layout_height=\"51dp\"\r\n            android:autoText=\"false\"\r\n            android:background=\"@null\"\r\n            android:fontFamily=\"@font/lato\"\r\n            android:hint=\"Study Name\"\r\n            android:minHeight=\"48dp\"\r\n            android:textSize=\"17sp\"\r\n            tools:layout_editor_absoluteX=\"16dp\"\r\n            tools:layout_editor_absoluteY=\"5dp\" />\r\n\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n    <TextView\r\n        android:id=\"@+id/studies_title\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"88dp\"\r\n        android:fontFamily=\"@font/poppins_semibold\"\r\n        android:gravity=\"center\"\r\n        android:text=\"Studies\"\r\n        android:textColor=\"@color/black\"\r\n        android:textSize=\"28dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/hello2\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/project_create_cancel\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"28dp\"\r\n        android:layout_marginTop=\"80dp\"\r\n        android:fontFamily=\"@font/poppins\"\r\n        android:text=\"Cancel\"\r\n        android:textColor=\"@color/eco_green\"\r\n        app:layout_constraintEnd_toStartOf=\"@+id/hello2\"\r\n        app:layout_constraintHorizontal_bias=\"0.166\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/project_create_submit_top\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"48dp\"\r\n        android:layout_marginTop=\"84dp\"\r\n        android:fontFamily=\"@font/poppins_bold\"\r\n        android:text=\"Submit\"\r\n        android:textColor=\"@color/eco_green\"\r\n        app:layout_constraintStart_toEndOf=\"@+id/hello2\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/studies_create_button\"\r\n        android:layout_width=\"333dp\"\r\n        android:layout_height=\"60dp\"\r\n        android:layout_marginTop=\"192dp\"\r\n        android:backgroundTint=\"@color/eco_green\"\r\n        android:onClick=\"onClickRegister\"\r\n        android:text=\"Create\"\r\n        android:textAllCaps=\"false\"\r\n        app:cornerRadius=\"12dp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.487\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/projects_create_outline\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/create_study_overlay.xml b/app/src/main/res/layout/create_study_overlay.xml
+--- a/app/src/main/res/layout/create_study_overlay.xml	(revision 3258339bf2d593c5c692dbc2c760acb83e895c03)
++++ b/app/src/main/res/layout/create_study_overlay.xml	(date 1659468067640)
+@@ -36,8 +36,10 @@
+             android:inputType="textMultiLine"
+             android:minHeight="48dp"
+             android:textSize="17sp"
+-            tools:layout_editor_absoluteX="16dp"
+-            tools:layout_editor_absoluteY="12dp" />
++            app:layout_constraintBottom_toBottomOf="parent"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toTopOf="parent" />
+     </androidx.constraintlayout.widget.ConstraintLayout>
+ 
+     <ImageView
+@@ -113,8 +115,10 @@
+             android:hint="Study Name"
+             android:minHeight="48dp"
+             android:textSize="17sp"
+-            tools:layout_editor_absoluteX="16dp"
+-            tools:layout_editor_absoluteY="5dp" />
++            app:layout_constraintBottom_toBottomOf="parent"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toTopOf="parent" />
+ 
+     </androidx.constraintlayout.widget.ConstraintLayout>
+ 
+Index: app/src/main/java/org/kashmirworldfoundation/WildlifeGeoSnap/projects/overlays/ProjectJoinOverlay.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/org/kashmirworldfoundation/WildlifeGeoSnap/projects/overlays/ProjectJoinOverlay.java b/app/src/main/java/org/kashmirworldfoundation/WildlifeGeoSnap/projects/overlays/ProjectJoinOverlay.java
+new file mode 100644
+--- /dev/null	(date 1659456074587)
++++ b/app/src/main/java/org/kashmirworldfoundation/WildlifeGeoSnap/projects/overlays/ProjectJoinOverlay.java	(date 1659456074587)
+@@ -0,0 +1,66 @@
++package org.kashmirworldfoundation.WildlifeGeoSnap.projects.overlays;
++
++import android.app.Activity;
++import android.widget.Button;
++import android.widget.EditText;
++import android.widget.TextView;
++import android.widget.Toast;
++
++import com.google.android.material.bottomsheet.BottomSheetBehavior;
++import com.google.android.material.bottomsheet.BottomSheetDialog;
++
++import org.kashmirworldfoundation.WildlifeGeoSnap.R;
++import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.Project;
++import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.User;
++import org.kashmirworldfoundation.WildlifeGeoSnap.projects.ProjectsActivity;
++
++public class ProjectJoinOverlay extends BottomSheetDialog {
++
++    private ProjectsActivity activity;
++
++    private EditText codeView;
++    private TextView cancelView, submitView;
++    private Button joinView;
++
++    public ProjectJoinOverlay(ProjectsActivity activity) {
++        super(activity, R.style.BottomSheetStyle);
++        this.activity = activity;
++        this.setContentView(R.layout.project_join_overlay);
++        this.setCanceledOnTouchOutside(true);
++        this.getBehavior().setState(BottomSheetBehavior.STATE_EXPANDED);
++        // initialize the views
++        initViews();
++        initListeners();
++    }
++
++    public void initViews() {
++        codeView = findViewById(R.id.projects_join_enter_code);
++        cancelView = findViewById(R.id.project_join_cancel);
++        submitView = findViewById(R.id.project_join_submit_top);
++        joinView = findViewById(R.id.project_join_button);
++    }
++
++    public void initListeners() {
++        submitView.setOnClickListener(text -> {
++            onJoin();
++        });
++        joinView.setOnClickListener(text ->{
++            onJoin();
++        });
++        cancelView.setOnClickListener(text -> {
++            this.cancel();
++        });
++    }
++
++    // onJoin handles the submition of the BottomSheetDialog for creating a project. Handles clicks
++    // for both Submit and Create views.
++    public void onJoin(){
++        String code = codeView.getText().toString().trim();
++        if (code.isEmpty()){
++            codeView.setError("Join code is required.");
++            return;
++        }
++        //TODO: Implement join behaviour
++        this.dismiss();
++    }
++}
+Index: app/src/main/java/org/kashmirworldfoundation/WildlifeGeoSnap/projects/overlays/ProjectCreateOverlay.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/org/kashmirworldfoundation/WildlifeGeoSnap/projects/overlays/ProjectCreateOverlay.java b/app/src/main/java/org/kashmirworldfoundation/WildlifeGeoSnap/projects/overlays/ProjectCreateOverlay.java
+new file mode 100644
+--- /dev/null	(date 1659456074586)
++++ b/app/src/main/java/org/kashmirworldfoundation/WildlifeGeoSnap/projects/overlays/ProjectCreateOverlay.java	(date 1659456074586)
+@@ -0,0 +1,72 @@
++package org.kashmirworldfoundation.WildlifeGeoSnap.projects.overlays;
++
++import android.app.Activity;
++import android.widget.Button;
++import android.widget.EditText;
++import android.widget.TextView;
++import android.widget.Toast;
++
++import com.google.android.material.bottomsheet.BottomSheetBehavior;
++import com.google.android.material.bottomsheet.BottomSheetDialog;
++
++import org.kashmirworldfoundation.WildlifeGeoSnap.R;
++import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.Project;
++import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.User;
++import org.kashmirworldfoundation.WildlifeGeoSnap.projects.ProjectsActivity;
++
++public class ProjectCreateOverlay extends BottomSheetDialog {
++
++    private ProjectsActivity activity;
++
++    private EditText nameView;
++    private TextView cancelView, submitView;
++    private Button createView;
++
++    public ProjectCreateOverlay(ProjectsActivity activity) {
++        super(activity, R.style.BottomSheetStyle);
++        this.activity = activity;
++        this.setContentView(R.layout.project_create_overlay);
++        this.setCanceledOnTouchOutside(true);
++        this.getBehavior().setState(BottomSheetBehavior.STATE_EXPANDED);
++        // initialize the views
++        initViews();
++        initListeners();
++    }
++
++    public void initViews() {
++        nameView = findViewById(R.id.projects_create_enter_name);
++        cancelView = findViewById(R.id.project_create_cancel);
++        submitView = findViewById(R.id.project_create_submit_top);
++        createView = findViewById(R.id.project_create_button);
++    }
++
++    public void initListeners() {
++        submitView.setOnClickListener(text -> {
++            onSubmit();
++        });
++        createView.setOnClickListener(text ->{
++            onSubmit();
++        });
++        cancelView.setOnClickListener(text -> {
++            this.cancel();
++        });
++    }
++
++    // onSubmit handles the submition of the BottomSheetDialog for creating a project. Handles clicks
++    // for both Submit and Create views.
++    public void onSubmit(){
++        String projectName = nameView.getText().toString().trim();
++        if (projectName.isEmpty()){
++            nameView.setError("Project name is required.");
++            return;
++        }
++        Project.createProject(projectName, User.getInstance().getUuid(), project -> {
++            activity.addProject(project);
++            User.getInstance().addProject(project.getUuid());
++            this.dismiss();
++        }, () -> {
++            Toast.makeText(activity, "Error creating project", Toast.LENGTH_SHORT).show();
++            this.dismiss();
++        });
++    }
++}
+Index: app/src/main/java/org/kashmirworldfoundation/WildlifeGeoSnap/projects/ProjectsActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.kashmirworldfoundation.WildlifeGeoSnap.projects;\r\n\r\nimport android.os.Build;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.ImageView;\r\nimport android.widget.SearchView;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.annotation.RequiresApi;\r\nimport androidx.recyclerview.widget.LinearLayoutManager;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport com.google.android.material.bottomsheet.BottomSheetBehavior;\r\nimport com.google.android.material.bottomsheet.BottomSheetDialog;\r\n\r\nimport org.kashmirworldfoundation.WildlifeGeoSnap.R;\r\nimport org.kashmirworldfoundation.WildlifeGeoSnap.firebase.FirebaseHandler;\r\nimport org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.Project;\r\nimport org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.User;\r\nimport org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class ProjectsActivity extends Activity {\r\n\r\n    private ArrayList<ProjectModel> projectModels = new ArrayList<>();\r\n    private Projects_RecyclerViewAdapter adapter;\r\n    private RecyclerView recyclerView;\r\n    private TextView nameView;\r\n    private ImageView profileView;\r\n    private SearchView searchView;\r\n\r\n    @RequiresApi(api = Build.VERSION_CODES.N)\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_projects);\r\n        initViews();\r\n        loadViewData();\r\n        initSearchView();\r\n        initAdapterList();\r\n    }\r\n\r\n    @Override\r\n    protected void initViews() {\r\n        recyclerView = findViewById(R.id.project_list_recycler_view);\r\n        nameView = findViewById(R.id.projects_name);\r\n        profileView = findViewById(R.id.projects_profile_picture);\r\n        searchView = findViewById(R.id.projects_search);\r\n    }\r\n\r\n    private void initSearchView(){\r\n        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {\r\n            @Override\r\n            public boolean onQueryTextSubmit(String s) {\r\n                return false;\r\n            }\r\n\r\n            @Override\r\n            public boolean onQueryTextChange(String s) {\r\n                filterList(s);\r\n                return false;\r\n            }\r\n        });\r\n    }\r\n\r\n    public void onClickCreate(View v){\r\n        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this, R.style.BottomSheetStyle);\r\n        bottomSheetDialog.setContentView(R.layout.project_create_overlay);\r\n        bottomSheetDialog.setCanceledOnTouchOutside(true);\r\n        bottomSheetDialog.getBehavior().setState(BottomSheetBehavior.STATE_EXPANDED);\r\n        EditText projectName = bottomSheetDialog.findViewById(R.id.projects_create_enter_name);\r\n        TextView cancel = bottomSheetDialog.findViewById(R.id.project_create_cancel);\r\n        TextView submit = bottomSheetDialog.findViewById(R.id.project_create_submit_top);\r\n        Button create = bottomSheetDialog.findViewById(R.id.studies_create_button);\r\n\r\n        assert submit != null;\r\n        submit.setOnClickListener(text -> {\r\n            onSubmit(bottomSheetDialog, projectName);\r\n        });\r\n        create.setOnClickListener(text ->{\r\n            onSubmit(bottomSheetDialog, projectName);\r\n        });\r\n        cancel.setOnClickListener(text -> {\r\n            bottomSheetDialog.cancel();\r\n        });\r\n        bottomSheetDialog.setOnShowListener(dialog -> {\r\n\r\n        });\r\n        bottomSheetDialog.show();\r\n    }\r\n\r\n    public void onSubmit(BottomSheetDialog dialog, EditText view){\r\n        String projectName = view.getText().toString().trim();\r\n        if (projectName.isEmpty()){\r\n            view.setError(\"Project name is required.\");\r\n            return;\r\n        }\r\n        Project.createProject(projectName, User.getInstance().getUuid(), project -> {\r\n            addProject(project);\r\n            User.getInstance().addProject(project.getUuid());\r\n            dialog.dismiss();\r\n        }, () -> {\r\n            Toast.makeText(this, \"Error creating project\", Toast.LENGTH_SHORT).show();\r\n            dialog.dismiss();\r\n        });\r\n    }\r\n\r\n    public void onClickJoin(View v){\r\n\r\n    }\r\n\r\n    private void loadViewData(){\r\n        searchView.clearFocus();\r\n        FirebaseHandler.loadImageIntoView(\"profile/\" + User.getInstance().getProfile(), profileView, this);\r\n        nameView.setText(User.getInstance().getName());\r\n    }\r\n\r\n    @RequiresApi(api = Build.VERSION_CODES.N)\r\n    private void initAdapterList(){\r\n        adapter = new Projects_RecyclerViewAdapter(this, projectModels);\r\n        recyclerView.setAdapter(adapter);\r\n        recyclerView.setLayoutManager(new LinearLayoutManager(this));\r\n        loadProjects();\r\n    }\r\n\r\n    @RequiresApi(api = Build.VERSION_CODES.N)\r\n    private void loadProjects(){\r\n        for (String projectUuid : User.getInstance().getProjects()){\r\n            Project.loadProject(projectUuid, (project) -> {\r\n                boolean alreadyExists = projectModels.stream().anyMatch(o -> project.getUuid().equals(o.getUuid()));\r\n                if (alreadyExists){\r\n                    return;\r\n                }\r\n                projectModels.add(ProjectModel.fromProject(project));\r\n                adapter.notifyItemInserted(projectModels.size()-1);\r\n            }, () -> {\r\n\r\n            });\r\n        }\r\n    }\r\n\r\n    private void addProject(Project project){\r\n        projectModels.add(0,ProjectModel.fromProject(project));\r\n        adapter.notifyItemInserted(0);\r\n    }\r\n\r\n    private void filterList(String text){\r\n        ArrayList<ProjectModel> filterdList = new ArrayList<>();\r\n        for(ProjectModel model: projectModels){\r\n            if (model.getName().toLowerCase().contains(text.toLowerCase())){\r\n                filterdList.add(model);\r\n            }\r\n        }\r\n        if (filterdList.isEmpty()){\r\n            Toast.makeText(this, \"No data found\", Toast.LENGTH_SHORT).show();\r\n        }\r\n        adapter.setFilteredList(filterdList);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/org/kashmirworldfoundation/WildlifeGeoSnap/projects/ProjectsActivity.java b/app/src/main/java/org/kashmirworldfoundation/WildlifeGeoSnap/projects/ProjectsActivity.java
+--- a/app/src/main/java/org/kashmirworldfoundation/WildlifeGeoSnap/projects/ProjectsActivity.java	(revision 3258339bf2d593c5c692dbc2c760acb83e895c03)
++++ b/app/src/main/java/org/kashmirworldfoundation/WildlifeGeoSnap/projects/ProjectsActivity.java	(date 1659456131066)
+@@ -22,8 +22,11 @@
+ import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.Project;
+ import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.User;
+ import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
++import org.kashmirworldfoundation.WildlifeGeoSnap.projects.overlays.ProjectCreateOverlay;
++import org.kashmirworldfoundation.WildlifeGeoSnap.projects.overlays.ProjectJoinOverlay;
+ 
+ import java.util.ArrayList;
++import java.util.List;
+ 
+ public class ProjectsActivity extends Activity {
+ 
+@@ -53,6 +56,8 @@
+         searchView = findViewById(R.id.projects_search);
+     }
+ 
++
++    // initSearchViews initializes the search view for searching the listed Projects.
+     private void initSearchView(){
+         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+             @Override
+@@ -68,50 +73,16 @@
+         });
+     }
+ 
++    // onClickCreate handles the clicking of the Create button, creating a BottomSheet and displaying it
+     public void onClickCreate(View v){
+-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this, R.style.BottomSheetStyle);
+-        bottomSheetDialog.setContentView(R.layout.project_create_overlay);
+-        bottomSheetDialog.setCanceledOnTouchOutside(true);
+-        bottomSheetDialog.getBehavior().setState(BottomSheetBehavior.STATE_EXPANDED);
+-        EditText projectName = bottomSheetDialog.findViewById(R.id.projects_create_enter_name);
+-        TextView cancel = bottomSheetDialog.findViewById(R.id.project_create_cancel);
+-        TextView submit = bottomSheetDialog.findViewById(R.id.project_create_submit_top);
+-        Button create = bottomSheetDialog.findViewById(R.id.studies_create_button);
+-
+-        assert submit != null;
+-        submit.setOnClickListener(text -> {
+-            onSubmit(bottomSheetDialog, projectName);
+-        });
+-        create.setOnClickListener(text ->{
+-            onSubmit(bottomSheetDialog, projectName);
+-        });
+-        cancel.setOnClickListener(text -> {
+-            bottomSheetDialog.cancel();
+-        });
+-        bottomSheetDialog.setOnShowListener(dialog -> {
+-
+-        });
+-        bottomSheetDialog.show();
++        ProjectCreateOverlay overlay = new ProjectCreateOverlay(this);
++        overlay.show();
+     }
+ 
+-    public void onSubmit(BottomSheetDialog dialog, EditText view){
+-        String projectName = view.getText().toString().trim();
+-        if (projectName.isEmpty()){
+-            view.setError("Project name is required.");
+-            return;
+-        }
+-        Project.createProject(projectName, User.getInstance().getUuid(), project -> {
+-            addProject(project);
+-            User.getInstance().addProject(project.getUuid());
+-            dialog.dismiss();
+-        }, () -> {
+-            Toast.makeText(this, "Error creating project", Toast.LENGTH_SHORT).show();
+-            dialog.dismiss();
+-        });
+-    }
+ 
+     public void onClickJoin(View v){
+-
++        ProjectJoinOverlay overlay = new ProjectJoinOverlay(this);
++        overlay.show();
+     }
+ 
+     private void loadViewData(){
+@@ -128,6 +99,7 @@
+         loadProjects();
+     }
+ 
++    // loadProjects loads every project onto the Recycle View Adapater to be displayed to the user
+     @RequiresApi(api = Build.VERSION_CODES.N)
+     private void loadProjects(){
+         for (String projectUuid : User.getInstance().getProjects()){
+@@ -144,11 +116,13 @@
+         }
+     }
+ 
+-    private void addProject(Project project){
++    // addProject adds a project to the adapter and updates the recycle view
++    public void addProject(Project project){
+         projectModels.add(0,ProjectModel.fromProject(project));
+         adapter.notifyItemInserted(0);
+     }
+ 
++    // filterList filters the adapter from the SearchView text
+     private void filterList(String text){
+         ArrayList<ProjectModel> filterdList = new ArrayList<>();
+         for(ProjectModel model: projectModels){
+Index: app/src/main/res/layout/project_join_overlay.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/project_join_overlay.xml b/app/src/main/res/layout/project_join_overlay.xml
+new file mode 100644
+--- /dev/null	(date 1659456074589)
++++ b/app/src/main/res/layout/project_join_overlay.xml	(date 1659456074589)
+@@ -0,0 +1,138 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/project_join_overlay"
++    android:layout_width="match_parent"
++    android:layout_height="820dp"
++    android:layout_gravity="bottom"
++    android:background="@drawable/overlaybackground"
++    >
++
++    <TextView
++        android:id="@+id/hello2"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="32dp"
++        android:layout_marginEnd="140dp"
++        android:fontFamily="@font/poppins_semibold"
++        android:gravity="center"
++        android:text="Join a Project"
++        android:textColor="@color/black"
++        android:textSize="18sp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.29"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <TextView
++        android:id="@+id/hello5"
++        android:layout_width="282dp"
++        android:layout_height="44dp"
++        android:layout_marginTop="20dp"
++        android:fontFamily="@font/poppins_semibold"
++        android:gravity="center"
++        android:text="@string/projectsJoinDescription"
++        android:textColor="@color/half_black"
++        android:textSize="16dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.496"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/hello4" />
++
++    <androidx.constraintlayout.widget.ConstraintLayout
++        android:id="@+id/projects_create_outline"
++        android:layout_width="0dp"
++        android:layout_height="48dp"
++        android:layout_centerInParent="true"
++        android:layout_marginStart="40dp"
++        android:layout_marginTop="84dp"
++        android:layout_marginEnd="40dp"
++        android:background="@drawable/border_textbox"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="1.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/hello5">
++
++        <ImageView
++            android:id="@+id/ic_password"
++            android:layout_width="30dp"
++            android:layout_height="30dp"
++            android:layout_marginStart="20dp"
++            app:layout_constraintBottom_toBottomOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toTopOf="parent"
++            app:srcCompat="@drawable/ic_baseline_text_rotation_none_24" />
++
++        <EditText
++            android:id="@+id/projects_join_enter_code"
++            android:layout_width="0dp"
++            android:layout_height="wrap_content"
++            android:layout_marginStart="10dp"
++            android:layout_marginEnd="20dp"
++            android:background="@null"
++            android:fontFamily="@font/lato"
++            android:hint="Join Code"
++            android:minHeight="48dp"
++            android:textSize="14sp"
++            app:layout_constraintBottom_toBottomOf="parent"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toEndOf="@+id/ic_password"
++            app:layout_constraintTop_toTopOf="parent" />
++
++    </androidx.constraintlayout.widget.ConstraintLayout>
++
++    <TextView
++        android:id="@+id/hello4"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="36dp"
++        android:fontFamily="@font/poppins_semibold"
++        android:gravity="center"
++        android:text="Projects"
++        android:textColor="@color/black"
++        android:textSize="28dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/hello2" />
++
++    <TextView
++        android:id="@+id/project_join_cancel"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="28dp"
++        android:layout_marginTop="32dp"
++        android:fontFamily="@font/poppins"
++        android:text="Cancel"
++        android:textColor="@color/eco_green"
++        app:layout_constraintEnd_toStartOf="@+id/hello2"
++        app:layout_constraintHorizontal_bias="0.166"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <TextView
++        android:id="@+id/project_join_submit_top"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="44dp"
++        android:layout_marginTop="36dp"
++        android:fontFamily="@font/poppins_bold"
++        android:text="Submit"
++        android:textColor="@color/eco_green"
++        app:layout_constraintStart_toEndOf="@+id/hello2"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <Button
++        android:id="@+id/project_join_button"
++        android:layout_width="333dp"
++        android:layout_height="60dp"
++        android:layout_marginTop="48dp"
++        android:backgroundTint="@color/eco_green"
++        android:onClick="onClickRegister"
++        android:textAllCaps="false"
++        android:text="Join"
++        app:cornerRadius="12dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/projects_create_outline" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/drawable/ic_inner_rectangle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/ic_inner_rectangle.xml b/app/src/main/res/drawable/ic_inner_rectangle.xml
+new file mode 100644
+--- /dev/null	(date 1659456074588)
++++ b/app/src/main/res/drawable/ic_inner_rectangle.xml	(date 1659456074588)
+@@ -0,0 +1,9 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="376dp"
++    android:height="492dp"
++    android:viewportWidth="376"
++    android:viewportHeight="492">
++  <path
++      android:pathData="M20,0L356,0A20,20 0,0 1,376 20L376,472A20,20 0,0 1,356 492L20,492A20,20 0,0 1,0 472L0,20A20,20 0,0 1,20 0z"
++      android:fillColor="#D3DED8"/>
++</vector>
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n\r\n    <string name=\"app_name\">Wildlife GeoSnap</string>\r\n\r\n    <!--Strings used in the Login Activity-->\r\n    <string name=\"login_title\">Login</string>\r\n    <string name=\"email_address\">Email Address</string>\r\n    <string name=\"password\">Password</string>\r\n    <string name=\"forgot_password\">Forgot Password?</string>\r\n    <string name=\"no_account\">Don\\'t have an account yet?</string>\r\n    <string name=\"sign_up\">Sign up.</string>\r\n    <string name=\"hello_again\">Hello Again!</string>\r\n    <string name=\"welcome_back\">Welcome back to GeoSnap. We missed you!</string>\r\n\r\n    <!-- Strings used in the footer-->\r\n    <string name=\"footer\">2022, the Kashmir Wildlife Foundation</string>\r\n\r\n    <!-- Strings used in the Sign Up Activity-->\r\n    <string name=\"sign_up_title\">Sign Up</string>\r\n    <string name=\"name\">Full Name</string>\r\n    <string name=\"confirm_password\">Confirm Password</string>\r\n    <string name=\"yes_account\">Have an account already?</string>\r\n    <string name=\"login\">Login.</string>\r\n    <string name=\"hello\">Hello!</string>\r\n    <string name=\"welcome\">Welcome to GeoSnap!</string>\r\n\r\n    <!-- String Used for ProjectsActivity-->\r\n    <string name=\"projectsWelcome\">Welcome Back</string>\r\n    <string name=\"projectsCreate\">Create</string>\r\n    <string name=\"projectsJoin\">Join</string>\r\n    <string name=\"projectsCreateDescription\">Manage multiple studies and your research team</string>\r\n\r\n    <!-- Strings used in the Welcome Activity-->\r\n    <string name=\"purpose_title\">Simplifying Wildlife Research</string>\r\n    <string name=\"purpose_desc\">Create and track studies in the field. Make a difference.</string>\r\n    <string name=\"sign_up_intent\">Register</string>\r\n    <string name=\"login_intent\">Sign In</string>\r\n\r\n\r\n    <string-array name=\"Countries\">\r\n\r\n        <item>Country</item>\r\n\r\n        <item>Afghanistan</item>\r\n\r\n        <item> Bhutan</item>\r\n\r\n        <item>China </item>\r\n\r\n        <item>India </item>\r\n\r\n        <item>Kashmir </item>\r\n\r\n        <item>Kazakhstan </item>\r\n\r\n        <item>Kyrgyzstan </item>\r\n\r\n        <item>Mongolia </item>\r\n\r\n        <item>Nepal </item>\r\n\r\n        <item>Pakistan </item>\r\n\r\n        <item>Russia </item>\r\n\r\n        <item> Tajikistan </item>\r\n\r\n        <item>Uzbekistan </item>\r\n\r\n    </string-array>\r\n\r\n    <!-- TODO: Remove or change this placeholder text -->\r\n    <string name=\"navigation_drawer_open\">Open navigation drawer</string>\r\n    <string name=\"navigation_drawer_close\">Close navigation drawer</string>\r\n    <string-array name=\"MapStyle\">\r\n        <item>Streets</item>\r\n        <item>OutDoors</item>\r\n        <item>Satellite Streets</item>\r\n    </string-array>\r\n\r\n    <!-- Tilequery API -->\r\n\r\n    <!--Basic user location permission toasts-->\r\n\r\n    <!-- Isochrone change -->\r\n    <string name=\"title_activity_register__org__admin\">Register_Org_Admin</string>\r\n</resources>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision 3258339bf2d593c5c692dbc2c760acb83e895c03)
++++ b/app/src/main/res/values/strings.xml	(date 1659456074590)
+@@ -29,6 +29,7 @@
+     <string name="projectsCreate">Create</string>
+     <string name="projectsJoin">Join</string>
+     <string name="projectsCreateDescription">Manage multiple studies and your research team</string>
++    <string name="projectsJoinDescription">Already a part of a team? Join a project!</string>
+ 
+     <!-- Strings used in the Welcome Activity-->
+     <string name="purpose_title">Simplifying Wildlife Research</string>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n        <entry key=\"../../../../../layout/custom_preview.xml\" value=\"0.24114583333333334\" />\r\n        <entry key=\"..\\:/Users/Dwang/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/create_study_overlay.xml\" value=\"0.25\" />\r\n        <entry key=\"..\\:/Users/Dwang/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/nav_header.xml\" value=\"0.11499493414387031\" />\r\n        <entry key=\"..\\:/Users/Dwang/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/project_create_overlay.xml\" value=\"0.264\" />\r\n        <entry key=\"..\\:/Users/Dwang/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/projects_list_row.xml\" value=\"0.11499493414387031\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_create_station.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_expand.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_forget_password.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_listfragment_recycler.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_login.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_main.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_offline_manager.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_post.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_rebait__list.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_register.xml\" value=\"0.3536458333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_register__org__admin.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_register_org.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_register_select_country.xml\" value=\"0.3697916666666667\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_register_select_organization.xml\" value=\"0.3697916666666667\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_register_spinner0.xml\" value=\"0.3536458333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_register_spinner1.xml\" value=\"0.3536458333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_register_spinner2.xml\" value=\"0.18385416666666668\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_station.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_station__list.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/disclaimer_layout.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_add.xml\" value=\"0.33125\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_first.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_home.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_list.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_map.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_profile.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_study_list.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_wildlifesighting.xml\" value=\"0.3536458333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/rebait_sheet.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/rebait_sheet1.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/rebait_sheet2.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/takedown_sheet.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/takedown_sheet2.xml\" value=\"0.3692708333333333\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/drawable/border_textbox.xml\" value=\"0.355\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/layout/activity_login.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/layout/activity_sign_up.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/layout/activity_welcome.xml\" value=\"0.2902949978623343\" />\r\n        <entry key=\"..\\:/Users/abiiy/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_spinner_dropdown_item.xml\" value=\"0.3697916666666667\" />\r\n        <entry key=\"..\\:/Users/diann/StudioProjects/GeoSnapApp/app/src/main/res/layout/activity_create_station.xml\" value=\"0.1\" />\r\n        <entry key=\"..\\:/Users/diann/StudioProjects/GeoSnapApp/app/src/main/res/layout/activity_expand.xml\" value=\"0.1\" />\r\n        <entry key=\"..\\:/Users/diann/StudioProjects/GeoSnapApp/app/src/main/res/layout/activity_listfragment_recycler.xml\" value=\"0.1\" />\r\n        <entry key=\"..\\:/Users/diann/StudioProjects/GeoSnapApp/app/src/main/res/layout/activity_main.xml\" value=\"0.1\" />\r\n        <entry key=\"..\\:/Users/diann/StudioProjects/GeoSnapApp/app/src/main/res/layout/activity_station__list.xml\" value=\"0.1\" />\r\n        <entry key=\"..\\:/Users/diann/StudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_list.xml\" value=\"0.1\" />\r\n        <entry key=\"app/src/main/res/drawable/border_error.xml\" value=\"0.1\" />\r\n        <entry key=\"app/src/main/res/drawable/border_textbox.xml\" value=\"0.1\" />\r\n        <entry key=\"app/src/main/res/drawable/ic_button_down.xml\" value=\"0.1\" />\r\n        <entry key=\"app/src/main/res/drawable/ic_logout.xml\" value=\"0.1\" />\r\n        <entry key=\"app/src/main/res/drawable/ic_prey.xml\" value=\"0.2916666666666667\" />\r\n        <entry key=\"app/src/main/res/drawable/ic_vector1.xml\" value=\"0.146\" />\r\n        <entry key=\"app/src/main/res/drawable/ic_vector2.xml\" value=\"0.146\" />\r\n        <entry key=\"app/src/main/res/drawable/ic_wildlifeSighting.xml\" value=\"0.2916666666666667\" />\r\n        <entry key=\"app/src/main/res/drawable/yes.xml\" value=\"0.146\" />\r\n        <entry key=\"app/src/main/res/font/aclonica.xml\" value=\"0.384375\" />\r\n        <entry key=\"app/src/main/res/font/raleway.xml\" value=\"0.38333333333333336\" />\r\n        <entry key=\"app/src/main/res/layout/activity_add__prey.xml\" value=\"0.3958333333333333\" />\r\n        <entry key=\"app/src/main/res/layout/activity_add_wildlifesighting.xml\" value=\"0.3958333333333333\" />\r\n        <entry key=\"app/src/main/res/layout/activity_create_organization.xml\" value=\"0.3836587861436962\" />\r\n        <entry key=\"app/src/main/res/layout/activity_create_station.xml\" value=\"0.26614583333333336\" />\r\n        <entry key=\"app/src/main/res/layout/activity_create_study.xml\" value=\"0.26614583333333336\" />\r\n        <entry key=\"app/src/main/res/layout/activity_expand.xml\" value=\"0.5\" />\r\n        <entry key=\"app/src/main/res/layout/activity_forget_password.xml\" value=\"0.3397295744522758\" />\r\n        <entry key=\"app/src/main/res/layout/activity_googlemap.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/activity_listfragment_recycler.xml\" value=\"0.28512820512820514\" />\r\n        <entry key=\"app/src/main/res/layout/activity_login.xml\" value=\"0.23414083465690952\" />\r\n        <entry key=\"app/src/main/res/layout/activity_login2.xml\" value=\"0.2960108794197643\" />\r\n        <entry key=\"app/src/main/res/layout/activity_login3.xml\" value=\"0.27078047330135513\" />\r\n        <entry key=\"app/src/main/res/layout/activity_main.xml\" value=\"0.1\" />\r\n        <entry key=\"app/src/main/res/layout/activity_main2.xml\" value=\"0.34797316128963635\" />\r\n        <entry key=\"app/src/main/res/layout/activity_mapcreate.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/activity_mapcreate_list.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/activity_offline_manager.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/activity_post.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/activity_prey_expand.xml\" value=\"0.20092592592592592\" />\r\n        <entry key=\"app/src/main/res/layout/activity_rebait__list.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/activity_register.xml\" value=\"0.5\" />\r\n        <entry key=\"app/src/main/res/layout/activity_register__org__admin.xml\" value=\"0.5\" />\r\n        <entry key=\"app/src/main/res/layout/activity_register_org.xml\" value=\"0.5\" />\r\n        <entry key=\"app/src/main/res/layout/activity_register_spinner0.xml\" value=\"0.325\" />\r\n        <entry key=\"app/src/main/res/layout/activity_register_spinner1.xml\" value=\"0.325\" />\r\n        <entry key=\"app/src/main/res/layout/activity_register_spinner2.xml\" value=\"0.325\" />\r\n        <entry key=\"app/src/main/res/layout/activity_sign_up.xml\" value=\"0.2278751603249252\" />\r\n        <entry key=\"app/src/main/res/layout/activity_sign_up2.xml\" value=\"0.2957427536231884\" />\r\n        <entry key=\"app/src/main/res/layout/activity_sign_up_3.xml\" value=\"0.3027049117779176\" />\r\n        <entry key=\"app/src/main/res/layout/activity_station__list.xml\" value=\"0.28512820512820514\" />\r\n        <entry key=\"app/src/main/res/layout/activity_takedown__list.xml\" value=\"0.28512820512820514\" />\r\n        <entry key=\"app/src/main/res/layout/activity_wildlifesighting_expand.xml\" value=\"0.3958333333333333\" />\r\n        <entry key=\"app/src/main/res/layout/content_register__org__admin.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/disclaimer_layout.xml\" value=\"0.26072998046875\" />\r\n        <entry key=\"app/src/main/res/layout/fragment_about.xml\" value=\"0.1\" />\r\n        <entry key=\"app/src/main/res/layout/fragment_add.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/fragment_first.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/fragment_footer.xml\" value=\"0.21739130434782608\" />\r\n        <entry key=\"app/src/main/res/layout/fragment_home.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/fragment_list.xml\" value=\"0.33783533491549234\" />\r\n        <entry key=\"app/src/main/res/layout/fragment_map.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/fragment_prey.xml\" value=\"0.20092592592592592\" />\r\n        <entry key=\"app/src/main/res/layout/fragment_profile.xml\" value=\"0.24547101449275363\" />\r\n        <entry key=\"app/src/main/res/layout/fragment_wildlifesighting.xml\" value=\"0.3958333333333333\" />\r\n        <entry key=\"app/src/main/res/layout/nav_header.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/rebait_sheet.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/rebait_sheet1.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/rebait_sheet2.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/row.xml\" value=\"0.5\" />\r\n        <entry key=\"app/src/main/res/layout/row_createmap.xml\" value=\"0.3074074074074074\" />\r\n        <entry key=\"app/src/main/res/layout/row_prey.xml\" value=\"0.3958333333333333\" />\r\n        <entry key=\"app/src/main/res/layout/row_rebait.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/row_station.xml\" value=\"0.3074074074074074\" />\r\n        <entry key=\"app/src/main/res/layout/row_wildlifesighting.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/takedown_sheet.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/takedown_sheet1.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/layout/takedown_sheet2.xml\" value=\"0.22554347826086957\" />\r\n        <entry key=\"app/src/main/res/menu/bottom_navigation.xml\" value=\"0.35260416666666666\" />\r\n        <entry key=\"app/src/main/res/menu/create_station_menu.xml\" value=\"0.35260416666666666\" />\r\n        <entry key=\"app/src/main/res/menu/drawer_menu.xml\" value=\"0.3020408163265306\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"11\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n  <component name=\"SuppressABINotification\">\r\n    <option name=\"modulesWithSuppressedNotConfigured\">\r\n      <set>\r\n        <option value=\"app\" />\r\n      </set>\r\n    </option>\r\n  </component>\r\n  <component name=\"SuppressKotlinCodeStyleNotification\">\r\n    <option name=\"disableForAll\" value=\"true\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 3258339bf2d593c5c692dbc2c760acb83e895c03)
++++ b/.idea/misc.xml	(date 1659456128044)
+@@ -4,10 +4,6 @@
+     <option name="filePathToZoomLevelMap">
+       <map>
+         <entry key="../../../../../layout/custom_preview.xml" value="0.24114583333333334" />
+-        <entry key="..\:/Users/Dwang/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/create_study_overlay.xml" value="0.25" />
+-        <entry key="..\:/Users/Dwang/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/nav_header.xml" value="0.11499493414387031" />
+-        <entry key="..\:/Users/Dwang/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/project_create_overlay.xml" value="0.264" />
+-        <entry key="..\:/Users/Dwang/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/projects_list_row.xml" value="0.11499493414387031" />
+         <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_create_station.xml" value="0.3692708333333333" />
+         <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_expand.xml" value="0.3692708333333333" />
+         <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/activity_forget_password.xml" value="0.3692708333333333" />
+@@ -42,9 +38,20 @@
+         <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/takedown_sheet.xml" value="0.3692708333333333" />
+         <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapApp/app/src/main/res/layout/takedown_sheet2.xml" value="0.3692708333333333" />
+         <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/drawable/border_textbox.xml" value="0.355" />
++        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/drawable/ic_baseline_people_alt_24.xml" value="0.3275" />
++        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/drawable/ic_baseline_text_rotation_none_24.xml" value="0.334" />
++        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/drawable/ic_bxs_lock.xml" value="0.334" />
++        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/drawable/ic_inner_rectangle.xml" value="0.3275" />
++        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/drawable/overlaybackground.xml" value="0.267" />
++        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/drawable/projects_search_background.xml" value="0.1245" />
+         <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/layout/activity_login.xml" value="0.33" />
++        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/layout/activity_projects.xml" value="0.25" />
+         <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
+         <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/layout/activity_welcome.xml" value="0.2902949978623343" />
++        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/layout/fragment_profile.xml" value="0.2667806755023514" />
++        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/layout/project_create_overlay.xml" value="0.33" />
++        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/layout/project_join_overlay.xml" value="0.30312099187687047" />
++        <entry key="..\:/Users/abiiy/AndroidStudioProjects/GeoSnapAppBest/app/src/main/res/layout/projects_list_row.xml" value="0.4179456906729634" />
+         <entry key="..\:/Users/abiiy/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_spinner_dropdown_item.xml" value="0.3697916666666667" />
+         <entry key="..\:/Users/diann/StudioProjects/GeoSnapApp/app/src/main/res/layout/activity_create_station.xml" value="0.1" />
+         <entry key="..\:/Users/diann/StudioProjects/GeoSnapApp/app/src/main/res/layout/activity_expand.xml" value="0.1" />
+@@ -139,7 +146,4 @@
+       </set>
+     </option>
+   </component>
+-  <component name="SuppressKotlinCodeStyleNotification">
+-    <option name="disableForAll" value="true" />
+-  </component>
+ </project>
+\ No newline at end of file
