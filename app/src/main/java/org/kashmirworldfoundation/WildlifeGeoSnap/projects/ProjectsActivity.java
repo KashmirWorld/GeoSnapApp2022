@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -25,7 +24,6 @@ import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.User;
 import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProjectsActivity extends Activity {
 
@@ -78,7 +76,7 @@ public class ProjectsActivity extends Activity {
         EditText projectName = bottomSheetDialog.findViewById(R.id.projects_create_enter_name);
         TextView cancel = bottomSheetDialog.findViewById(R.id.project_create_cancel);
         TextView submit = bottomSheetDialog.findViewById(R.id.project_create_submit_top);
-        Button create = bottomSheetDialog.findViewById(R.id.project_create_button);
+        Button create = bottomSheetDialog.findViewById(R.id.studies_create_button);
 
         assert submit != null;
         submit.setOnClickListener(text -> {

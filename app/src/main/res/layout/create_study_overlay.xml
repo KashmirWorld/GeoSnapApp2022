@@ -9,6 +9,37 @@
     android:background="@drawable/overlaybackground"
     >
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/studies_desc_outline"
+        android:layout_width="350dp"
+        android:layout_height="187dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/border_textbox"
+        android:backgroundTint="#F0FFF9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hello2"
+        app:layout_constraintVertical_bias="0.592">
+
+        <EditText
+            android:id="@+id/studies_create_desc"
+            android:layout_width="313dp"
+            android:layout_height="163dp"
+            android:background="@null"
+            android:fontFamily="@font/lato"
+            android:gravity="top"
+            android:hint="Description"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            android:textSize="17sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="12dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="64dp"
@@ -32,7 +63,7 @@
         android:layout_marginEnd="120dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
-        android:text="Create A Project"
+        android:text="Create A Study"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,58 +73,48 @@
 
     <TextView
         android:id="@+id/studies_desc"
-        android:layout_width="282dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="335dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
-        android:text="@string/projectsCreateDescription"
+        android:text="Create and track multiple camera stations and wildlife sightings"
         android:textColor="@color/half_black"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.605"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/studies_title" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/projects_create_outline"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:id="@+id/studies_name_outline"
+        android:layout_width="356dp"
+        android:layout_height="58dp"
         android:layout_centerInParent="true"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="136dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/border_textbox"
+        android:backgroundTint="#F0FFF9"
+        android:outlineProvider="none"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studies_desc">
-
-        <ImageView
-            android:id="@+id/ic_password"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_text_rotation_none_24" />
+        app:layout_constraintTop_toBottomOf="@+id/hello2"
+        app:layout_constraintVertical_bias="0.352">
 
         <EditText
-            android:id="@+id/projects_create_enter_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="20dp"
+            android:id="@+id/studies_create_name"
+            android:layout_width="319dp"
+            android:layout_height="51dp"
+            android:autoText="false"
             android:background="@null"
             android:fontFamily="@font/lato"
-            android:hint="Project Name"
+            android:hint="Study Name"
             android:minHeight="48dp"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ic_password"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="17sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="5dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -101,13 +122,14 @@
         android:id="@+id/studies_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="88dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
-        android:text="Projects"
+        android:text="Studies"
         android:textColor="@color/black"
         android:textSize="28dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hello2" />
 
@@ -141,13 +163,15 @@
         android:id="@+id/studies_create_button"
         android:layout_width="333dp"
         android:layout_height="60dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="192dp"
         android:backgroundTint="@color/eco_green"
         android:onClick="onClickRegister"
-        android:textAllCaps="false"
         android:text="Create"
+        android:textAllCaps="false"
         app:cornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/projects_create_outline" />
 
