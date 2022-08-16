@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.kashmirworldfoundation.WildlifeGeoSnap">
+    package="org.kashmirworldfoundation.WildlifeGeoSnap" >
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.Read_EXTERNAL_STORAGE" />
@@ -18,7 +18,7 @@
         android:label="KWF"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".CameraStationMenuActivity"
             android:exported="false" />
@@ -55,10 +55,10 @@
         <activity android:name=".study.wildlifesightings.AddWildlifeSightingActivity" />
         <activity
             android:name=".auth.user.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".WelcomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

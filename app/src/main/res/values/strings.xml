@@ -69,7 +69,8 @@
     <string name="rebait">Rebait</string>
     <string name="takedown">Takedown</string>
     <string name="delete">Delete</string>
-
+    <string name="sd_card">SD ID:</string>
+    <string name="id">NH-24</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
