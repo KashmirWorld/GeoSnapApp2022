@@ -81,6 +81,8 @@
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_register__org__admin.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_register_org.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_register_select_country.xml" value="0.4244791666666667" />
+        <entry key="app/src/main/res/layout/activity_register_select_organization.xml" value="0.4244791666666667" />
         <entry key="app/src/main/res/layout/activity_register_spinner0.xml" value="0.325" />
         <entry key="app/src/main/res/layout/activity_register_spinner1.xml" value="0.325" />
         <entry key="app/src/main/res/layout/activity_register_spinner2.xml" value="0.325" />

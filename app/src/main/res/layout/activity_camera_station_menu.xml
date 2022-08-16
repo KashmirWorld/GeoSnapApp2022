@@ -406,7 +406,7 @@
                             android:background="#DBE6DB">
 
                             <EditText
-                                android:id="@+id/editTextTextPersonName3"
+                                android:id="@+id/WatershedID"
                                 android:layout_width="wrap_content"
                                 android:layout_height="15dp"
                                 android:layout_marginTop="10dp"
@@ -458,7 +458,7 @@
                             android:background="#DBE6DB">
 
                             <EditText
-                                android:id="@+id/editTextTextPersonName"
+                                android:id="@+id/SDCardID"
                                 android:layout_width="wrap_content"
                                 android:layout_height="15dp"
                                 android:layout_marginTop="10dp"
@@ -522,7 +522,7 @@
                             android:background="#DBE6DB">
 
                             <EditText
-                                android:id="@+id/editTextTextPersonName2"
+                                android:id="@+id/CameraID"
                                 android:layout_width="wrap_content"
                                 android:layout_height="15dp"
                                 android:layout_marginTop="10dp"
@@ -558,7 +558,7 @@
 
 
                     <Switch
-                        android:id="@+id/switch1"
+                        android:id="@+id/operational"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -577,8 +577,8 @@
                         android:fontFamily="@font/lato"
                         android:text="@string/location"
                         android:textColor="@color/black"
-                        app:layout_constraintStart_toStartOf="@+id/switch1"
-                        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+                        app:layout_constraintStart_toStartOf="@+id/operational"
+                        app:layout_constraintTop_toBottomOf="@+id/operational" />
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardView5"
@@ -598,7 +598,7 @@
                             android:background="#DBE6DB">
 
                             <EditText
-                                android:id="@+id/editTextTextPersonName4"
+                                android:id="@+id/longitude_coord"
                                 android:layout_width="wrap_content"
                                 android:layout_height="15dp"
                                 android:layout_marginTop="10dp"
@@ -650,7 +650,7 @@
                             android:background="#DBE6DB">
 
                             <EditText
-                                android:id="@+id/editTextTextPersonName5"
+                                android:id="@+id/latitude_coord"
                                 android:layout_width="wrap_content"
                                 android:layout_height="15dp"
                                 android:layout_marginTop="10dp"
@@ -685,7 +685,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <Switch
-                        android:id="@+id/switch2"
+                        android:id="@+id/currentLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -703,8 +703,8 @@
                         android:fontFamily="@font/lato"
                         android:text="@string/field_info"
                         android:textColor="@color/black"
-                        app:layout_constraintStart_toStartOf="@+id/switch2"
-                        app:layout_constraintTop_toBottomOf="@+id/switch2" />
+                        app:layout_constraintStart_toStartOf="@+id/currentLocation"
+                        app:layout_constraintTop_toBottomOf="@+id/currentLocation" />
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardView7"
@@ -724,7 +724,7 @@
                             android:background="#DBE6DB">
 
                             <EditText
-                                android:id="@+id/editTextTextPersonName6"
+                                android:id="@+id/lure"
                                 android:layout_width="wrap_content"
                                 android:layout_height="15dp"
                                 android:layout_marginTop="10dp"
@@ -776,7 +776,7 @@
                             android:background="#DBE6DB">
 
                             <EditText
-                                android:id="@+id/editTextTextPersonName7"
+                                android:id="@+id/habitat"
                                 android:layout_width="wrap_content"
                                 android:layout_height="15dp"
                                 android:layout_marginTop="10dp"
@@ -842,7 +842,7 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <EditText
-                                android:id="@+id/editTextTextMultiLine"
+                                android:id="@+id/notes"
                                 android:layout_width="0dp"
                                 android:layout_height="100dp"
                                 android:layout_marginTop="10dp"
@@ -900,6 +900,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/rebaits_title">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </androidx.core.widget.NestedScrollView>
