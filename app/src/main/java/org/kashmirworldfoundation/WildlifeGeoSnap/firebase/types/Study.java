@@ -1,6 +1,5 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types;
 
-import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -8,11 +7,9 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.User;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
 
-import java.lang.reflect.Array;
-import java.sql.Time;
 import java.util.ArrayList;
 
 public class Study implements Parcelable {
@@ -74,10 +71,10 @@ public class Study implements Parcelable {
 
     public static void loadStudies(final Utils.LambdaInterface onLoad){
         studies = new ArrayList<Study>();
-        Member member = Member.getInstance();
+        User userData = User.getInstance();
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
 
-        fStore.collection("Study").whereEqualTo("org",member.getOrg()).get().addOnCompleteListener(task -> {
+     /**   fStore.collection("Study").whereEqualTo("org", userData.getOrg()).get().addOnCompleteListener(task -> {
             if(task.isSuccessful()){
                 for (QueryDocumentSnapshot documentSnapshot: task.getResult()){
                     Study study = documentSnapshot.toObject(Study.class);
@@ -85,7 +82,7 @@ public class Study implements Parcelable {
                 }
             }
             onLoad.run();
-        });
+        });**/
     }
 
     public String getTitle() {

@@ -23,26 +23,15 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.HttpContext;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.FirebaseHandler;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.User;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
 import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.misc.permissions.PermissionManager;
 import org.kashmirworldfoundation.WildlifeGeoSnap.study.StudyFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.maps.MapFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.profile.ProfileFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.utils.LocationUtil;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 import com.google.android.gms.location.LocationServices;
 
@@ -154,9 +143,9 @@ public class MainActivity extends Activity implements NavigationView.OnNavigatio
         TextView navUserName = headerView.findViewById(R.id.NameHeader);
         ImageView navSerPhoto = headerView.findViewById(R.id.ProfilePicHeader);
 
-        Member member = Member.getInstance();
-        navUserName.setText(member.getFullname());
-        FirebaseHandler.loadImageIntoView(member.getProfile(), navSerPhoto, this);
+        User userData = User.getInstance();
+        navUserName.setText(userData.getName());
+        FirebaseHandler.loadImageIntoView(userData.getProfile(), navSerPhoto, this);
 
         navSerPhoto.setOnClickListener(view -> {
             FragmentManager fragmentManager = getSupportFragmentManager();

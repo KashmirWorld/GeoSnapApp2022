@@ -14,7 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.CameraStation;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
 import org.kashmirworldfoundation.WildlifeGeoSnap.study.station.StationListActivity;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class StationAsyncTaskA extends AsyncTask<String, Void, String> {
 
     private ArrayList<CameraStation> CStations= new ArrayList<>();
     private ArrayList<String> paths= new ArrayList<>();
-    private Member member;
+    private UserData userData;
     private String Org;
     private static final String TAG = "StationAsyncTask";
     private int count;
@@ -57,8 +57,8 @@ public class StationAsyncTaskA extends AsyncTask<String, Void, String> {
         }
 
         String string= "";
-        member = Member.getInstance();
-        collectionReference.whereEqualTo("org", member.getOrg()).whereEqualTo("study",study).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        /**userData = UserData.getInstance();
+        collectionReference.whereEqualTo("org", userData.getOrg()).whereEqualTo("study",study).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()){
@@ -76,6 +76,7 @@ public class StationAsyncTaskA extends AsyncTask<String, Void, String> {
                 }
             }
         });
+         **/
         return null;
     }
 }

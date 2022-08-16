@@ -1,5 +1,6 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap.auth.user;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,154 +8,103 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.ImageButton;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
+import com.google.firebase.auth.FirebaseAuth;
 
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import org.kashmirworldfoundation.WildlifeGeoSnap.GlideApp;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
-import org.kashmirworldfoundation.WildlifeGeoSnap.auth.TOSAgreementHandler;
-import org.kashmirworldfoundation.WildlifeGeoSnap.auth.org.RegisterOrgActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterOrgAdminActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterSelectOrganizationActivity;
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.AuthHandler;
+import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.register.RegisterActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Activity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.SharedPreferenceUtil;
-import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
-
-import java.util.ArrayList;
 
 public class LoginActivity extends Activity {
 
-    public static final String PREFERENCE_NAME = "MY_PREFS_KEY";
+    private SharedPreferenceUtil sharedPreference;
 
-    // UI Views
-    EditText mEmail, mPassword;
-    Button mLoginBtn;
-    TextView mRegisterBtn, mRegisterOrgBtn, mForgetBtn;
-    ImageView Background;
-    ConstraintLayout layout;
-    ArrayList<String> studies;
+    // maps the EditTexts to variables
+    private EditText myEmail;
+    private EditText myPassword;
 
-    //User Inputted Values
-    Boolean rememberLogin = false;
-    String userEmail, userPassword;
-    private SharedPreferenceUtil loginPreferences;
+    // variables for forgot password pop up window
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
+    private EditText email_address;
+    private ImageButton back;
+    private Button submit;
 
+    FirebaseAuth fAuth;
 
+    // this activity logs the user into the app, so they can access the dashboard
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         initViews();
-        initBackground();
-        populateLoginInfo();
+        // GeoSnapPrefs is where data is stored from this app on OUR device
+        // the email and password is automatically entered
+        // IMPORTANT: this is a slight security issue, we can change how it works later
+        sharedPreference = new SharedPreferenceUtil(this);
+        myEmail.setText(sharedPreference.getValue(  "email"));
+        myPassword.setText(sharedPreference.getValue("password"));
+
+        fAuth = FirebaseAuth.getInstance();
     }
 
     @Override
     protected void initViews() {
-        layout = findViewById(R.id.LoginLayout);
-        mForgetBtn = findViewById(R.id.LoginForget);
-        mEmail = findViewById(R.id.email);
-        mPassword = findViewById(R.id.password);
-        mLoginBtn = findViewById(R.id.LoginBtn);
-        mRegisterBtn = findViewById(R.id.Register0);
-        mRegisterOrgBtn = findViewById(R.id.RegisterOrgBtn);
-        Background = findViewById(R.id.BackgroundLogin);
+        myEmail = findViewById(R.id.enter_email);
+        myPassword = findViewById(R.id.enter_password);
     }
 
-    /**
-     * This method is supposed to change the background of the Login menu to look like the one within firebases database (does not work)
-     *  TODO: Fix it so the background changes
-     */
-    private void initBackground() {
-        StorageReference ref = FirebaseStorage.getInstance().getReference("assets/Start.png");
-        GlideApp.with(this)
-                .load(ref)
-                .into(Background);
+    // sends the user to the forgot password activity
+    public void onClickForgotPassword(View view) {
+        forgotPasswordDialog();
     }
 
-    // THESE ARE THE ONCLICK LISTENERS FOR THE UI
-
-    public void onClickForget(View v) {
-        startActivity(new Intent(getApplicationContext(), ForgetPasswordActivity.class));
+    // sends the user to the dashboard (if successful)
+    public void onClickLoginUser(View view) {
+        // takes the email and password that is entered and sends it to the login method
+        login(myEmail.getText().toString().trim(), myPassword.getText().toString().trim());
     }
 
-    public void onClickRegisterUser(View v) {
-        startActivity(new Intent(getApplicationContext(), RegisterSelectOrganizationActivity.class));
+    private void login(String email, String password) {
+        // Does all the required steps for logging in and interacts with the database
+        LoginHandler.login(email, password, sharedPreference, this);
     }
 
-    public void onClickRegisterOrg(View v) {
-        if (getAdmin()) {
-            startActivity(new Intent(getApplicationContext(), RegisterOrgAdminActivity.class));
+    public void onClickSignUp(View view) {
+        Intent signUp = new Intent(getApplicationContext(), RegisterActivity.class);
+        startActivity(signUp);
+    }
+
+    // forget password
+
+    public void forgotPasswordDialog(){
+        // creates the forgot password dialog
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View forgotPasswordView =
+                getLayoutInflater().inflate(R.layout.activity_forget_password, null);
+        email_address = (EditText) forgotPasswordView.findViewById(R.id.EmailRecoveryInput);
+
+        back = (ImageButton) forgotPasswordView.findViewById(R.id.ForgetPassBack);
+        submit = (Button) forgotPasswordView.findViewById(R.id.RecoverySubmit);
+
+        dialogBuilder.setView(forgotPasswordView);
+        dialog = dialogBuilder.create();
+        dialog.show();
+    }
+
+    public void onClickSubmit(View view) {
+        final String email = email_address.getText().toString().trim();
+        if (!AuthHandler.validateEmail(email)) {
+            email_address.setError("Invalid email.");
+        } else {
+            fAuth.sendPasswordResetEmail(email_address.getText().toString().trim());
         }
-        startActivity(new Intent(getApplicationContext(), RegisterOrgActivity.class));
     }
 
-    public void onClickLogin(View v) {
-        Utils util = Utils.getInstance();
-
-        userEmail = mEmail.getText().toString();
-        userPassword = mPassword.getText().toString();
-
-        if (!validateLoginInfo(userEmail, userPassword, this)) {
-            return;
-        }
-
-        TOSAgreementHandler.sendAgreementThen("Agreement needed to login!",
-                () -> {
-                    LoginHandler.login(userEmail, userPassword, rememberLogin, loginPreferences, this);
-                }, this);
-    }
-
-    public void onClickRememberLogin(View v) {
-        rememberLogin = !rememberLogin;
-    }
-
-    /**
-     * This method reads the saved password from the system and sets it within the UI as well as the saved data
-     */
-    private void populateLoginInfo() {
-        loginPreferences = new SharedPreferenceUtil(PREFERENCE_NAME, this);
-        userEmail = loginPreferences.getValue("email");
-        userPassword = loginPreferences.getValue("password");
-        mEmail.setText(userEmail);
-        mPassword.setText(userPassword);
-    }
-
-    /**
-     * This method validates the user's login information
-     *
-     * @param email
-     * @param password
-     * @param activity
-     * @return
-     */
-    private boolean validateLoginInfo(String email, String password, android.app.Activity activity) {
-        email = email.trim();
-        password = password.trim();
-
-        // if the email or password is empty, send a message and return
-        if (email == null || email.isEmpty() || password == null || password.isEmpty()) {
-            Toast.makeText(activity, "Please enter username and password", Toast.LENGTH_LONG).show();
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * This method will probably be removed later when a user's admin status is held within a Member struct and not saved on the device
-     *
-     * @return boolean
-     */
-    private boolean getAdmin() {
-        SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences("Admin", Context.MODE_PRIVATE);
-        return sharedPreferences.getBoolean("Admin", false);
+    public void onClickBack(View view) {
+        dialog.dismiss();
     }
 }

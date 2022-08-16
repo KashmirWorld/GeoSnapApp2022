@@ -22,8 +22,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -51,7 +49,7 @@ import com.google.firebase.firestore.SetOptions;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.LocationUtil;
 
 import java.util.ArrayList;
@@ -114,7 +112,7 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
     private CollectionReference collectionReference;
     private int count;
     private int size;
-    private Member member;
+    private UserData userData;
     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
 
     private ArrayList<org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Marker> downloadMarkerList;
@@ -564,12 +562,12 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
     }
 
     public void downloadMarker(){
-        db.collection("Member").document(fAuth.getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+       /** db.collection("Member").document(fAuth.getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()){
-                    member = Member.getInstance();
-                    collectionReference.whereEqualTo("org", member.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    userData = UserData.getInstance();
+                    collectionReference.whereEqualTo("org", userData.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()){
@@ -592,7 +590,7 @@ public class GoogleMapActivity extends AppCompatActivity implements  OnMapReadyC
                     });
                 }
             }
-        });
+        });**/
 
     }
 

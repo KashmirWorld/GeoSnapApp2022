@@ -3,22 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/backgroundPrimary"
     android:layout_height="match_parent">
 
 
     <ImageView
         android:id="@+id/ic_purpose"
-        android:layout_width="350dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_purpose" />
 
     <TextView
-        android:id="@+id/hello"
+        android:id="@+id/purpose_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -33,42 +34,47 @@
 
     <TextView
         android:id="@+id/purpose_desc"
-        android:layout_width="250dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
         android:fontFamily="@font/lato"
         android:gravity="center"
         android:text="@string/purpose_desc"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/hello"
-        app:layout_constraintStart_toStartOf="@+id/hello"
-        app:layout_constraintTop_toBottomOf="@+id/hello" />
+        app:layout_constraintEnd_toEndOf="@+id/ic_purpose"
+        app:layout_constraintStart_toStartOf="@+id/ic_purpose"
+        app:layout_constraintTop_toBottomOf="@+id/purpose_title" />
 
     <Button
         android:id="@+id/sign_up_intent"
-        android:layout_width="100dp"
+        android:layout_width="125dp"
         android:layout_height="66dp"
-        android:layout_marginStart="75dp"
+        android:layout_marginStart="60dp"
         android:layout_marginBottom="30dp"
-        android:backgroundTint="@color/eco_green"
+        android:backgroundTint="@color/rWhite"
+        android:fontFamily="@font/lato_bold"
+        android:onClick="onClickSignUp"
         android:text="@string/sign_up_intent"
-        android:textColor="@color/white"
+        android:textColor="@color/blackColor"
         app:cornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:onClick="onClickSignUp"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/login_intent"
-        android:layout_width="100dp"
+        android:layout_width="125dp"
         android:layout_height="66dp"
-        android:layout_marginEnd="75dp"
+        android:layout_marginEnd="60dp"
         android:backgroundTint="@color/eco_green"
+        android:fontFamily="@font/lato_bold"
+        android:onClick="onClickLogin"
         android:text="@string/login_intent"
         app:cornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/sign_up_intent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sign_up_intent"
-        android:onClick="onClickLogin"/>
+        app:layout_constraintTop_toTopOf="@+id/sign_up_intent" />
 
     <ImageView
         android:id="@+id/kwf_logo"
