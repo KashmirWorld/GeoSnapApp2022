@@ -76,7 +76,7 @@ public class ProjectsActivity extends Activity {
         EditText projectName = bottomSheetDialog.findViewById(R.id.projects_create_enter_name);
         TextView cancel = bottomSheetDialog.findViewById(R.id.project_create_cancel);
         TextView submit = bottomSheetDialog.findViewById(R.id.project_create_submit_top);
-        Button create = bottomSheetDialog.findViewById(R.id.studies_create_button);
+        Button create = bottomSheetDialog.findViewById(R.id.delete_rebait_confirm_button);
 
         assert submit != null;
         submit.setOnClickListener(text -> {

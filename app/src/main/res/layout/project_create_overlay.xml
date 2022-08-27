@@ -25,7 +25,7 @@
         app:srcCompat="@drawable/ic_arrow" />
 
     <TextView
-        android:id="@+id/hello2"
+        android:id="@+id/delete_rebait_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -109,7 +109,7 @@
         android:textSize="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hello2" />
+        app:layout_constraintTop_toBottomOf="@+id/delete_rebait_title" />
 
     <TextView
         android:id="@+id/project_create_cancel"
@@ -120,7 +120,7 @@
         android:fontFamily="@font/poppins"
         android:text="Cancel"
         android:textColor="@color/eco_green"
-        app:layout_constraintEnd_toStartOf="@+id/hello2"
+        app:layout_constraintEnd_toStartOf="@+id/delete_rebait_title"
         app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -134,11 +134,11 @@
         android:fontFamily="@font/poppins_bold"
         android:text="Submit"
         android:textColor="@color/eco_green"
-        app:layout_constraintStart_toEndOf="@+id/hello2"
+        app:layout_constraintStart_toEndOf="@+id/delete_rebait_title"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/studies_create_button"
+        android:id="@+id/delete_rebait_confirm_button"
         android:layout_width="333dp"
         android:layout_height="60dp"
         android:layout_marginTop="48dp"
