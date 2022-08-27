@@ -44,7 +44,6 @@
         <entry key="..\:/Users/diann/StudioProjects/GeoSnapApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/diann/StudioProjects/GeoSnapApp/app/src/main/res/layout/activity_station__list.xml" value="0.1" />
         <entry key="..\:/Users/diann/StudioProjects/GeoSnapApp/app/src/main/res/layout/fragment_list.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable-mdpi/border_window.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/border_error.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/border_textbox.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_button_down.xml" value="0.1" />
@@ -58,15 +57,14 @@
         <entry key="app/src/main/res/font/raleway.xml" value="0.38333333333333336" />
         <entry key="app/src/main/res/layout/activity_add__prey.xml" value="0.3958333333333333" />
         <entry key="app/src/main/res/layout/activity_add_wildlifesighting.xml" value="0.3958333333333333" />
-        <entry key="app/src/main/res/layout/activity_camera_station_menu.xml" value="0.34825487271390854" />
         <entry key="app/src/main/res/layout/activity_create_organization.xml" value="0.3836587861436962" />
         <entry key="app/src/main/res/layout/activity_create_station.xml" value="0.26614583333333336" />
         <entry key="app/src/main/res/layout/activity_create_study.xml" value="0.26614583333333336" />
         <entry key="app/src/main/res/layout/activity_expand.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/activity_forget_password.xml" value="0.26506024096385544" />
+        <entry key="app/src/main/res/layout/activity_forget_password.xml" value="0.3397295744522758" />
         <entry key="app/src/main/res/layout/activity_googlemap.xml" value="0.22554347826086957" />
         <entry key="app/src/main/res/layout/activity_listfragment_recycler.xml" value="0.28512820512820514" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.3222099874889408" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.23414083465690952" />
         <entry key="app/src/main/res/layout/activity_login2.xml" value="0.2960108794197643" />
         <entry key="app/src/main/res/layout/activity_login3.xml" value="0.27078047330135513" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
@@ -77,19 +75,17 @@
         <entry key="app/src/main/res/layout/activity_post.xml" value="0.22554347826086957" />
         <entry key="app/src/main/res/layout/activity_prey_expand.xml" value="0.20092592592592592" />
         <entry key="app/src/main/res/layout/activity_rebait__list.xml" value="0.22554347826086957" />
-        <entry key="app/src/main/res/layout/activity_rebait_recycler.xml" value="0.34775133267484604" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_register__org__admin.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_register_org.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_register_spinner0.xml" value="0.325" />
         <entry key="app/src/main/res/layout/activity_register_spinner1.xml" value="0.325" />
         <entry key="app/src/main/res/layout/activity_register_spinner2.xml" value="0.325" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.31177012125651044" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2278751603249252" />
         <entry key="app/src/main/res/layout/activity_sign_up2.xml" value="0.2957427536231884" />
         <entry key="app/src/main/res/layout/activity_sign_up_3.xml" value="0.3027049117779176" />
         <entry key="app/src/main/res/layout/activity_station__list.xml" value="0.28512820512820514" />
         <entry key="app/src/main/res/layout/activity_takedown__list.xml" value="0.28512820512820514" />
-        <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.2808155699721965" />
         <entry key="app/src/main/res/layout/activity_wildlifesighting_expand.xml" value="0.3958333333333333" />
         <entry key="app/src/main/res/layout/content_register__org__admin.xml" value="0.22554347826086957" />
         <entry key="app/src/main/res/layout/disclaimer_layout.xml" value="0.26072998046875" />
@@ -103,7 +99,6 @@
         <entry key="app/src/main/res/layout/fragment_prey.xml" value="0.20092592592592592" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.24547101449275363" />
         <entry key="app/src/main/res/layout/fragment_wildlifesighting.xml" value="0.3958333333333333" />
-        <entry key="app/src/main/res/layout/layout.xml" value="0.4244791666666667" />
         <entry key="app/src/main/res/layout/nav_header.xml" value="0.22554347826086957" />
         <entry key="app/src/main/res/layout/rebait_sheet.xml" value="0.22554347826086957" />
         <entry key="app/src/main/res/layout/rebait_sheet1.xml" value="0.22554347826086957" />

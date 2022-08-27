@@ -33,22 +33,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--enter full name text box-->
     <TextView
         android:id="@+id/welcome"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/lato"
         android:gravity="center"
         android:text="@string/welcome"
         android:textColor="@color/eco_green"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hello" />
 
+    <!--enter full name text box-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/name_outline"
         android:layout_width="0dp"
@@ -222,34 +221,42 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <ImageView
+        android:id="@+id/geo_snap_logo"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/sign_up"
+        app:layout_constraintStart_toStartOf="@+id/sign_up"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up"
+        app:srcCompat="@drawable/logo" />
+
     <TextView
         android:id="@+id/yes_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/lato"
         android:text="@string/yes_account"
         android:textColor="@color/black"
         android:textColorHighlight="@color/black"
         android:textColorLink="@color/black"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/sign_up"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up" />
+        app:layout_constraintStart_toStartOf="@+id/name_outline"
+        app:layout_constraintTop_toBottomOf="@+id/geo_snap_logo" />
 
     <TextView
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="4dp"
         android:fontFamily="@font/lato"
-        android:onClick="onClickLogin"
         android:text="@string/login"
         android:textColor="@color/eco_green"
         android:textColorHighlight="@color/black"
         android:textColorLink="@color/black"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/yes_account"
-        app:layout_constraintStart_toEndOf="@+id/yes_account"
-        app:layout_constraintTop_toTopOf="@+id/yes_account" />
+        app:layout_constraintStart_toEndOf="@+id/no_account"
+        app:layout_constraintTop_toTopOf="@+id/no_account" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

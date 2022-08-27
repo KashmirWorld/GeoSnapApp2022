@@ -74,7 +74,7 @@ import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
 import org.json.JSONObject;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Marker;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -156,7 +156,7 @@ public class OfflineManagerActivity extends AppCompatActivity implements
     private FirebaseFirestore db;
     private CollectionReference collectionReference;
     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-    private UserData userData;
+    private Member member;
     private int count;
     private int size;
 
@@ -830,12 +830,12 @@ public class OfflineManagerActivity extends AppCompatActivity implements
 
     //download the marker from the same organization manager add, from firebase
     public void downloadMarker(){
-      /**  db.collection("Member").document(fAuth.getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        db.collection("Member").document(fAuth.getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()){
-                    userData = UserData.getInstance();
-                    collectionReference.whereEqualTo("org", userData.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    member = Member.getInstance();
+                    collectionReference.whereEqualTo("org", member.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()){
@@ -863,7 +863,7 @@ public class OfflineManagerActivity extends AppCompatActivity implements
                     });
                 }
             }
-        });**/
+        });
 
 
     }

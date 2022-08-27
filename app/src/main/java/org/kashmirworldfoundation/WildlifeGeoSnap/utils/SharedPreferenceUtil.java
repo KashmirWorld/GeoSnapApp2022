@@ -12,15 +12,13 @@ import java.util.Map;
 
 public class SharedPreferenceUtil {
 
-    private static final String GEOSNAP_PREFS = "GeoSnapPrefs";
-
     private SharedPreferences prefs;
 
     private HashMap<String, String> queue;
 
-    public SharedPreferenceUtil(Activity activity) {
+    public SharedPreferenceUtil(String prefName, Activity activity) {
         super();
-        prefs = activity.getSharedPreferences(GEOSNAP_PREFS, Context.MODE_PRIVATE);
+        prefs = activity.getSharedPreferences(prefName, Context.MODE_PRIVATE);
         queue = new HashMap<String, String>();
     }
 

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/backgroundPrimary"
     android:layout_height="match_parent">
 
     <Button
@@ -12,49 +10,40 @@
         android:layout_height="66dp"
         android:layout_marginTop="30dp"
         android:backgroundTint="@color/eco_green"
-        android:fontFamily="@font/lato_bold"
-        android:onClick="onClickLoginUser"
+        android:onClick="onCLickLoginUser"
         android:text="@string/login_intent"
         app:cornerRadius="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/password_outline"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/password_outline"
-        app:layout_constraintTop_toBottomOf="@+id/forgot_password"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/forgot_password" />
 
     <TextView
         android:id="@+id/hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/lato_bold"
         android:gravity="center"
         android:text="@string/hello_again"
         android:textColor="@color/black"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.038" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/welcome"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/lato"
         android:gravity="center"
         android:text="@string/welcome_back"
         android:textColor="@color/eco_green"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hello"
-        app:layout_constraintVertical_bias="0.004" />
+        app:layout_constraintTop_toBottomOf="@+id/hello" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/email_outline"
@@ -62,11 +51,10 @@
         android:layout_height="48dp"
         android:layout_centerInParent="true"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/border_textbox"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome">
 
@@ -106,11 +94,10 @@
         android:layout_height="48dp"
         android:layout_centerInParent="true"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/border_textbox"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_outline">
 
@@ -147,23 +134,32 @@
         android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/lato"
-        android:onClick="onClickForgotPassword"
         android:text="@string/forgot_password"
         android:textColor="@color/eco_green"
         android:textColorHighlight="@color/black"
         android:textColorLink="@color/black"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/password_outline"
+        app:layout_constraintStart_toStartOf="@+id/password_outline"
         app:layout_constraintTop_toBottomOf="@+id/password_outline"
-        tools:ignore="TouchTargetSizeCheck" />
+        android:onClick="OnClickForgotPassword"/>
+
+    <ImageView
+        android:id="@+id/geo_snap_logo"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/login"
+        app:layout_constraintStart_toStartOf="@+id/login"
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/no_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/lato"
         android:text="@string/no_account"
         android:textColor="@color/black"
@@ -171,7 +167,7 @@
         android:textColorLink="@color/black"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/login"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/geo_snap_logo" />
 
     <TextView
         android:id="@+id/sign_up"
@@ -187,15 +183,5 @@
         app:layout_constraintStart_toEndOf="@+id/no_account"
         app:layout_constraintTop_toTopOf="@+id/no_account"
         android:onClick="onClickSignUp"/>
-
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/login"
-        app:layout_constraintStart_toStartOf="@+id/login"
-        app:layout_constraintTop_toBottomOf="@+id/login"
-        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

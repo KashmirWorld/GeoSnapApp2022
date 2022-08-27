@@ -11,22 +11,22 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.WriteBatch;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 
 public class StationDeleteAsyncTask extends AsyncTask<String,Void,String> {
     String path,study;
-    UserData userData;
-    public StationDeleteAsyncTask(String pat, String stud, UserData mem){
+    Member member;
+    public StationDeleteAsyncTask(String pat, String stud, Member mem){
         path=pat;
         study=stud;
-        userData =mem;
+        member=mem;
     }
     @Override
     protected String doInBackground(String... strings) {
-     /**   try{
+        try{
             FirebaseFirestore firestore=FirebaseFirestore.getInstance();
             firestore.document(path).delete();
-            firestore.collection("CameraStation").whereEqualTo("org", userData.getOrg()).whereEqualTo("study",study).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            firestore.collection("CameraStation").whereEqualTo("org",member.getOrg()).whereEqualTo("study",study).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     WriteBatch batch=firestore.batch();
@@ -41,7 +41,6 @@ public class StationDeleteAsyncTask extends AsyncTask<String,Void,String> {
         catch (Error e){
 
         }
-      **/
         return null;
     }
 }

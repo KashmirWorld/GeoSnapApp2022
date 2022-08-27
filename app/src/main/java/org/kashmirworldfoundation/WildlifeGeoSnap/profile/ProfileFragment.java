@@ -27,8 +27,7 @@ import com.google.firebase.storage.UploadTask;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.auth.user.LoginActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.FirebaseHandler;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.User;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.misc.Fragment;
 
 import java.io.ByteArrayOutputStream;
@@ -49,7 +48,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         fragmentView = inflater.inflate(R.layout.fragment_profile, container, false);
-        User userData = User.getInstance();
+        Member member = Member.getInstance();
         initViews();
         initUI();
         return fragmentView;
@@ -68,16 +67,16 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private void initUI() {
         fragmentView.setOnClickListener(this);
-        User userData = User.getInstance();
-    //    nameView.setText("Name: " + userData.getFullname());
-  //      phoneView.setText("Phone: " + userData.getPhone());
-        emailView.setText("Email: " + userData.getEmail());
+        Member member = Member.getInstance();
+        nameView.setText("Name: " + member.getFullname());
+        phoneView.setText("Phone: " + member.getPhone());
+        emailView.setText("Email: " + member.getEmail());
         loadProfilePicture();
         isAdminView.setVisibility(View.INVISIBLE);
-    /**    if (userData.isAdmin()) {
+        if (member.isAdmin()) {
             isAdminView.setVisibility(View.VISIBLE);
             isAdminView.setText("Admin: True");
-        }**/
+        }
     }
 
     @Override
@@ -97,8 +96,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     }
 
     private void loadProfilePicture() {
-        User userData = User.getInstance();
-        FirebaseHandler.loadImageIntoView(userData.getProfile(), profilePicView, ProfileFragment.this);
+        Member member = Member.getInstance();
+        FirebaseHandler.loadImageIntoView(member.getProfile(), profilePicView, ProfileFragment.this);
     }
 
     @Override
