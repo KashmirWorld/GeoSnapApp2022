@@ -13,7 +13,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.study.station.rebait.Rebait;
-import org.kashmirworldfoundation.WildlifeGeoSnap.study.station.rebait.RebaitListActivity;
 
 import java.util.ArrayList;
 

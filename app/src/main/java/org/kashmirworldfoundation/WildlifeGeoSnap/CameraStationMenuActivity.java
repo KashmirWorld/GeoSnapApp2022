@@ -1,16 +1,21 @@
 package org.kashmirworldfoundation.WildlifeGeoSnap;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Switch;
-import android.widget.TextView;
+import org.kashmirworldfoundation.WildlifeGeoSnap.study.station.rebait.Rebait;
+import org.kashmirworldfoundation.WildlifeGeoSnap.study.station.rebait.RebaitAdapter;
+
+import java.util.ArrayList;
 
 public class CameraStationMenuActivity extends AppCompatActivity {
 
@@ -23,7 +28,7 @@ public class CameraStationMenuActivity extends AppCompatActivity {
 
     // adapters
     private RebaitAdapter adapter;
-    private ArrayList<RebaitAdapter> rebaitArrayList;
+    private ArrayList<Rebait> rebaitArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +53,7 @@ public class CameraStationMenuActivity extends AppCompatActivity {
         operational = findViewById(R.id.operational);
         currentLocation = findViewById(R.id.currentLocation);
 
-        takenDownTag = findViewById (R.id.taken_down_tag);
+        takenDownTag = findViewById(R.id.taken_down_tag);
 
         // set up recyclerView
         recyclerView = findViewById(R.id.recyclerView1);
@@ -65,7 +70,24 @@ public class CameraStationMenuActivity extends AppCompatActivity {
 
     private void createListData() {
 
-        //adding data into the recyclerView
+        // adding data into the recyclerView
+        // example below: it's not perfect but it can be adjusted later
+        Rebait rebait = new Rebait("NH-20", "23", "Jul 23");
+    }
+
+    public void onClickUpdate(View view) {
+
+    }
+
+    public void onClickRebait(View view) {
+
+    }
+
+    public void onClickTakedown(View view) {
+
+    }
+
+    public void onClickDelete(View view) {
 
     }
 }

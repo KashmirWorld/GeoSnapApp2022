@@ -371,7 +371,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.study.station.rebait.Rebait;
-import org.kashmirworldfoundation.WildlifeGeoSnap.study.station.rebait.RebaitListActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.study.station.station.Takedown;
 import org.kashmirworldfoundation.WildlifeGeoSnap.study.station.takedown.TakedownListActivity;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.CameraStation;

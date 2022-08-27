@@ -58,7 +58,7 @@
         <entry key="app/src/main/res/font/raleway.xml" value="0.38333333333333336" />
         <entry key="app/src/main/res/layout/activity_add__prey.xml" value="0.3958333333333333" />
         <entry key="app/src/main/res/layout/activity_add_wildlifesighting.xml" value="0.3958333333333333" />
-        <entry key="app/src/main/res/layout/activity_camera_station_menu.xml" value="0.34825487271390854" />
+        <entry key="app/src/main/res/layout/activity_camera_station_menu.xml" value="0.2866043613707165" />
         <entry key="app/src/main/res/layout/activity_create_organization.xml" value="0.3836587861436962" />
         <entry key="app/src/main/res/layout/activity_create_station.xml" value="0.26614583333333336" />
         <entry key="app/src/main/res/layout/activity_create_study.xml" value="0.26614583333333336" />
@@ -107,6 +107,7 @@
         <entry key="app/src/main/res/layout/fragment_wildlifesighting.xml" value="0.3958333333333333" />
         <entry key="app/src/main/res/layout/layout.xml" value="0.4244791666666667" />
         <entry key="app/src/main/res/layout/nav_header.xml" value="0.22554347826086957" />
+        <entry key="app/src/main/res/layout/rebait_layout_item.xml" value="0.34843950406156476" />
         <entry key="app/src/main/res/layout/rebait_sheet.xml" value="0.22554347826086957" />
         <entry key="app/src/main/res/layout/rebait_sheet1.xml" value="0.22554347826086957" />
         <entry key="app/src/main/res/layout/rebait_sheet2.xml" value="0.22554347826086957" />

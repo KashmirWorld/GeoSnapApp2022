@@ -49,7 +49,6 @@
         <activity
             android:name=".auth.user.register.RegisterSelectOrganizationActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".study.station.rebait.RebaitListActivity" />
         <activity android:name=".study.station.takedown.TakedownListActivity" />
         <activity android:name=".study.wildlifesightings.WildlifeSightingExpand" />
         <activity android:name=".study.wildlifesightings.AddWildlifeSightingActivity" />

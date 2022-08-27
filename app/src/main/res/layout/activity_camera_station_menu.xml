@@ -866,6 +866,7 @@
 
             <Button
                 android:id="@+id/button2"
+                android:onClick="onClickUpdate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -907,6 +908,7 @@
 
             <Button
                 android:id="@+id/button3"
+                android:onClick="onClickRebait"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -918,6 +920,7 @@
 
             <Button
                 android:id="@+id/button6"
+                android:onClick="onClickDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -931,6 +934,7 @@
 
             <Button
                 android:id="@+id/button4"
+                android:onClick="onClickTakedown"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
