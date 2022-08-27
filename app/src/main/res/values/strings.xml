@@ -11,7 +11,7 @@
     <string name="sign_up">Sign up.</string>
     <string name="hello_again">Hello Again!</string>
     <string name="welcome_back">Welcome back to GeoSnap. We missed you!</string>
-
+    
     <!-- Strings used in the footer-->
     <string name="footer">2022, the Kashmir Wildlife Foundation</string>
 
@@ -27,50 +27,41 @@
     <!-- Strings used in the Welcome Activity-->
     <string name="purpose_title">Simplifying Wildlife Research</string>
     <string name="purpose_desc">Create and track studies in the field. Make a difference.</string>
-    <string name="sign_up_intent">Register</string>
-    <string name="login_intent">Sign In</string>
+    <string name="sign_up_intent">Sign Up</string>
+    <string name="login_intent">Login</string>
 
-    <!-- Strings used in the Forgot Password Activity-->
-    <string name="recover_password">Enter the email address associated with your account. An email will be sent with instructions to recover your password.</string>
-    <string name="submit">Submit</string>
 
-    <!--Strings used in the Camera Station Menu Activity-->
-    <string name="cam_station_title">Camera Station</string>
-    <string name="taken_down">Taken Down</string>
-    <string name="setup_date">Setup Date</string>
-    <string name="setup_time">Setup Time</string>
-    <string name="takedown_date">End Date</string>
-    <string name="takedown_time">End Time</string>
-    <string name="total_photos">Total Photos</string>
-    <string name="station_data">Station Data</string>
-    <string name="general">General</string>
-    <string name="cam">Cam ID</string>
-    <string name="cam_id">Enter Camera ID</string>
-    <string name="sd">SD Card ID</string>
-    <string name="sd_id">Enter SD Card ID</string>
-    <string name="watershed">Watershed ID</string>
-    <string name="watershed_id">Enter Watershed ID</string>
-    <string name="operational">Operational?</string>
-    <string name="location">Location</string>
-    <string name="longitude">Longitude</string>
-    <string name="latitude">Latitude</string>
-    <string name="longitude_coord">Enter Longitude Coordinate</string>
-    <string name="latitude_coord">Enter Latitude Coordinate</string>
-    <string name="current_location">Use Current Location?</string>
-    <string name="field_info">Field Information</string>
-    <string name="lure">Lure</string>
-    <string name="lure_type">Enter Lure Type</string>
-    <string name="habitat">Habitat</string>
-    <string name="habitat_type">Terrain or Substrate</string>
-    <string name="notes">Additional Notes</string>
-    <string name="notes_extra">Station Potential, Interesting Finds, Etc.</string>
-    <string name="update">Update</string>
-    <string name="rebaits">Rebaits</string>
-    <string name="rebait">Rebait</string>
-    <string name="takedown">Takedown</string>
-    <string name="delete">Delete</string>
-    <string name="sd_card">SD ID:</string>
-    <string name="id">NH-24</string>
+    <string-array name="Countries">
+
+        <item>Country</item>
+
+        <item>Afghanistan</item>
+
+        <item> Bhutan</item>
+
+        <item>China </item>
+
+        <item>India </item>
+
+        <item>Kashmir </item>
+
+        <item>Kazakhstan </item>
+
+        <item>Kyrgyzstan </item>
+
+        <item>Mongolia </item>
+
+        <item>Nepal </item>
+
+        <item>Pakistan </item>
+
+        <item>Russia </item>
+
+        <item> Tajikistan </item>
+
+        <item>Uzbekistan </item>
+
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="navigation_drawer_open">Open navigation drawer</string>

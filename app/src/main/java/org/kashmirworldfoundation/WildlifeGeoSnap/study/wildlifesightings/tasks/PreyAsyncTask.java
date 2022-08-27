@@ -12,7 +12,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.WildlifeSighting;
 import org.kashmirworldfoundation.WildlifeGeoSnap.study.wildlifesightings.WildlifeSightingFragment;
 
@@ -24,7 +24,7 @@ public class PreyAsyncTask extends AsyncTask<String, Void, String> {
     private FirebaseAuth FireAuth;
 
     private ArrayList<WildlifeSighting> aprey = new ArrayList<>();
-    private UserData mem;
+    private Member mem;
     private String Org;
     private static final String TAG = "StationAsyncTask";
     private int count;
@@ -54,8 +54,8 @@ public class PreyAsyncTask extends AsyncTask<String, Void, String> {
             //Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
-/**
-        mem= UserData.getInstance();
+
+        mem= Member.getInstance();
         collectionReference.whereEqualTo("org",mem.getOrg()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -72,7 +72,6 @@ public class PreyAsyncTask extends AsyncTask<String, Void, String> {
                 }
             }
         });
- **/
         return null;
     }
 }

@@ -38,7 +38,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.objects.User;
 import org.kashmirworldfoundation.WildlifeGeoSnap.study.wildlifesightings.WildlifeSightingFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 
@@ -67,7 +66,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.CameraStation;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.study.study.StudyListFragment;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.DataTypeAdapter;
 
@@ -111,7 +110,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener{
     private Date currentTime;
     private ImageButton imgbtn1, imgbtn2;
     private Spinner SpinStudies;
-    private UserData me;
+    private Member me;
     private TextView  netStatus;
     private FirebaseFirestore db;
     private FirebaseStorage fStorage;
@@ -178,7 +177,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener{
             }
         });
 
-        User userData = User.getInstance();
+        Member member =Member.getInstance();
         /*
         String StudiesS = getActivity().getIntent().getStringExtra("Studies");
         StudyArray=new ArrayList<>(Arrays.asList(StudiesS.split(",")));
@@ -325,12 +324,12 @@ public class StudyFragment extends Fragment implements View.OnClickListener{
                 current.setTerrain(terrain);
                 current.setWatershedid(watershedid);
                 current.setHabitat(habitat);
-            //    current.setOrg(me.getOrg());
+                current.setOrg(me.getOrg());
                 current.setAuthor("Member/" + loaduid());
                 current.setCameraId(cameraId);
                 current.setPosted(new Timestamp(currentTime));
-             //   current.setPic(me.getProfile());
-            //    current.setaName(me.getFullname());
+                current.setPic(me.getProfile());
+                current.setaName(me.getFullname());
                 current.setNotes(notes);
                 current.setSdCard(sdcard);
                 current.setStudy(SStudy);

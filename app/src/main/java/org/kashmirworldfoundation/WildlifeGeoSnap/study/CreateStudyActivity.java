@@ -16,7 +16,7 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.kashmirworldfoundation.WildlifeGeoSnap.MainActivity;
-import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.UserData;
+import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Member;
 import org.kashmirworldfoundation.WildlifeGeoSnap.R;
 import org.kashmirworldfoundation.WildlifeGeoSnap.firebase.types.Study;
 import org.kashmirworldfoundation.WildlifeGeoSnap.utils.Utils;
@@ -61,7 +61,7 @@ public class CreateStudyActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
-/**        Post.setOnClickListener(new View.OnClickListener() {
+        Post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String title = TitleInput.getText().toString();
@@ -73,8 +73,8 @@ public class CreateStudyActivity extends AppCompatActivity {
                 Timestamp ts = null;
                 Timestamp ts2 =null;
                 Utils utils= Utils.getInstance();
-                UserData userData = UserData.getInstance();
-                String org = userData.getOrg();
+                Member member=Member.getInstance();
+                String org = member.getOrg();
 
                 try {
                     date1=new SimpleDateFormat("dd/MM/yyyy").parse(start);
@@ -112,7 +112,7 @@ public class CreateStudyActivity extends AppCompatActivity {
                 i.putExtra("Study",study);
                 startActivity(i);
             }
-        });**/
+        });
 
         pickStartSateID.setOnClickListener(new View.OnClickListener() {
             @Override
